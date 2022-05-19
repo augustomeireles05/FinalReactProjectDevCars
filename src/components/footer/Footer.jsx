@@ -10,7 +10,7 @@ import Youtube from '../../assets/images/Footer/youtube.png';
 
 import Visa from '../../assets/images/Footer/visa.png';
 import Mastercard from '../../assets/images/Footer/mastercard.png';
-import Hipercard from "../../assets/images/Footer/hipercard.png";
+import Pix from "../../assets/images/Footer/pix.png";
 import Elo from "../../assets/images/Footer/elo.png";
 import Apple from "../../assets/images/Footer/apple-pay (1).png";
 import Boleto from "../../assets/images/Footer/codigo-de-barras.png";
@@ -71,19 +71,22 @@ function Footer() {
                 <li className="nav-item mb-2">
                   <Link
                     to="/aboutUs"
-                    className="nav-link p-0 text-muted"
-                    target="_blank"
-                  >
+                    className="nav-link p-0 text-muted">
                     SOBRE NÓS
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
                   <Link
-                    to="#"
-                    className="nav-link p-0 text-muted"
-                    target="_blank"
-                  >
-                    POLÍTICA DE PRIVACIDADE
+                    to="/"
+                    className="nav-link p-0 text-muted">
+                    HOME
+                  </Link>
+                </li>
+                <li className="nav-item mb-2">
+                  <Link
+                    to="/inventory"
+                    className="nav-link p-0 text-muted">
+                    PRODUTOS
                   </Link>
                 </li>
               </ul>
@@ -122,17 +125,17 @@ function Footer() {
               <br />
               <ul className="nav flex-column">
                 <li className="nav-item mb-2">
-                  <Link to="#" className="nav-link p-0 text-muted" target="_blank">
+                  <Link to="/contact" className="nav-link p-0 text-muted">
                     AGENDAMENTO DE VISITAS
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/contact" className="nav-link p-0 text-muted" target="_blank" >
+                  <Link to="/contact" className="nav-link p-0 text-muted">
                     CENTRAL DE ATENDIMENTO
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="#" className="nav-link p-0 text-muted" target="_blank">
+                  <Link to="/contact" className="nav-link p-0 text-muted">
                     PRAZOS DE ENTREGA
                   </Link>
                 </li>
@@ -147,17 +150,17 @@ function Footer() {
               <br />
               <ul className="nav flex-column">
                 <li className="nav-item mb-2">
-                  <Link to="/myData" className="nav-link p-0 text-muted" target="_blank">
+                  <Link to="/myData" className="nav-link p-0 text-muted">
                     ALTERAR DADOS PESSOAIS
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/myOrder" className="nav-link p-0 text-muted" target="_blank">
+                  <Link to="/myOrder" className="nav-link p-0 text-muted">
                     ACOMPANHAR UM PEDIDO
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/register" className="nav-link p-0 text-muted" target="_blank">
+                  <Link to="/register" className="nav-link p-0 text-muted">
                     CRIAR UM CADASTRO
                   </Link>
                 </li>
@@ -174,24 +177,19 @@ function Footer() {
             <summary>formas de pagamento</summary>
             <ul>
               <li>
-                <img src={Visa} alt="Visa" width="40" height="30" />
+                <img src={Visa} alt="Visa" width="60" height="30" />
                 {/* Icon Visa */}
               </li>
               <li>
-                <img
-                  src={Mastercard}
-                  alt="MasterCard"
-                  width="40"
-                  height="30"
-                />{" "}
+                <img src={Mastercard} alt="MasterCard" width="60" height="30" />
                 {/* Icon Mastercard */}
               </li>
               <li>
-                <img src={Hipercard} alt="HiperCard" width="40" height="30" />
-                {/* Icon Hipercard */}
+                <img src={Pix} alt="Pix" width="100" height="30" />
+                {/* Icon Pix */}
               </li>
               <li>
-                <img src={Elo} alt="Elo" width="40" height="30" />
+                <img src={Elo} alt="Elo" width="60" height="30" />
                 {/* Icon Elo */}
               </li>
               <li>
@@ -199,7 +197,7 @@ function Footer() {
                 {/* Icon Maestro */}
               </li>
               <li>
-                <img src={Boleto} alt="boleto" width="40"/>
+                <img src={Boleto} alt="boleto" width="60" height="40" />
                 {/* Icon Boleto */}
               </li>
             </ul>
