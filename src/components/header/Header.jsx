@@ -40,7 +40,7 @@ function Header() {
                                                 d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
                                         </svg>
 
-                                        <span className="font-menu">HOME</span>
+                                        <span className="font-menu" data-bs-dismiss="offcanvas">HOME</span>
                                     </Link>
                                 </li>
 
@@ -51,7 +51,7 @@ function Header() {
                                             <path fillRule="evenodd"
                                                 d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
                                         </svg>
-                                        <span className="font-menu">SOBRE NÓS</span>
+                                        <span className="font-menu" data-bs-dismiss="offcanvas">SOBRE NÓS</span>
                                     </Link>
                                 </li>
 
@@ -62,7 +62,7 @@ function Header() {
                                             <path fillRule="evenodd"
                                                 d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
                                         </svg>
-                                        <span className="font-menu">ESTOQUE</span>
+                                        <span className="font-menu" data-bs-dismiss="offcanvas">ESTOQUE</span>
                                     </Link>
                                 </li>
 
@@ -73,7 +73,7 @@ function Header() {
                                             <path fillRule="evenodd"
                                                 d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
                                         </svg>
-                                        <span className="font-menu">CONTATO</span>
+                                        <span className="font-menu" data-bs-dismiss="offcanvas">CONTATO</span>
                                     </Link>
                                 </li>
 
@@ -98,17 +98,17 @@ function Header() {
                                     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                                         <li>
                                             <Link to="/cart" className="dropdown-item">
-                                                <span className="font-menu">Carrinho</span>
+                                                <span className="font-menu" data-bs-dismiss="offcanvas">Carrinho</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/wishList" className="dropdown-item">
-                                                <span className="font-menu">Favoritos</span>
+                                                <span className="font-menu" data-bs-dismiss="offcanvas">Favoritos</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/myData" className="dropdown-item">
-                                                <span className="font-menu">Meus dados</span>
+                                                <span className="font-menu" data-bs-dismiss="offcanvas">Meus dados</span>
                                             </Link>
                                         </li>
                                         <li>
@@ -116,7 +116,7 @@ function Header() {
                                         </li>
                                         <li>
                                             <Link to="/" className="dropdown-item">
-                                                <span className="font-menu">Sair</span>
+                                                <span className="font-menu" data-bs-dismiss="offcanvas">Sair</span>
                                             </Link>
                                         </li>
                                     </ul>
