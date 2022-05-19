@@ -1,5 +1,4 @@
 import './MyData.css'
-import { Link } from 'react-router-dom'
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -30,14 +29,14 @@ function MyData() {
                                 {/* <nav className=" navbar navbar-light mb-3 mt-0 pt-0 pb-2"> */}
                                 {/* <div className="container-fluid d-block text-center"> */}
                                 <div className="col-md-12 col-lg-12 flex-row justify-content-center text-center">
-                                <Subtittle menu="MENU" />
+                                    <Subtittle menu="MENU" />
 
-                                {/* </div>
+                                    {/* </div>
                                 </nav> */}
 
-                                <SideBar />
+                                    <SideBar />
 
-</div>
+                                </div>
                                 {/* <div className="btn-group-vertical background-container-subject me-3 shadow" role="group" aria-label="Vertical button group">
                                     <button type="button" className="btn button-menu-lateral sidebar-font border-button-sidebar-menu">
                                         <Link to="/myData" className="link-solution">MEUS DADOS</Link>
@@ -90,38 +89,22 @@ function MyData() {
                                     <div className="col-12 col-md-5">
                                         <div className="mb-3">
                                             <Label label="CPF" for="cpf" />
-                                            <Input type="text" aria-label="cpf" id="cpf" />
+                                            <Input type="text" aria-label="cpf" id="cpf" disabled style={{ background: "#A9A9A9" }} />
                                         </div>
-
-
                                     </div>
 
-                                    <div className="col-12 col-md-7">
+                                    <div className="col-12 col-md-6 mt-0">
                                         <div className="mb-3">
                                             <Label label="Data de Nascimento" for="dtNascimento" />
                                             <Input type="date" aria-label="dtNascimento" id="dtNascimento" />
-
                                         </div>
-
                                     </div>
-
-
-                                    <div className="d-flex justify-content-end col-md-12">
-                                        <div className="mb-3 mt-0 col-12 col-sm-12 col-md-4">
-                                            {/* <Link className="btn btn-warning mt-6 d-block float-md-end" to="#" role="button">
-                                                SALVAR </Link> */}
-
+                                    <div className="col-12 col-md-6 mt-5">
+                                        <div className="mb-3 mt-0 col-12 col-sm-12 col-md-12">
                                             <Button link="" name="SALVAR" />
                                         </div>
-
-
                                     </div>
-
-
-
                                 </div>
-
-
                             </form>
 
                             <div className="mt-4">
@@ -154,41 +137,27 @@ function MyData() {
                                                 <Label label="Confirme sua nova senha" />
 
                                             </div>
-
-
                                         </div>
-
-
-                                        <div className="d-flex justify-content-end col-md-12">
-                                            <div className="mb-3 mt-0 col-12 col-sm-12 col-md-4">
-                                                {/* <Link className="btn btn-warning mt-6 d-block float-md-end" to="#" role="button">
-                                                MODIFICAR</Link> */}
-
-                                                <Button link="" name="MODIFICAR" />
+                                        <div className="col-12 col-md-6 mt-5">
+                                            <div className="mb-3 mt-0 col-12 col-sm-12 col-md-12">
+                                                <Button link="" name="SALVAR" />
                                             </div>
-
                                         </div>
 
 
-
+                                        {/* <div className="d-flex justify-content-end col-md-12">
+                                            <div className="mb-3 mt-0 col-12 col-sm-12 col-md-4">
+                                                <Button link="" name="SALVAR" />
+                                            </div>
+                                        </div> */}
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                 </article>
-
             </section >
-
-
-            < Footer />
-
+            <Footer />
         </>
     )
 }

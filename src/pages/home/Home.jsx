@@ -71,36 +71,17 @@ function Home() {
                                 <div className="carousel-item active" data-bs-interval="3000">
                                     <img src={Capa1} className="d-block w-100" alt="Capa1"></img>
                                     <div className="carousel-caption d-none d-md-block">
-                                        {/* <h5>Koenigsegg Gemera</h5>
-                                        <p className="paragrafo-institucional">DevCar sera unica e exclusiva importadora Koenigsegg Gemera</p> */}
                                     </div>
                                 </div>
                                 <div className="carousel-item" data-bs-interval="3000">
                                     <img src={BugattichironBanner} className="d-block w-100 stf2" alt="..."></img>
                                     <div className="carousel-caption d-none d-md-block">
-                                        {/* <h5>Ferrari MONZA</h5>
-                                        <p> Velocidade Máx: 350 Km/h</p> */}
                                     </div>
-                                    {/* <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀</p> */}
                                 </div>
-                                {/* <div className="carousel-item">
-                                    <img src={Capa2} className="d-block w-100" alt="" width="100%"></img>
-                                    <div className="carousel-caption d-none d-md-block">
-                                        <font color="white">
-                                            {/* <h5> Bugatti Chiron </h5>
-                                            <p text="blue">Velocidade Máx: 474 km/h</p> 
-                                        </font>
-                                    </div>
-                                </div> */}
                                 <div className="carousel-item" data-bs-interval="3000">
-                                    <img src={LamborghiniAventadorBanner} className="d-block w-100" alt="..." width="100%"></img>
+                                    <img src={LamborghiniAventadorBanner} className="d-block w-100" alt="..." width="100%" />
                                     <div className="carousel-caption d-none d-md-block">
-                                        <font color="white">
-                                            {/* <h5>DevCar's</h5>
-                                            <p> O conceito, na sua garagem</p> */}
-                                        </font>
                                     </div>
-                                    <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
                                 </div>
 
                             </div>
@@ -125,54 +106,54 @@ function Home() {
                                 <div className="carousel-inner">
                                     <div className="carousel-item active logo-centralizado" data-bs-interval="3000">
                                         <Link to="inventory"className="" > 
-                                            <img className="icons-marcas ms-2 me-4" src={LogomarcaAstonMartin} height="50px" />
+                                            <img className="icons-marcas ms-2 me-4" src={LogomarcaAstonMartin} height="50px" alt="Carrossel"/>
                                         </Link>
                                         <Link to="inventory"className=""> 
-                                            <img className="icons-marcas  me-4" src={LogomarcaAudi} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaAudi} height="50px" alt="Carrossel" />
                                         </Link>    
                                         <Link href="BMW" to="inventory"className=""> 
-                                            <img className="icons-marcas  me-4" src={LogomarcaBMW} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaBMW} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className=""> 
-                                            <img className="icons-marcas  me-4" src={LogomarcaBugatti} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaBugatti} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" > 
-                                            <img className="icons-marcas  me-4" src={LogomarcaCrysler} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaCrysler} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" > 
-                                            <img className="icons-marcas  me-4" src={LogomarcaFerrari} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaFerrari} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" > 
-                                            <img className="icons-marcas  me-4" src={LogomarcaFord} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaFord} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" > 
-                                            <img className="icons-marcas  me-4" src={LogomarcaJaguar} height="50px" />
+                                            <img className="icons-marcas  me-4" src={LogomarcaJaguar} height="50px" alt="Carrossel" />
                                         </Link>
                                     </div>
                                     <div className="carousel-item fundo-marcas logo-centralizado2  logo-centralizado" data-bs-interval="3000">
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-3 me-4" src={LogomarcaLamborghini} height="50px" />
+                                            <img className="icons-marcas ms-3 me-4" src={LogomarcaLamborghini} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaMclaren} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaMclaren} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaMercedes} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaMercedes} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaOpel} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaOpel} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaPagani} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaPagani} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaRollsRoyce} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaRollsRoyce} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaSubaru} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaSubaru} height="50px" alt="Carrossel" />
                                         </Link>
                                         <Link to="inventory"className="" >
-                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaVolvo} height="50px" />
+                                            <img className="icons-marcas ms-5 me-4" src={LogomarcaVolvo} height="50px" alt="Carrossel" />
                                         </Link>
 
                                     </div>
@@ -270,7 +251,7 @@ function Home() {
                                                             </video> 
                                                             */}
                                                             <img src={ModalMercedesBenzAMGF12016}
-                                                                className="card-img img-modal " alt="...">
+                                                                className="card-img img-modal" alt="...">
 
                                                             </img>
                                                         </div>
@@ -300,7 +281,7 @@ function Home() {
                                                                 </li>
                                                             </ul>
                                                             <h3 className=" info-gerais">INFORMAÇÕES GERAIS</h3>
-                                                            <p className="alinhamento_paragrafo  info-gerais2  mt-2 border border-2  border-dark p-3 background-datasheet">Cambio PDK de 8
+                                                            <p className="alinhamento_paragrafo  info-gerais2 mt-3 pe-2 ps-2">Cambio PDK de 8
                                                                 marchas e dupla embreagem, tração integral,
                                                                 modos E,
                                                                 Híbrido, Sport e Sport Plus, eixo traseiro direcional,
@@ -366,8 +347,8 @@ function Home() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="align-self-center mt-4 col-12 btn btn-principal py-1 fw-normal  text-decoration-none">
-                                                        <Button link="/checkoutScheduling" name="Agendar Visita" />
+                                                    <div className="align-self-center mt-4 col-12 ">
+                                                        <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -534,7 +515,7 @@ function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="align-self-center mt-4 col-12 ">
-                                                        <Button link="/checkoutScheduling" name="Agendar Visita" />
+                                                        <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
                                                     </div>
                                             </div>
                                         </div>
@@ -621,7 +602,7 @@ function Home() {
                                                             </ul>
 
                                                             <h3 className="info-gerais">INFORMAÇÕES GERAIS</h3>
-                                                            <p className="alinhamento_paragrafo  info-gerais2  mt-3">Cambio PDK de 8 marchas e dupla embreagem, tração integral,
+                                                            <p className="alinhamento_paragrafo  mt-3">Cambio PDK de 8 marchas e dupla embreagem, tração integral,
                                                                 modos E,
                                                                 Híbrido, Sport e Sport Plus, eixo traseiro direcional,
                                                                 controle de chassi 4D, suspensão pneumática, pacote Sport
@@ -685,7 +666,7 @@ function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="align-self-center mt-4 col-12 ">
-                                                        <Button link="/checkoutScheduling" name="Agendar Visita" />
+                                                        <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
                                                     </div>
                                             </div>
                                         </div>
@@ -722,20 +703,16 @@ function Home() {
 
 
             <section>
-                <div className="social">
-                    <div className="row social-Texto px-5 pt-2">
-                        <h3>SSC Tuatara apresenta versao com até 2.230 cv</h3>
+                <div className="social col-12 noticia">
+                    <div className="row social-Texto px-5 pt-3 col-12">
+                        <h3 className="titulo-noticia">SSC Tuatara apresenta versão com até 2.230 CV</h3>
                         <div className="col-8 texto_midia">
                             <p p className="paragrafo-institucional-card">
 
-                                O norte-americano SSC Tuatara conseguiu superar a marca de velocidade
-                                do Koenigsegg Agera RS e se tornou o novo modelo de produção <strong> mais
-                                    veloz do mundo.</strong> Ele alcançou uma média de 508,7 km/h em duas
-                                tentativas, com uma <strong> velocidade máxima de 532,9 km/h</strong>....
-
+                                O SSC Tuatara alcançou a velocidade máxima de 532,8 km/h em um trecho da State Route 160 no sul do estado de Nevada, nos Estados Unidos. Contudo, o recorde é estabelecido pela média das máximas nos dois sentidos da via mitigar os efeitos dos ventos laterais e traseiros, o que resultou em 508,7 km/h. Ao volante estava o piloto britânico Oliver Webb.
+                                Foi neste mesmo local que o Koenigsegg Agera RS alcançou os  447,237 km/h, que já havia sido desbancado há um ano pelo Bugatti Chiron quando alcançou os 490,48 km/h em Ehra-Lessien, na Alemanha.
+                                E é um recorde controverso: foi estabelecido com apenas uma passagem na pista.  
                             </p>
-
-
                         </div>
                         <div className="col-4 imagens-midia">
                             <img src={SSCTuatara} alt="" width="100%"></img>
