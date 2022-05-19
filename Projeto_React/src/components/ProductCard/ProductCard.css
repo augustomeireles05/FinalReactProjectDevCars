@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Orbitron&family=Questrial&family=Roboto+Condensed:wght@300&display=swap');
+
+.color-button {
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+.color-button:hover {
+    background: linear-gradient(191deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+.font-price {
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: rgba(103, 96, 0, 0.898);
+    
+}
+
+.css-font-family {
+    font-family: 'Questrial', sans-serif;
+}

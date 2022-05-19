@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Orbitron&family=Questrial&family=Roboto+Condensed:wght@300&display=swap');
+
+.background-container-subject {
+    background-color: #fffefe;
+}
+
+.sidebar-font {
+    font-family: 'Questrial', sans-serif;
+}
+
+/* .button-menu-lateral:hover {
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+} */
+
+.navbar-toggler-style:hover{
+    background-color: #fff;
+}
+
+.menu-image-size{
+    width: 20px;
+}
+
+.link-solution {
+    text-decoration: none;
+    color:black;
+}
+
+.link-solution:link {
+    color:#000;
+}
+
+.link-solution:visited {
+    color:#000;
+}
+
+
+.toggle-button-style:focus{
+    border: none;
+    box-shadow: none;
+}

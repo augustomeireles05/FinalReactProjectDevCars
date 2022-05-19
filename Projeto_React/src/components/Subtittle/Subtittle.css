@@ -1,0 +1,11 @@
+.border-bottom-menu{
+    border-bottom: #9B9B9B 1px solid;
+}
+
+@media (max-width: 400px) {
+        
+    .border-bottom-menu{
+        border: none;
+    }
+
+}

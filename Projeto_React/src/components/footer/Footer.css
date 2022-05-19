@@ -1,0 +1,57 @@
+h5{
+    color: white;
+    margin-bottom: 2.5rem;
+    margin: auto;
+}
+
+a{
+    font-size: 13px;
+}
+
+footer{
+    background-color: black;
+}
+
+ul{
+    list-style-type: none;
+    list-style: none;
+}
+
+li{
+    display: inline;
+}
+
+
+
+/* -- RESPONSIVE --*/
+
+ /* @media (max-width: 760px) {
+
+    .responsive-footer {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .responsive-social-media{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .responsive-footer {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .responsive-social-media{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+} */

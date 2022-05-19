@@ -1,0 +1,55 @@
+body{
+    background-color: #E0E0E0;
+}
+
+.linha_sobre_nos{
+    color:white;
+    background: #000;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: large;
+}
+
+.linha_sobre_nos1{
+    justify-content: center;
+    margin-top: 10px;
+   
+}
+
+.sobre_nos .sobre_nos1{
+    margin-top: 10px;
+    
+}
+
+.sobre_nos1{
+    box-sizing: border-box;
+}
+
+
+.social{
+    margin-bottom: 45px;
+    margin-top: 45px;
+    
+}
+
+
+
+.alinhamento_paragrafo{
+    text-align:justify;   
+    
+}
+
+.texto-sobre-nos{
+    margin: px;
+}
+
+.sobre_nos_center {
+    display: grid;
+    place-items: center;
+    text-align: justify;
+}
+
+
+

@@ -1,0 +1,18 @@
+.input-style{
+    box-shadow: none;
+    background-color: #fff;
+
+}
+
+.input-style:hover{
+    border-color: none;
+
+}
+
+@media (min-width: 1000px) {
+            
+    .input-style{
+        font-size: 1px;
+    }
+    
+}

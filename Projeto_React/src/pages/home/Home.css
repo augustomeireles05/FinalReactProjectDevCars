@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Roboto+Condensed:wght@300&display=swap');
+
+* {
+
+    margin: 0;
+}
+body{
+    background-color: #E0E0E0;
+    width: 100%;
+    
+    
+}
+
+.pesquisar{
+    background-color: #E0E0E0;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+.pesquisar-encontre{
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+.pesq_categoria{
+    margin-top: 5%;
+}
+
+.btn_pesquisa{
+    margin-bottom: 5px;    
+    margin-right: 50px;
+    
+   
+}
+
+.btn_pesquisa:hover{
+    color: black;
+    font-weight: bold;
+}
+
+
+.carosel_01{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding-top: 5px;
+    
+}
+
+.frt{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin-left: 50px;
+}
+.logo_marcas{
+    padding-top: 20px;    
+    width: 100%;
+}
+.carouselExampleControls {
+    width: 80%;
+}
+
+.boxt{
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+}
+
+.slider{
+    max-width: 1150px;
+    display: flex;
+}
+
+.slider .card{
+    flex: 1;
+    margin: 0 5px;
+}
+
+.slider .card .img img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.carousel-button-hover:hover{
+    background: none;
+}
+
+.social{
+    background: rgb(214, 212, 212);
+    margin-top: 95px;
+    margin-bottom: 55px;
+    text-align: center;
+}
+.texto_midia{
+    margin-top: 10%;
+}
+
+.logo-centralizado{
+    margin-left: 9%;
+}
+.logo-centralizado2{
+    margin-left: 10%;
+    
+}
+
+
+.linhaDestaque{
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    text-align: center;
+    margin: 50px auto 2px 30px;
+    
+}
+
+
+.icon-close{
+    width: 25px;
+    height: 25px;
+}
+
+.modal-content{
+    background: rgba( 0, 0, 0, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 6.5px );
+    -webkit-backdrop-filter: blur( 6.5px );
+    border-radius: 10px;
+}
+
+.modal-header{
+    border-bottom: none;
+}
+
+.img-modal {
+    border: none;
+    height: 90%;
+}
+
+.img-modal:hover {
+    border: none !important;
+}
+
+.carousel-hipercarros{
+    margin-top: 1px;
+}
+
+.carousel-control-prev{
+    left: -40px;
+}
+.carousel-control-next{
+    right: -51px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    background-color: black;
+    border-radius: 20px;
+    
+}
+
+.carousel-tamanho{
+    width: 120%;
+    height: 98%;
+}
+
+.icons-marcas{
+    margin-left: 20px;
+}
+
+.alinhamento_paragrafo{
+    font-family: 'Questrial', sans-serif;
+    text-align:justify;   
+   
+}
+
+
+.imagens-midia{
+    justify-items: center;
+    margin-top: 50px;
+}
+
+
+.info-gerais1{
+    font-size: 29px;
+}
+
+.detalhes-info{
+    font-size: 15px;
+}
+
+.paragrafo-institucional{
+    font-size: 19px;
+}
+.paragrafo-institucional-card{
+    font-size: 15px;
+    padding: 0 20px;
+    text-align: justify;
+}
+
+.card-title-height{
+
+    height: 50px;
+
+
+}
+/* -- RESPONSIVE - BEGIN HEADER -- */
+
+@media (max-width: 1025px) {
+            
+             
+    .logo_marcas{
+        /* --display: none; -- */
+        white-space: nowrap ;       
+    }
+  
+    .pesquisar{
+        margin-left: 5%;
+    }
+      
+  
+    .texto_midia {
+      display: inline-block;
+      flex-direction: row;
+      justify-content: space-between;
+      justify-items: center; 
+      padding-top: 1%;
+      padding-left: 5%;
+      padding-bottom: 1%;
+      padding-right: 2%;
+      height: 100%;
+      width: 100%;            
+  }
+  
+  .imagens-midia{
+      display: inline-block;
+      flex-direction: row;
+      justify-content: space-between;
+      justify-items: center;    
+      background-color: #E0E0E0;            
+      padding-top: 1%;
+      padding-left: 5%;
+      padding-bottom: 10%;
+      padding-right: 2%;
+      height: 100%;
+      width: 100%; 
+      }
+  
+  
+      .modal-mobily{
+          width: 100%;
+      }
+      .modal-mobily2{
+          width: 100%;
+          margin-top: 40px;
+      }
+  
+      .modal-mobily3{
+          width: 75%;
+          margin-left: 10%;
+      }
+      .linhaDestaque{
+        justify-content: center;
+        text-align: start;
+    }
+      
+    .carouselExampleControls {
+        display: none;
+    }
+  }
+
+  
+@media (max-width: 800px) {
+        
+   
+    .filtro-de-busca{
+        margin-left: 1%;
+        justify-content: center;
+    }
+
+    .btn-detalhes{
+        margin-top: 100px;
+    }
+ 
+    .logo_marcas{
+        display: none;
+        white-space: nowrap ;  
+    }
+    
+    .linhaDestaque{
+        justify-content: center;
+        text-align: start;
+    }
+
+    .texto_midia {
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 1%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%;            
+    }
+
+    .imagens-midia{
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%; 
+
+    }
+
+    .modal-mobily{
+        width: 100%;
+    }
+    .modal-mobily2{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .modal-mobily3{
+        width: 100%;
+        margin-left: 10%;
+    }
+
+    .pesquisar{
+        justify-content: center;
+        margin-left: 12%;
+        
+    }
+
+    .linhaDestaque{
+        justify-content: center;
+        text-align: start;
+    }
+
+    .carouselExampleControls {
+        display: none;
+    }
+
+}
+
+@media (max-width: 670px) {
+        
+    
+
+    .modal-mobily{
+        width: 100%;
+    }
+    .modal-mobily2{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .modal-mobily3{
+        width: 75%;
+        margin-left: 10%;
+    }
+    
+    .linhaDestaque{
+        justify-content: center;
+        text-align: start;
+    }
+}
+
+/* -- FOR IPHONE 6/7/8 -- */
+@media (max-width: 500px) {
+    
+    
+    .logo_marcas{
+        display: nome;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 0%;
+        padding-right: 2%;
+        height: 25%;
+        
+    }      
+  
+
+    .texto_midia {
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;           
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%;            
+    }
+
+    .imagens-midia{
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%; 
+
+    }
+
+    .linhaDestaque{
+        justify-content: center;
+        text-align: start;
+    }
+    
+
+    .carouselExampleControls {
+        display: none;
+    }
+
+    @media (max-width: 450px) {
+    
+    
+        .logo_marcas{
+            display: nome;
+            flex-direction: row;
+            justify-content: space-between;
+            justify-items: center;    
+            background-color: #E0E0E0;            
+            padding-top: 1%;
+            padding-left: 5%;
+            padding-bottom: 0%;
+            padding-right: 2%;
+            height: 25%;
+            
+        }      
+      
+    
+        .texto_midia {
+            display: inline-block;
+            flex-direction: row;
+            justify-content: space-between;
+            justify-items: center;           
+            padding-top: 1%;
+            padding-left: 5%;
+            padding-bottom: 10%;
+            padding-right: 2%;
+            height: 100%;
+            width: 100%;            
+        }
+    
+        .imagens-midia{
+            display: inline-block;
+            flex-direction: row;
+            justify-content: space-between;
+            justify-items: center;    
+            background-color: #E0E0E0;            
+            padding-top: 1%;
+            padding-left: 5%;
+            padding-bottom: 10%;
+            padding-right: 2%;
+            height: 100%;
+            width: 100%; 
+    
+        }
+
+        .pesquisar{
+            justify-content: center;
+            margin-left: 1%;
+        }
+
+        .linhaDestaque{
+            justify-content: center;
+            text-align: start;
+        }
+
+          
+
+        .modal-mobily{
+            width: 100%;
+        }
+        .modal-mobily2{
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .modal-mobily3{
+            width: 75%;
+            margin-left: 10%;
+        }
+    
+
+        .carouselExampleControls {
+            display: none;
+        }
+        .search-icon {
+            display: none;
+        }
+
+        .favorite-icon {
+            display: none;
+        }
+
+        .garage-icon {
+            display: none;
+        }
+
+        .user-icon {
+            padding-top: 150%;
+        }
+        
+        .icon-logo {
+            padding-left: 9%;
+        }
+    }
+}

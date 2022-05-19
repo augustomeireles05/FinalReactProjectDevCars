@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Orbitron&family=Questrial&family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+    background-color: #E0E0E0;
+}
+
+.title-page {
+    padding: 2%;
+    font-family: 'Questrial', sans-serif;
+}
+
+.font-text {
+    font-family: 'Questrial', sans-serif;
+}
+
+.font-text-bold {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 800;
+}
+
+.background {
+    background-color: #E0E0E0;
+}
+
+.space-input {
+    padding-left: 0.3em;
+}
+
+a button {
+    width: 100%;
+}
+
+
+.confi_agendamento {
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+    height: 60px;
+    
+    
+}
+
+.confi_agendamento:hover {
+    background: linear-gradient(191deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+    font-weight: bold
+}
+
+
+.vtcarrinho {
+    background: linear-gradient(8deg, rgba(158, 157, 150, 0.411) 30%, rgb(211, 211, 209) 70%);
+    
+    
+}
+
+.vtcarrinho:hover {
+    background: linear-gradient(191deg, rgba(158, 157, 150, 0.411)30%, rgb(211, 211, 209) 70%);
+}
+
+
+.meus-dados{
+    width: 100%;
+    margin-left: 2px;
+}
+
+.format-resume-scheduling {
+    text-align: justify;
+}
+
+
+/* -- RESPONSIVE - BEGIN HEADER -- */
+
+@media (max-width: 1000px) {
+            
+    header {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+
+        background-color: #000;
+        
+        padding-top: 1%;
+        padding-left: 4%;
+        padding-bottom: 1%;
+        padding-right: 2%;  
+
+    }  
+     
+   
+
+
+
+}
+
+@media (max-width: 800px) {
+        
+    header {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+
+        background-color: #000;
+        
+        padding-top: 1%;
+        padding-left: 3%;
+        padding-bottom: 1%;
+        padding-right: 2%;  
+
+    }  
+
+    .filtro-de-busca{
+        margin-left: 1%;
+        justify-content: center;
+    }
+
+    .botao-buscar{           
+        width: 50%;
+        justify-items: center;
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+    
+    .btn-responsividade{
+        width: 100%;
+    }
+
+    .vtcarrinho{
+        width: 100%;
+    }
+
+    
+
+
+}
+
+@media (max-width: 640px) {
+        
+    header {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+
+        background-color: #000;
+        
+        padding-top: 1%;
+        padding-left: 2%;
+        padding-bottom: 1%;
+        padding-right: 2%;  
+
+    }  
+
+    
+    
+}
+
+/* -- FOR IPHONE 6/7/8 -- */
+@media (max-width: 500px) {
+    
+    header  {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+
+        background-color: #000;
+        
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 1%;
+        padding-right: 2%;  
+
+    } 
+    .logo_marcas{
+        display: nome;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 0%;
+        padding-right: 2%;
+        height: 25%;
+        
+    }      
+  
+
+    .texto_midia {
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;           
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%;            
+    }
+
+    .imagens-midia{
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%; 
+
+    }
+   
+
+    .search-icon {
+        display: none;
+    }
+
+    .favorite-icon {
+        display: none;
+    }
+
+    .garage-icon {
+        display: none;
+    }
+
+    .user-icon {
+        padding-top: 150%;
+    }
+    
+    .icon-logo {
+        padding-left: 9%;
+    }
+
+}
+
+
+/* -- RESPONSIVE - BEGIN HEADER -- */
+
+@media (max-width: 1000px) {
+        
+header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    background-color: #000;        
+    padding-top: 1%;
+    padding-left: 4%;
+    padding-bottom: 1%;
+    padding-right: 2%;  
+
+}  
+      
+
+}
+
+@media (max-width: 800px) {
+    
+header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+
+    background-color: #000;
+    
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-bottom: 1%;
+    padding-right: 2%;  
+
+}  
+
+
+.sobre_nos{
+    width: 100%;
+}
+.sobre_nos1_img{
+    width: 100%;
+    margin-top: 2%;
+}
+}
+
+@media (max-width: 640px) {
+    
+header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+
+    background-color: #000;
+    
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    padding-right: 2%;  
+
+}  
+
+
+.sobre_nos{
+    width: 100%;
+}
+.sobre_nos1_img{
+    width: 100%;
+    margin-top: 2%;
+}
+
+}
+
+/* -- FOR IPHONE 6/7/8 -- */
+@media (max-width: 500px) {
+
+header  {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+
+    background-color: #000;
+    
+    padding-top: 1%;
+    padding-left: 5%;
+    padding-bottom: 1%;
+    padding-right: 2%;  
+
+} 
+
+.sobre_nos{
+    width: 100%;
+}
+.sobre_nos1_img{
+    width: 100%;
+    margin-top: 2%;
+}
+.search-icon {
+    display: none;
+}
+
+.favorite-icon {
+    display: none;
+}
+
+.garage-icon {
+    display: none;
+}
+
+.user-icon {
+    padding-top: 150%;
+}
+
+.icon-logo {
+    padding-left: 9%;
+}
+
+}
+
+.input-calendar {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.calendar {
+    width: 80%;
+}
+
+/* -- RESPONSIVE - BEGIN HEADER -- */

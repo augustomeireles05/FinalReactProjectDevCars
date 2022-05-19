@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Orbitron&family=Questrial&family=Roboto+Condensed:wght@300&display=swap');
+
+.button {
+    background: linear-gradient(8deg, rgba(218,184,0,1) 30%, rgba(234,199,1,1) 70%);
+}
+
+.button:hover {
+    background: linear-gradient(191deg, #dab800 30%, rgba(234,199,1,1) 70%);
+}
+
+.margin-label {
+    margin-bottom: -1em;
+}
+
+.font-cart {
+    font-family: 'Questrial', sans-serif;
+}
+.texto-alinhado {
+    text-align: justify;
+    font-family: 'Questrial', sans-serif;
+    font-size: 0.8em;
+}
+
+.price-style {
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: rgba(103, 96, 0, 0.898);
+}

@@ -1,0 +1,380 @@
+/* html{
+    font-family: roboto,sans-serif;
+} */
+
+body{
+    background-color: #E0E0E0;
+}
+
+
+.filtro-de-busca{
+    background-color: #f0f0f0;
+}
+
+.filtro-de-busca select{
+    border: 1px solid #858585;
+    
+}
+
+.botao-buscar{
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+    border: 1px solid #858585;
+    border-radius: 5px;
+}
+
+.titulo-card{
+    height: 7vh;
+}
+
+.card { 
+    transition: 0.9s; 
+    border-radius: 2px;
+    background-color: #E0E0E0;
+    border: 1px solid #9e9e9e;
+}
+
+/* Problema resolvido da pag checkoutOrder sem efeito transform inativado */
+.product-card:hover { 
+    transform: scale(1.02); 
+}
+
+
+.card-title, .card-text{
+    color: #000000;
+}
+
+.btn-warning{
+    background-color: #EBB753;
+    border-radius: 5px;
+}
+
+.cores-modal{
+    color: whitesmoke;
+}
+
+.fundo{
+    background-color: whitesmoke;
+}
+
+.lista-modal li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;    
+    align-items: center;
+    padding: 0.2rem 0.7rem;
+    text-transform: uppercase
+}
+
+
+.fundo-filtro{
+    background-color: #E0E0E0;
+    margin-bottom: 2%;
+}
+.carosel-modal{
+    height: 40%;
+    width: 40%;
+    margin-top: 9px;
+    margin-left: 25%;
+}
+
+.logo-modal{
+    align-items: center;
+    height:50px ;
+    width: 50px;
+}
+
+.btn-modal-close{
+    color: white;
+    background-color: white;
+}
+
+.modalfooter{
+    justify-content: center;
+}
+
+/* .modal-title{
+    margin-left: 30%;
+    margin-top: 10px;
+} */
+
+/* .btn-modal-footer{
+    width: 150px;
+    height: 45px;
+} */
+
+.img-modal{
+    border-radius: 10px;
+    border: 5px double #ffc107;    
+}
+
+.img-modal:hover{
+    border-radius: 10px;
+    border: 5px inset #ffc107;    
+}
+
+
+.btn_buscar{
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+    margin-bottom: 10px;
+    margin-left: 10%;
+    justify-items: flex-start;
+}
+
+.btn_buscar:hover{
+    background: linear-gradient(191deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+    border-radius: 4px;
+   font-weight: bold;
+}
+
+.info-gerais1{
+    margin-top: 40px;
+    background-color: #3f3d3d;
+    text-align: center;
+}
+
+.info-gerais{
+    margin-top: 38px;
+    background-color: #3f3d3d;
+    text-align: center;
+}
+.info-gerais2{    
+    background-color: #252525;
+}
+
+.info-gerais-linhas{
+    background-color: rgba(255,255,255,.1);
+    padding: 0.2rem 0.7rem;
+    text-transform: uppercase;
+   margin-left: 1px;
+}
+
+.info-gerais-linhas:hover{
+    background-color: rgba(172, 98, 98, 0.1);
+}
+
+.btn-detalhes{
+    margin-top: 20px;
+    margin-bottom: 2px;
+    align-items: center;
+}
+
+.linhas-modal{
+    
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0.7rem;
+    text-transform: uppercase;
+}
+
+
+@media (min-width: 1000px) {
+  
+    .titulo-card{
+        min-height: 8vh;
+    }
+    
+}
+
+@media (min-width: 700px) {
+  
+    .titulo-card{
+        height: 7vh;
+    }
+    
+}
+
+
+
+@media (max-width: 1000px) {
+  
+      .modal-mobily{
+          width: 100%;
+      }
+      .modal-mobily2{
+          width: 100%;
+          margin-top: 40px;
+      }
+  
+      .modal-mobily3{
+          width: 75%;
+          margin-left: 10%;
+      }
+  
+      
+  }
+
+  
+@media (max-width: 800px) {
+              
+
+    .botao-buscar{           
+        width: 50%;
+        justify-items: center;
+        margin-left: 5%;
+        margin-top: 3%;
+        
+               
+    }      
+    .modal-mobily{
+        width: 100%;
+    }
+    .modal-mobily2{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .modal-mobily3{
+        width: 75%;
+        margin-left: 10%;
+    }
+
+    .pesquisar{
+        justify-content: center;
+        margin-left: 12%;
+        
+    }
+
+    .linhaDestaque{
+        justify-content: center;
+        margin-left: 12%;
+    }
+
+    
+    .filtro-de-busca{
+        margin-left: 1%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+        
+    
+
+    .modal-mobily{
+        width: 100%;
+    }
+    .modal-mobily2{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .modal-mobily3{
+        width: 75%;
+        margin-left: 10%;
+    }
+
+    .botao-buscar{ 
+        width: 93%;
+        justify-items: center;
+        margin-left: 3%;
+        margin-top: 3%;
+    }
+    
+}
+
+
+@media (max-width: 450px) {
+    
+    
+    .logo_marcas{
+        display: nome;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 0%;
+        padding-right: 2%;
+        height: 25%;
+        
+    }      
+  
+
+    .texto_midia {
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;           
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%;            
+    }
+
+    .imagens-midia{
+        display: inline-block;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;    
+        background-color: #E0E0E0;            
+        padding-top: 1%;
+        padding-left: 5%;
+        padding-bottom: 10%;
+        padding-right: 2%;
+        height: 100%;
+        width: 100%; 
+    }
+
+    
+        
+    }
+
+/* -- FOR IPHONE 6/7/8 -- */
+@media (max-width: 500px) {
+    
+    
+   
+
+    .pesquisar{
+        justify-content: center;
+        margin-left: 1%;
+    }
+
+    .linhaDestaque{
+        justify-content: center;
+        margin-left: 1%;
+    }
+
+          
+
+    .modal-mobily{
+        width: 100%;
+    }
+    .modal-mobily2{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .modal-mobily3{
+        width: 75%;
+        margin-left: 10%;
+    }
+   
+    
+    .search-icon {
+        display: none;
+    }
+
+    .favorite-icon {
+        display: none;
+    }
+
+    .garage-icon {
+        display: none;
+    }
+
+    .user-icon {
+        padding-top: 150%;
+    }
+    
+    .icon-logo {
+        padding-left: 9%;
+    }
+
+}
+
+
+/* -- RESPONSIVE - BEGIN HEADER -- */

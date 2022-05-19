@@ -1,0 +1,2 @@
+import './RegistrationForm.css';
+

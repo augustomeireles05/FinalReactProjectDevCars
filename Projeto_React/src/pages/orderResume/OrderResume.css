@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@100;300&display=swap');
+
+
+body{
+    background-color: #E0E0E0;
+    font-family: 'Questrial', sans-serif;
+}
+
+/* estilização do menu lateral */
+.list-group-item:hover{
+    background-color: #E0E0E0;
+}
+
+.border-bottom-menu{
+    border-bottom: #9B9B9B 1px solid;
+}
+
+/* fim da estilização do menu lateral */
+
+
+
+/* inicio da finalização do pedido */
+.resumo{
+    background-color: #000;
+    color: #fff;
+    font-size: 24px;
+}
+
+.titulo-principal, .titulo-menu{
+    border-bottom: 1px solid #b6b6b6;
+}
+
+.titulo-sucesso-compra{
+    font-size: 18px;
+}
+
+.numero-pedido{
+    font-size: 25px;
+}
+
+.img-certificado{
+    width: 150px;
+    margin: 0 auto;
+}
+
+.img-sucess{
+    height: 16px;
+}
+
+.print{
+    width: 32px;
+}
+
+.titulo-detalhes-pedido{
+    font-size: 22px;
+}
+
+.resumo-produto{
+    border-top: 1px solid #a3a3a3;;
+}
+.resumo-pgmt {
+    border-top: 1px solid #b6b6b6;;
+}
+
+.resumo-endereco{
+    border-top: 1px solid #b6b6b6;;
+}
+
+.data-pedido{
+    border-top: 1px solid #b6b6b6;;
+}
+
+.valor-total{
+    border-top: 1px solid #b6b6b6;;
+}
+
+h3{
+    font-size: 22px;
+}
+/* fim da finalização do pedido */
+
+
+/* reponsividade  */
+@media (max-width: 600px){
+    .resumo{
+        font-size: 20px;
+    }
+
+    .numero-pedido{
+        font-size: 20px;
+    }
+
+    .titulo-sucesso-pedido{
+        font-size: 14px;
+    }
+
+    .img-sucess{
+        display: none;
+    }
+
+    .titulo-detalhes-pedido{
+        font-size: 18px;
+    }
+
+    .subtitulo{
+        font-size: 18px;
+    }
+}
+/* fim da reponsividade  */
+
+
+/*Inicio do CSS do SideBar - MenuLateral */
+
+.titulo-pagina{
+    background-color: #000000;
+    color: #FFF;
+    font-size: 24px;;
+}
+
+.background-main {
+    background-color: #e0e0e0;
+}
+
+.sidebar-font {
+    font-family: 'Questrial', sans-serif;
+}
+
+.background-grey {
+    background-color: #E0E0E0;
+}
+
+.background-container-subject {
+    background-color: #fffefe;
+}
+
+.background-card-carrinho {
+   background-color: rgba(var(--bs-body-bg-rgb),var(--bs-bg-opacity))!important;
+}
+
+.border-button-sidebar-menu {
+    border-top: 1px solid rgb(187, 187, 187);
+    border-bottom: .5px solid rgb(187, 187, 187);
+    border-left: 1px solid rgb(187, 187, 187);
+    border-right: 1px solid rgb(187, 187, 187);
+    border-radius: 3px;
+}
+
+
+.button-menu-lateral:hover {
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+.button-continuar {
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+.button-continuar:hover {
+    background: linear-gradient(191deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+.text-shopping-cart {
+    color: black;
+    font-family: 'Questrial', sans-serif;
+    font-size: .8em;
+}
+
+
+.link-solution {
+    text-decoration: none;
+    color:black;
+}
+
+.link-solution:link {
+    color:#000;
+}
+
+.link-solution:visited {
+    color:#000;
+}
+
+.btn-continue {
+    width: 100%;
+}
+
+
+/* -- RESPONSIVE -- */
+
+@media (min-width: 766px) {
+            
+    .btn-continue {
+        width: 100%;
+    }
+    
+}
+
+
+@media (max-width: 766px) {
+            
+    .container-sidebar-menu {
+        display: none;
+    }
+    
+}

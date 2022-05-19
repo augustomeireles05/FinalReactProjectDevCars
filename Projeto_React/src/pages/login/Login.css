@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+.background-section {
+    background-color: #f0f0f0;
+    margin:0;
+}
+
+.imagem-login {
+    background-image: url('../../assets/images/Login/login.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.font-login-title{
+    background-color: #f0f0f0;
+    color: #2c2c2c;
+    box-shadow: none !important;
+}
+
+
+.font-login {
+    font-family: 'Questrial', sans-serif;
+    font-size: 13px;
+}
+
+.link-color {
+    color: #7d7000;
+    cursor: pointer;
+}
+
+.link-color:hover {
+    color: #5b5201;
+    font-weight: bold;
+}
+
+
+.signin-form input{
+    box-shadow: none;
+    padding: 18px;
+    background-color: #FFF;
+}
+
+.font-login-title {
+    font-family: 'Questrial', sans-serif; 
+    font-weight: 800;
+}
+
+.input-layout a {
+    text-decoration: none;
+}
+
+.button-entrar-login button {
+    background: linear-gradient(8deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+.button-entrar-login button:hover {
+    background: linear-gradient(191deg, rgb(179, 152, 4) 30%, rgb(223, 208, 126) 70%);
+}
+
+input {
+    width: 15px;
+}
+
+/* -- BEGIN RESPONSIVE -- */
+    /* -- BEGIN RESPONSIVE IPHONE -- */
+
+    /* -- Begin to iphone 12 -- */
+
+    @media (max-width: 390px) {
+        .imagem-login {
+            display: none;
+        }
+    } 
+
+    /* -- End to iphone 12 --
+
+
+
+
+    /* -- BEGIN RESPONSIVE IPHONE -- */

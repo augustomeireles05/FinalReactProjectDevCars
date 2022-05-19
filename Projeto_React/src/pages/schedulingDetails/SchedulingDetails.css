@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@100;300&display=swap');
+
+
+body{
+    background-color: #E0E0E0;
+    font-family: 'Questrial', sans-serif;
+}
+
+/* estilização do menu lateral */
+.list-group-item:hover{
+    background-color: #E0E0E0;
+}
+
+.border-bottom-menu{
+    border-bottom: #9B9B9B 1px solid;
+}
+/* fim da estilização do menu lateral */
+
+
+
+/* inicio da finalização do pedido */
+.resumo{
+    background-color: #000;
+    color: #fff;
+    font-size: 24px;
+}
+
+.titulo-pricipal, .titulo-menu{
+    border-bottom: 1px solid #b6b6b6;
+}
+
+.titulo-sucesso-agendamento{
+    font-size: 18px;
+}
+
+.numero-pedido{
+    font-size: 25px;
+}
+
+.img-certificado{
+    width: 150px;
+    margin: 0 auto;
+}
+
+.img-sucess{
+    height: 16px;
+}
+
+.print{
+    width: 32px;
+}
+
+.titulo-detalhes-agendamento{
+    font-size: 22px;
+}
+
+.resumo-produto{
+    border-top: 1px solid #a3a3a3;;
+}
+.resumo-pgmt {
+    border-top: 1px solid #b6b6b6;;
+}
+
+.resumo-endereco{
+    border-top: 1px solid #b6b6b6;;
+}
+
+.data-agendamento{
+    border-top: 1px solid #b6b6b6;;
+}
+
+.valor-total{
+    border-top: 1px solid #b6b6b6;;
+}
+
+h3{
+    font-size: 22px;
+}
+/* fim da finalização do pedido */
+
+
+/* reponsividade  */
+@media (max-width: 600px){
+    .resumo{
+        font-size: 20px;
+    }
+
+    .numero-pedido{
+        font-size: 20px;
+    }
+
+    .titulo-sucesso-agendamento{
+        font-size: 14px;
+    }
+
+    .img-sucess{
+        display: none;
+    }
+
+    .titulo-detalhes-agendamento{
+        font-size: 18px;
+    }
+
+    .subtitulo{
+        font-size: 18px;
+    }
+}
+/* fim da reponsividade  */
