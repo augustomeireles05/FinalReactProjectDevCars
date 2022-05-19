@@ -20,7 +20,7 @@ function Inventory() {
 
 
     const getProducts = () => {
-        axios.get('http://localhost:3001/cardData')
+        axios.get('http://localhost:8080/veiculos')
         .then((response) => {
             console.log(response.data);
             setProducts(response.data)
