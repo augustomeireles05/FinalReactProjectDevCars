@@ -28,7 +28,7 @@ function WishList() {
 
                     <div className="row gx-5 gy-3 px-3">
                         {/* inicio do menu lateral */}
-                        <div className="col-md-4 flex-row justify-content-center text-center">
+                        <div className="col-md-4  my-5 flex-row justify-content-center text-center">
                             <Subtittle menu="MENU" />
 
                             <Sidebar />
@@ -36,10 +36,11 @@ function WishList() {
                         {/* fim do menu lateral */}
 
                         {/* inicio da confirmação do pedido */}
-                        <div className="col-md-8 mb-5">
-
-                            <Subtittle subtitulo="LISTA DE DESEJOS" />
-                            <div className="listadedesejos">
+                        <div className="col-md-8  mt-5 flex-row justify-content-center text-center">
+                            <div className="col-md-12  ">
+                                <Subtittle subtitulo="LISTA DE DESEJOS" />
+                            </div>
+                            <div className="listadedesejos mt-2">
 
                                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 responsive-ipadPro">
                                     {/* card 1 */}
