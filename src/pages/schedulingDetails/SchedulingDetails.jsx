@@ -1,5 +1,4 @@
 import './SchedulingDetails.css'
-import { Link } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
@@ -9,7 +8,6 @@ import MainTittle from '../../components/Tittle/MainTittle'
 
 import Awardicon from '../../assets/images/OrderDetails/certificado-de-garantia.png'
 import Checkedicon from '../../assets/images/OrderDetails/checked.png'
-import PrintNfe from '../../assets/images/OrderDetails/printer.png'
 
 function schedulingDetails() {
     return (
@@ -50,17 +48,13 @@ function schedulingDetails() {
                             <div className="detalhes-pedido">
                                 <div className="detalhes-pedido d-flex justify-content-center align-items-center mb-3">
                                     <h2 className="titulo-detalhes-agendamento me-2 mb-0">DETALHES DO AGENDAMENTO</h2>
-                                    <Link to={"/"}>
-                                        <img src={PrintNfe} alt="imprimir resumo do pedido"
-                                            className="print" />
-                                    </Link>
                                 </div>
 
                                 <div className="row resumo-produto mb-3">
                                     <h3 className="col-12 mb-2 pt-2 subtitulo">PRODUTO</h3>
                                     <div className="produtos d-flex justify-content-around">
                                         <div className="produto col-7">
-                                            <p className="nome-produto1">BUGATTI CHIRON</p>
+                                            <p className="nome-produto1">AUDI RS Q8 2021 AZUL</p>
                                         </div>
 
                                         <div className="qtd col-5">
@@ -76,17 +70,17 @@ function schedulingDetails() {
 
                                 <div className="row valor-total mb-5">
                                     <h3 className="subtitulo col-6 pt-2">VALOR DO BEM</h3>
-                                    <p className="col-6 text-end pt-2">R$ 22.000.000,00</p>
+                                    <p className="col-6 text-end pt-2">R$400.150,00</p>
                                 </div>
 
                                 <div className="row valor-total mb-5">
                                     <h3 className="subtitulo col-6 pt-2">TAXA DE AGENDAMENTO</h3>
-                                    <p className="col-6 text-end pt-2">0,1 %</p>
+                                    <p className="col-6 text-end pt-2">R$8.150,00</p>
                                 </div>
 
                                 <div className="row valor-total mb-5">
                                     <h3 className="subtitulo col-6 pt-2">VALOR TOTAL</h3>
-                                    <p className="col-6 text-end pt-2">R$ 22.000,00</p>
+                                    <p className="col-6 text-end pt-2">R$408.300,00</p>
                                 </div>
 
                             </div>

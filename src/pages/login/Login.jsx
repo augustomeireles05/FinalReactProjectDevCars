@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Login.css'
-import Bugatti from '../../assets/images/Login/login.jpg';
-
+import Bugatti from '../../assets/images/Login/login.jpg'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
@@ -17,7 +16,7 @@ function Login() {
             <section className="ftco-section background-section pt-4 pb-4">
                 <div className="col-10 col-md-8 col-lg-6 container shadow shadow-container px-0">
                     <div className="row justify-content-center">
-                        <div className="col-md-6 text-center mb-5 d-flex justify-content-center ">
+                        <div className="col-md-6 text-center mb-3 d-flex justify-content-center ">
                             <h2 className="heading-section font-login-title pt-4">LOGIN</h2>
                         </div>
                     </div>
@@ -26,7 +25,7 @@ function Login() {
                             <div className="container-md wrap d-md-flex d-flex justify-content-between">
 
                                 <div className="img col-md-6 imagem-login">
-                                    {/* <img src={Bugatti} alt="Login" className="w-100"/> */}
+                                    <img src={Bugatti} alt="Login" className="w-100" />
                                 </div>
 
                                 <div className="login-wrap p-md-2 col-12 col-md-6 ">
@@ -59,12 +58,7 @@ function Login() {
                                             <Button link="/ShedulingDetails" name="Entrar" className="form-group button-entrar-login"/>
                                         </div>
                                         <div className="col-12 row form-group d-md-flex pt-3 mx-0 text-center">
-                                            <div className="col-6 d-flex justify-content-center align-items-center">
-                                                <label className="checkbox-wrap checkbox-secondary mb-0 me-2 font-login">Lembrar-me</label>
-                                                <input type="checkbox" defaultChecked className="check"></input>
-
-                                            </div>
-                                            <div className="col-6 flex-center input-layout">
+                                            <div className="col-12 flex-center input-layout">
                                                 <Link to="/recoveryPassword" className="font-login link-color">Esqueci minha senha</Link>
                                             </div>
                                         </div>
