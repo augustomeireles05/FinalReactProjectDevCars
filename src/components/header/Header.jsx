@@ -145,14 +145,16 @@ function Header() {
 
                     {/*INÍCIO DO ÍCONE DE PESQUISA*/}
                     <div className="icons-position-header search-icon">
-                        <img src={Searchicon} className="icons-header" data-bs-toggle="modal" width="30" data-bs-target="#modalPesquisa" role="button" alt="Search"/>
+
+                        <img src={Searchicon} className="icons-header" data-bs-toggle="modal" width="30" data-bs-target="#modalPesquisa" role="button" title="Buscar"/>
+
                     </div>
                     {/*FIM DO ÍCONE DE PESQUISA*/}
 
                     {/*INÍCIO DO ÍCONE DE FAVORITOS*/}
                     <div className="icons-position-header favorite-icon">
                         <Link to="/wishList">
-                            <img src={Favoriteicon} width="30" alt="Favorite"/>
+                            <img src={Favoriteicon} width="30" title="Favotitos" />
                         </Link>
                     </div>
                     {/*FIM DO ÍCONE DE FAVORITOS*/}
@@ -160,7 +162,7 @@ function Header() {
                     {/*INÍCIO DO ÍCONE DE LOGIN*/}
                     <div className="icons-position-header user-icon">
                         <Link to="/Login">
-                            <img src={Loginnicon} width="30" alt="Login"/>
+                            <img src={Loginnicon} width="30" title="Login"/>
                         </Link>
                     </div>
                     {/*FIM DO ÍCONE DE LOGIN*/}
@@ -168,7 +170,7 @@ function Header() {
                     {/*INÍCIO DO ÍCONE DE CARRINHO*/}
                     <div className="icons-position-header garage-icon">
                         <Link to="/cart">
-                            <img src={Garageicon} width="30" alt="Cart"/>
+                            <img src={Garageicon} width="30" title="Carrinho"/>
                         </Link>
                     </div>
                     {/*FIM DO ÍCONE DE CARRINHO*/}
