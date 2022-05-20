@@ -53,7 +53,7 @@ export default function ProductCardModal(props) {
                         <div className="d-flex justify-content-center">
                             <div className="row modal-body row-cols-12 col-sm-12 col-md-12 col-lg-12">
                                 <div className="col-12 col-sm-12 col-md-12 col-lg-6 mb-2 mb-md-0 mb-lg-0">
-                                    <img src={props.image} className="img-fluid" />
+                                    <img src={props.image} className="img-fluid" alt="..."/>
                                 </div>
 
                                 <div className="col-12 col-sm-12 col-md-12 col-lg-6">

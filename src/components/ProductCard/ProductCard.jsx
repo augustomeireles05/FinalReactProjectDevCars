@@ -34,32 +34,32 @@ const ProductCard = (props) => {
         return setModel(true);
     }
 
-    
+
     return (
         <>
             {
                 products.length === 0
-                ?
-                <h2>Carrinho vazio</h2>
+                    ?
+                    <h2>Carrinho vazio</h2>
 
-                :
+                    :
 
-                <section className="py-4 py-lg-5 col-12 col-sm-12 col-md-11 col-lg-11 justify-content-center m-auto">
-                    <div className="row justify-content-around align-item-center">
+                    <section className="py-4 py-lg-5 col-12 col-sm-12 col-md-11 col-lg-11 justify-content-center m-auto">
+                        <div className="row justify-content-around align-item-center">
 
 
-                        {products.map((item, index) => {
-                            console.log(item)
-                            return (
+                            {products.map((item, index) => {
+                                console.log(item)
+                                return (
 
-                                <div className="row justify-content-around col-12 col-md-10 col-lg-3 mx-0 mb-4" key={index} style={{ width: 19 + 'em' }}>
-                                    <div className="card product-card p-0 overflow-hidden h-100 shadow" >
-                                        <img src={item.imagem} className="card-img-top" alt="..."/>
-                                        <div className="text-center mb-3">
-                                            <h5 className="card-title mb-4 css-font-family" >{item.marcaVeiculo} {item.modeloVeiculo}</h5>
+                                    <div className="row justify-content-around col-12 col-md-10 col-lg-3 mx-0 mb-4" key={index} style={{ width: 19 + 'em' }}>
+                                        <div className="card product-card p-0 overflow-hidden h-100 shadow" >
+                                            <img src={item.imagem} className="card-img-top" alt="..." />
+                                            <div className="text-center mb-3">
+                                                <h5 className="card-title mb-4 css-font-family">{item.nomeMarca} {item.modeloVeiculo}</h5>
 
-                                            {/* INÍCIO: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
-                                            {/* <CurrencyFormat
+                                                {/* INÍCIO: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
+                                                {/* <CurrencyFormat
                                             value={item.price.toFixed(2)}
                                             displayType={'text'}
                                             thousandSeparator={true}
@@ -69,40 +69,40 @@ const ProductCard = (props) => {
                                                     {value}
                                                 </p>}
                                         /> */}
-                                            {/* FIM: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
+                                                {/* FIM: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
 
-                                            {/* TRAZENDO O PREÇO FORMATADO */}
-                                            {showPrice(item.precoVeiculo)}
+                                                {/* TRAZENDO O PREÇO FORMATADO */}
+                                                {showPrice(item.precoVeiculo)}
 
-                                            <button className="btn mt-3 color-button"
-                                                onClick={() => getData(item.marcaVeiculo, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
-                                                Ver detalhes
-                                            </button>
+                                                <button className="btn mt-3 color-button"
+                                                    onClick={() => getData(item.nomeMarca, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
+                                                    Ver detalhes
+                                                </button>
+                                            </div>
+
                                         </div>
-
                                     </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </section>
+                                )
+                            })}
+                        </div>
+                    </section>
             }
             {
                 model === true ?
                     <ProductCardModal
-                        brand={tempdata[1]}
-                        model={tempdata[2]}
-                        color={tempdata[5]}
-                        year={tempdata[3]}
-                        engine={tempdata[5]}
-                        potency={tempdata[7]}
-                        price={tempdata[4]}
-                        gearshift={tempdata[8]}
-                        fuel={tempdata[9]}
-                        image={tempdata[10]}
-                        description={tempdata[11]}
+                        brand={tempdata[1]} 
+                        model={tempdata[2]} 
+                        color={tempdata[3]} 
+                        year={tempdata[4]} 
+                        engine={tempdata[5]} 
+                        potency={tempdata[6]} 
+                        price={tempdata[7]} 
+                        gearshift={tempdata[8]} 
+                        fuel={tempdata[9]} 
+                        image={tempdata[10]} 
+                        description={tempdata[11]} 
 
-                        produto={tempdata}
+                        produto={tempdata} 
                         hide={() => setModel(false)}
                     /> : ''
             }
