@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 
 import './Register.css'
 import Header from '../../components/header/Header'
@@ -17,27 +17,33 @@ import { baseUrl } from '../../environments'
 import { PFClient } from '../../models'
 
 function Register() {
+    const history = useHistory()
     const URLPF = `${baseUrl}/cliente/f`
     const [registerPF, setRegisterPF] = useState(PFClient)
 
     const [confirmPassword, setConfirmPassword] = useState('')
+    
 
-    const registerPFCliente = () => {
+
+    const registerPFClient = () => {
         axios.post(`${URLPF}`, registerPF)
             .then((response) => {
-                comparePasswords()
-                return <Redirect to="/home" />
+                
             })
+            
+        history.push("/login")
+        console.log("registrado")
+    
+        
     }
 
-    const comparePasswords = () => {
-        if (registerPF.senhaCliente != confirmPassword) {
-            <div className="invalid-feedback">
-                Senhas divergentes
-            </div>
-            console.log("senhas divergentes")
-        }
-    }
+    // const comparePasswords = () => {
+    //     if (registerPF.senhaCliente !== confirmPassword) {
+    //         <div className="invalid-feedback">
+    //             Senhas divergentes
+    //         </div>
+    //     }
+    // }
 
 
     return (
@@ -63,7 +69,7 @@ function Register() {
                 {/* colapse pessoa fisica */}
                 <div id="collapseOne" className="collapse show" data-bs-parent="#accordion">
 
-                    <form className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100">
+                    <form className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100" >
                         <Subtitle menu="Dados Pessoais" />
 
                         <div className="col-md-12 mb-3">
@@ -117,6 +123,14 @@ function Register() {
                             <Input type="password" aria-label="password-register-confirmPF" id="password-register-confirmPF"
                                 value={confirmPassword}
                                 onChange={event => setConfirmPassword(event.target.value)} />
+                            {/* {
+                                confirmPassword != registerPF.senhaCliente ?
+                                    <div className="invalid-feedback">
+                                        Senhas divergentes
+                                    </div> :
+                                    ''
+
+                            } */}
                         </div>
 
                         <div className="col-12 mt-4">
@@ -130,7 +144,9 @@ function Register() {
 
                         <div className="row justify-content-center justify-content-lg-start">
                             <div className="col-12 col-md-6 col-lg-3 text-center mt-4 mb-3 ">
-                                <Button link="" name="CADASTRE-SE" onClick={registerPFCliente}/>
+                                <Button link="" name="CADASTRE-SE" onClick={registerPFClient}/>
+
+                                {/* <Button link="" name="CADASTRE-SE" type="submit" /> */}
                             </div>
 
                         </div>
