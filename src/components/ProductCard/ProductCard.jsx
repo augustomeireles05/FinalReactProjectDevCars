@@ -38,7 +38,7 @@ const ProductCard = (props) => {
     return (
         <>
             {
-                products.length == 0
+                products.length === 0
                 ?
                 <h2>Carrinho vazio</h2>
 
@@ -48,15 +48,16 @@ const ProductCard = (props) => {
                     <div className="row justify-content-around align-item-center">
 
 
-                        {List.cardData.map((item, index) => {
-
+                        {/* {List.cardData.map((item, index) => { */}
+                        {products.map((item, index) => {
+                            console.log(item)
                             return (
 
                                 <div className="row justify-content-around col-12 col-md-10 col-lg-3 mx-0 mb-4" key={index} style={{ width: 19 + 'em' }}>
                                     <div className="card product-card p-0 overflow-hidden h-100 shadow" >
-                                        <img src={item.image} className="card-img-top" />
+                                        <img src={item.imagem} className="card-img-top" alt="..."/>
                                         <div className="text-center mb-3">
-                                            <h5 className="card-title mb-4 css-font-family" >{item.brand} {item.model}</h5>
+                                            <h5 className="card-title mb-4 css-font-family" >{item.marcaVeiculo} {item.modeloVeiculo}</h5>
 
                                             {/* INÍCIO: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
                                             {/* <CurrencyFormat
@@ -72,10 +73,10 @@ const ProductCard = (props) => {
                                             {/* FIM: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
 
                                             {/* TRAZENDO O PREÇO FORMATADO */}
-                                            {showPrice(item.price)}
+                                            {showPrice(item.precoVeiculo)}
 
                                             <button className="btn mt-3 color-button"
-                                                onClick={() => getData(item.brand, item.model, item.color, item.year, item.engine, item.potency, item.price, item.gearshift, item.fuel, item.image, item.description)}>
+                                                onClick={() => getData(item.marcaVeiculo, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
                                                 Ver detalhes
                                             </button>
                                         </div>
@@ -92,11 +93,11 @@ const ProductCard = (props) => {
                     <ProductCardModal
                         brand={tempdata[1]}
                         model={tempdata[2]}
-                        color={tempdata[3]}
-                        year={tempdata[4]}
+                        color={tempdata[5]}
+                        year={tempdata[3]}
                         engine={tempdata[5]}
-                        potency={tempdata[6]}
-                        price={tempdata[7]}
+                        potency={tempdata[7]}
+                        price={tempdata[4]}
                         gearshift={tempdata[8]}
                         fuel={tempdata[9]}
                         image={tempdata[10]}
@@ -106,8 +107,6 @@ const ProductCard = (props) => {
                         hide={() => setModel(false)}
                     /> : ''
             }
-
-
         </>
 
 

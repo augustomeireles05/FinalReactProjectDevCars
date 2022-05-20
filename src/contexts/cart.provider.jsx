@@ -4,7 +4,7 @@ const CartContext = createContext({})
 
 function CartProvider(props) {
 
-    const [cartQty, setCartQty] = useState(5)
+    const [cartQty, setCartQty] = useState()
 
     const [cart, setCart] = useState([])
 

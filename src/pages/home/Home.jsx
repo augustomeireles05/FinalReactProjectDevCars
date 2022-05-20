@@ -2,14 +2,13 @@ import './Home.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import SearchFilter from '../../components/SearchFilter/SearchFilter'
+import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 
-import LogoDevCars from '../../assets/images/Inventory/logo-rev01.jpeg'
-
+import { useState, useEffect } from 'react'
 
 import Capa1 from '../../assets/images/Home/Koenigsegg_Gemera.jpg'
-import Capa2 from '../../assets/images/Home/ferarri-monza.jpg'
 
 import BugattichironBanner from '../../assets/images/Home/bugatti-chiron-banner.png'
 import LamborghiniAventadorBanner from '../../assets/images/Home/Lamborghini-aventador-banner.png'
@@ -40,15 +39,29 @@ import LamborghiniHuracan from '../../assets/images/Inventory/LamborghiniHuracan
 import ModalMercedesBenzAMGF12016 from '../../assets/images/Inventory/Mercedes-BenzAMG-F1-2016.jpg'
 
 
-import VideoF1 from '../../assets/videos/F1.mp4'
-
 import SSCTuatara from '../../assets/images/Home/SSC Tuatara.jpg'
 import Button from '../../components/Button/Button.jsx'
 import SupportButton from '../../components/Button/SupportButton';
+import ProductCard from '../../components/ProductCard/ProductCard'
 
 
+export default function Home() {
 
-function Home() {
+    const [card, setCard] = useState([]);
+
+    useEffect(() => {
+        getCard()
+    }, [])
+
+    const getCard = () => {
+        axios.get('http://localhost:8080/')
+            .then((response) => {
+                console.log(response.data);
+                setCard(response.data)
+            })
+    }
+
+
     return (
         <>
             <Header />
@@ -105,54 +118,54 @@ function Home() {
                             <div id="carousel-marcas" className="carousel slide logo_marcas" data-bs-ride="carousel-marcas">
                                 <div className="carousel-inner">
                                     <div className="carousel-item active logo-centralizado" data-bs-interval="3000">
-                                        <Link to="inventory"className="" > 
-                                            <img className="icons-marcas ms-2 me-4" src={LogomarcaAstonMartin} height="50px" alt="Carrossel"/>
+                                        <Link to="inventory" className="" >
+                                            <img className="icons-marcas ms-2 me-4" src={LogomarcaAstonMartin} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className=""> 
+                                        <Link to="inventory" className="">
                                             <img className="icons-marcas  me-4" src={LogomarcaAudi} height="50px" alt="Carrossel" />
-                                        </Link>    
-                                        <Link href="BMW" to="inventory"className=""> 
+                                        </Link>
+                                        <Link href="BMW" to="inventory" className="">
                                             <img className="icons-marcas  me-4" src={LogomarcaBMW} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className=""> 
+                                        <Link to="inventory" className="">
                                             <img className="icons-marcas  me-4" src={LogomarcaBugatti} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" > 
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas  me-4" src={LogomarcaCrysler} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" > 
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas  me-4" src={LogomarcaFerrari} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" > 
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas  me-4" src={LogomarcaFord} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" > 
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas  me-4" src={LogomarcaJaguar} height="50px" alt="Carrossel" />
                                         </Link>
                                     </div>
                                     <div className="carousel-item fundo-marcas logo-centralizado2  logo-centralizado" data-bs-interval="3000">
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-3 me-4" src={LogomarcaLamborghini} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaMclaren} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaMercedes} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaOpel} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaPagani} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaRollsRoyce} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaSubaru} height="50px" alt="Carrossel" />
                                         </Link>
-                                        <Link to="inventory"className="" >
+                                        <Link to="inventory" className="" >
                                             <img className="icons-marcas ms-5 me-4" src={LogomarcaVolvo} height="50px" alt="Carrossel" />
                                         </Link>
 
@@ -177,15 +190,12 @@ function Home() {
                 <SearchFilter />
             </section>
 
-
-
-
-
-
             <div className="row ">
                 <div className="row linhaDestaque">
-                    <p> DESTAQUES</p>
+                    <p>DESTAQUES</p>
                 </div>
+
+                <ProductCard products={card} />
 
                 <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false"
                     data-bs-interval="false">
@@ -203,18 +213,11 @@ function Home() {
                                             <div className="card-body">
                                                 <h5 className="card-title card-title-height">Mercedes AMG F1</h5>
                                                 <p className="card-text text-center"><strong>R$19.000.000,00</strong></p>
-                                                {/* <button className="btn mt-3 ms-0 btn_buscar" role="button">DETALHES</button> */}
                                                 <Button link="#modal-produto-1" name="DETALHES" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
 
                                 {/* Modal */}
                                 <div className="modal fade " id="modal-produto-1" tabIndex="-1" aria-labelledby="exampleModalLabel"
@@ -224,36 +227,27 @@ function Home() {
                                         <div className="modal-content cores-modal">
 
                                             <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1 ml-auto">
-                                               
+
                                                 <div className="col-2">
-                                                
+
                                                 </div> <h5 className="">Mercedes AMG F1 </h5>
                                                 <button type="button"
                                                     className="btn-close btn-modal-close fecharmodal  "
                                                     data-bs-dismiss="modal" aria-label="Close">
                                                 </button>
-                                                <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1">                                                
-                                                
+                                                <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1">
+
                                                 </div>
                                             </div>
 
-                                            
-                                            
+
+
                                             <div className="modal-body">
                                                 <div className="container">
                                                     <div className="row">
                                                         <div className="col-5 modal-mobily">
-                                                            <p> Vídeo 360° meramente ilustrativo</p>
-                                                             {/*<video> className="img-modal" controns autoplay playbackRate=0.1;
-                                                                style="max-width: 102%; padding-top: 5px;">
-                                                                <source src="./videos/F1.mp4" type="video/mp4">
-                                                                Your browser does not support the video tag.
-                                                            </video> 
-                                                            */}
                                                             <img src={ModalMercedesBenzAMGF12016}
-                                                                className="card-img img-modal" alt="...">
-
-                                                            </img>
+                                                                className="card-img img-modal" alt="..." />
                                                         </div>
 
                                                         <div className="col-12 col-lg-7 modal-mobily2">
@@ -352,21 +346,6 @@ function Home() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* <div className="modal-footer modalfooter">
-                                                <div className="row">
-                                                    <div className="col-10 modal-mobily3 text-center mb-3">
-                                                        <img className="logo-modal" src={LogoDevCars} alt=""></img>
-                                                    </div>
-                                                    <div className="col-1 modal-mobily3">
-
-                                                        {/* <button type="button"
-                                                            className="btn btn-secondary btn-modal-footer"><Link to="/checkoutScheduling" className="nav-link text-black">Agendar
-                                                                visita </Link></button> */}
-                                                        {/* <SupportButton link="/checkoutScheduling" name="AGENDAR VISITA" />
-
-                                                    </div> */}
-                                                {/* </div>
-                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -384,7 +363,6 @@ function Home() {
                                             <div className="card-body">
                                                 <h5 className="card-title card-title-height">Bugatti Chiron</h5>
                                                 <p className="card-text text-center"><strong> R$ 21.000.000,00 </strong></p>
-                                                {/* <button className="btn mt-3 btn_buscar ms-0" role="button">DETALHES</button> */}
                                                 <Button link="#modal-produto-2" name="DETALHES" />
                                             </div>
                                         </div>
@@ -398,8 +376,8 @@ function Home() {
                                     <div className="modal-dialog modal-xl">
                                         <div className="modal-content cores-modal">
                                             <div className="modal-header cores-modal">
-                                            <div className="col-2">
-                                                
+                                                <div className="col-2">
+
                                                 </div>
                                                 <h5 className="modal-title" id="exampleModalLabel">BUGATTI CHIRON
                                                 </h5>
@@ -407,21 +385,14 @@ function Home() {
                                                     aria-label="Close">
 
                                                 </button>
-                                                <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1">                                                
-                                                
+                                                <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1">
+
                                                 </div>
                                             </div>
                                             <div className="modal-body">
                                                 <div className="container">
                                                     <div className="row">
                                                         <div className="col-5 modal-mobily">
-                                                            <p> Vídeo 360° meramente ilustrativo</p>
-                                                            {/* <video className="img-modal" controns autoplay playbackRate=0.1;
-                                                        style="max-width: 102%; padding-top: 5px;">
-                                                        <source src="./videos/Bugatti Chiron.mp4" type="video/mp4">
-                                                        Your browser does not support the video tag.
-                                                    </video> */}
-
                                                             <img src={BugattiChiron}
                                                                 className="card-img img-modal" alt="..."></img>
                                                         </div>
@@ -515,8 +486,8 @@ function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="align-self-center mt-4 col-12 ">
-                                                        <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
-                                                    </div>
+                                                    <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -527,14 +498,13 @@ function Home() {
                                 <div className="col text-center btn" type="button" data-bs-toggle="modal"
                                     data-bs-target="#modal-produto-3">
                                     {/* link entre Modal e Card */}
-                                    
+
                                     <div href="#" className="text-decoration-none">
                                         <div className="card h-100 mb-5">
                                             <img src={LamborghiniHuracan} className="card-img" alt="..."></img>
                                             <div className="card-body">
                                                 <h5 className="card-title card-title-height">Lamborghini Huracan </h5>
                                                 <p className="card-text text-center"><strong>R$4.300.000,00</strong></p>
-                                                {/* <button className="btn mt-3 btn_buscar ms-0" role="button">DETALHES</button> */}
                                                 <Button link="#modal-produto-3" name="DETALHES" />
                                             </div>
                                         </div>
@@ -547,31 +517,24 @@ function Home() {
                                     {/* link entre Modal e Card */}
                                     <div className="modal-dialog modal-xl">
                                         <div className="modal-content cores-modal">
-                                            
-                                            <div className="modal-header cores-modal">
-                                            <div className="col-2">
 
-                                            </div>
+                                            <div className="modal-header cores-modal">
+                                                <div className="col-2">
+
+                                                </div>
                                                 <h5 className="modal-title" id="exampleModalLabel">LAMBORGHINI HURACAN </h5>
                                                 <button type="button" className="btn-close btn-modal-close" data-bs-dismiss="modal"
                                                     aria-label="Close">
 
                                                 </button>
-                                                <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1">                                                
-                                                
+                                                <div className="modal-header cores-modal modal-mobily5 justify-content-center mt-1">
+
                                                 </div>
                                             </div>
                                             <div className="modal-body">
                                                 <div className="container">
                                                     <div className="row">
                                                         <div className="col-5 modal-mobily">
-                                                            <p> Vídeo 360° meramente ilustrativo</p>
-                                                            {/* <video className="img-modal" controns autoplay playbackRate="0.1" ;
-                                                        style="max-width: 102%; padding-top: 5px;">
-                                                        <source src="./videos/URACAN.mp4" type="video/mp4">
-                                                        Your browser does not support the video tag.
-                                                    </video> */}
-
                                                             <img src={LamborghiniHuracan}
                                                                 className="card-img img-modal" alt="..."></img>
                                                         </div>
@@ -666,8 +629,8 @@ function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="align-self-center mt-4 col-12 ">
-                                                        <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
-                                                    </div>
+                                                    <SupportButton link="/checkoutScheduling" name="Agendar Visita" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -682,19 +645,6 @@ function Home() {
                                 <img src="..." className="d-block w-100" alt="..."></img>
                             </div>
                         </div>
-                        {/* * Retirar o elemento de carrossel dos cards "Destaques".
-                        
-                            <button className="carousel-control-prev carousel-button-hover" type="button" data-bs-target="#carouselExampleControlsNoTouching"
-                                data-bs-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                            </button>
-                            <button className="carousel-control-next carousel-button-hover" type="button" data-bs-target="#carouselExampleControlsNoTouching "
-                                data-bs-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
-                        */}
                     </div>
 
                 </div>
@@ -711,7 +661,7 @@ function Home() {
 
                                 O SSC Tuatara alcançou a velocidade máxima de 532,8 km/h em um trecho da State Route 160 no sul do estado de Nevada, nos Estados Unidos. Contudo, o recorde é estabelecido pela média das máximas nos dois sentidos da via mitigar os efeitos dos ventos laterais e traseiros, o que resultou em 508,7 km/h. Ao volante estava o piloto britânico Oliver Webb.
                                 Foi neste mesmo local que o Koenigsegg Agera RS alcançou os  447,237 km/h, que já havia sido desbancado há um ano pelo Bugatti Chiron quando alcançou os 490,48 km/h em Ehra-Lessien, na Alemanha.
-                                E é um recorde controverso: foi estabelecido com apenas uma passagem na pista.  
+                                E é um recorde controverso: foi estabelecido com apenas uma passagem na pista.
                             </p>
                         </div>
                         <div className="col-4 imagens-midia">
@@ -726,5 +676,3 @@ function Home() {
         </>
     )
 }
-
-export default Home
