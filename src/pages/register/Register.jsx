@@ -30,7 +30,7 @@ function Register() {
                 </div>
 
                 {/* colapse pessoa fisica */}
-                <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+                <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
 
                     <form className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100">
                         <Subtitle menu="Dados Pessoais" />
