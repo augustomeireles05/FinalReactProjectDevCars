@@ -19,19 +19,30 @@ const ProductCard = (props) => {
 
     const products = props.products || []
 
-    const [model, setModel] = useState(false);
+    const [modal, setModal] = useState(false);
     const [tempdata, setTempData] = useState([]);
 
 
-    const getData = (brand, model, color, year, engine, potency, price, gearshift, fuel, inventory, enphasis, image, description) => {
+    // const getData = (brand, model, color, year, engine, potency, price, gearshift, fuel, inventory, enphasis, image, description) => {
+    //     let tempData = [
+    //         brand, model, color, year, engine, potency, price, gearshift, fuel, inventory, enphasis, image, description
+    //     ];
+
+    //     // console.warn(tempData)
+    //     setTempData(item => [1, ...tempData])
+
+    //     return setModel(true);
+    // }
+
+    const getData = (marcaVeiculo, modeloVeiculo, cor, anoVeiculo, motor, potencia, precoVeiculo, cambio, combustivel, estoque, imagem, descricao) => {
         let tempData = [
-            brand, model, color, year, engine, potency, price, gearshift, fuel, inventory, enphasis, image, description
+            marcaVeiculo, modeloVeiculo, cor, anoVeiculo, motor, potencia, precoVeiculo, cambio, combustivel, estoque, imagem, descricao
         ];
 
         // console.warn(tempData)
         setTempData(item => [1, ...tempData])
 
-        return setModel(true);
+        return setModal(true);
     }
 
 
@@ -56,7 +67,7 @@ const ProductCard = (props) => {
                                         <div className="card product-card p-0 overflow-hidden h-100 shadow" >
                                             <img src={item.imagem} className="card-img-top" alt="..." />
                                             <div className="text-center mb-3">
-                                                <h5 className="card-title mb-4 css-font-family">{item.nomeMarca} {item.modeloVeiculo}</h5>
+                                                <h5 className="card-title mb-4 css-font-family">{item.marcaVeiculo} {item.modeloVeiculo}</h5>
 
                                                 {/* INÍCIO: UTILIZANDO A BIBLIOTECA DO CURRENCY FORMAT */}
                                                 {/* <CurrencyFormat
@@ -75,7 +86,7 @@ const ProductCard = (props) => {
                                                 {showPrice(item.precoVeiculo)}
 
                                                 <button className="btn mt-3 color-button"
-                                                    onClick={() => getData(item.nomeMarca, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
+                                                    onClick={() => getData(item.marcaVeiculo, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
                                                     Ver detalhes
                                                 </button>
                                             </div>
@@ -88,22 +99,22 @@ const ProductCard = (props) => {
                     </section>
             }
             {
-                model === true ?
+                modal === true ?
                     <ProductCardModal
-                        brand={tempdata[1]} 
-                        model={tempdata[2]} 
-                        color={tempdata[3]} 
-                        year={tempdata[4]} 
-                        engine={tempdata[5]} 
-                        potency={tempdata[6]} 
-                        price={tempdata[7]} 
-                        gearshift={tempdata[8]} 
-                        fuel={tempdata[9]} 
-                        image={tempdata[10]} 
-                        description={tempdata[11]} 
+                        marcaVeiculo={tempdata[1]} 
+                        modeloVeiculo={tempdata[2]} 
+                        cor={tempdata[3]} 
+                        anoVeiculo={tempdata[4]} 
+                        motor={tempdata[5]} 
+                        potencia={tempdata[6]} 
+                        precoVeiculo={tempdata[7]} 
+                        cambio={tempdata[8]} 
+                        combustivel={tempdata[9]} 
+                        imagem={tempdata[10]} 
+                        descricao={tempdata[11]} 
 
                         produto={tempdata} 
-                        hide={() => setModel(false)}
+                        hide={() => setModal(false)}
                     /> : ''
             }
         </>
