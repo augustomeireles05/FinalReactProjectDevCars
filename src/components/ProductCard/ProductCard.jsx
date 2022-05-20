@@ -48,7 +48,6 @@ const ProductCard = (props) => {
                     <div className="row justify-content-around align-item-center">
 
 
-                        {/* {List.cardData.map((item, index) => { */}
                         {products.map((item, index) => {
                             console.log(item)
                             return (

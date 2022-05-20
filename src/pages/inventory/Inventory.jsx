@@ -20,12 +20,12 @@ function Inventory() {
     }, [])
 
 
-    const getProducts = () => { 
+    const getProducts = () => {
         axios.get(`${URL}`)
-        .then((response) => { 
-            console.log(response.data); 
-            setProducts(response.data) 
-        }) 
+        .then((response) => {
+            console.log(response.data);
+            setProducts(response.data)
+        })
     }
 
     return (
