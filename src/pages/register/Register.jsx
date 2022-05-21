@@ -1,3 +1,7 @@
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+
 import './Register.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -8,7 +12,44 @@ import Input from '../../components/Input/Input'
 import Label from '../../components/Input/Label'
 import Subtitle from '../../components/Subtittle/Subtittle'
 
+import { baseUrl } from '../../environments'
+
+import { PFClient } from '../../models'
+
 function Register() {
+    const history = useHistory()
+    const URLPF = `${baseUrl}/cliente/f`
+
+    const [registerPF, setRegisterPF] = useState(PFClient)
+    const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [status, setStatus] = useState({
+        type: '',
+        mensagem: ''
+    })
+
+
+    // const validate = () => {
+    //     registerPF.senhaCliente==confirmPassword ?
+    //     "j"
+    //     :
+    //     "x"
+    // }
+
+    const registerPFClient = () => {
+        axios.post(`${URLPF}`, registerPF)
+            .then((response) => {
+
+            })
+
+        history.push("/login")
+        console.log("registrado")
+
+
+    }
+
+
+
     return (
         <>
             <Header />
@@ -17,49 +58,54 @@ function Register() {
             </div>
 
 
-            <div id="accordion" class="container container-register w-75 d-flex flex-column px-md-5 mt-4">
+            <div id="accordion" className="container container-register w-75 d-flex flex-column px-md-5 mt-4">
 
 
                 <div className="" id="myGroup">
-                    <button class="btn btn-outline-secondary border-bottom-0 trigger-colapse-register" data-bs-toggle="collapse" href="#collapseOne">
+                    <button className="btn btn-outline-secondary border-bottom-0 trigger-colapse-register" data-bs-toggle="collapse" href="#collapseOne">
                         PESSOA FISICA
                     </button>
-                    <button class="collapsed btn btn-outline-secondary border-bottom-0 trigger-colapse-register" data-bs-toggle="collapse" href="#collapseTwo">
+                    <button className="collapsed btn btn-outline-secondary border-bottom-0 trigger-colapse-register" data-bs-toggle="collapse" href="#collapseTwo">
                         PESSOA JURIDICA
                     </button>
                 </div>
 
                 {/* colapse pessoa fisica */}
-                <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                <div id="collapseOne" className="collapse show" data-bs-parent="#accordion">
 
-                    <form className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100">
+                    <form className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100" >
                         <Subtitle menu="Dados Pessoais" />
 
                         <div className="col-md-12 mb-3">
-                            <Label label="Nome" for="nome" />
-                            <Input type="text" aria-label="Nome" id="Nome" />
+                            <Label label="Nome" htmlFor="nome" />
+                            <Input type="text" aria-label="Nome" id="Nome" value={registerPF.nomeCliente}
+                                onChange={(event) => { setRegisterPF({ ...registerPF, nomeCliente: event.target.value }) }} />
                         </div>
 
 
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
-                                <Label label="Email" for="emailPF" />
-                                <Input type="email" aria-label="emailPF" id="emailPF" />
+                                <Label label="Email" htmlFor="emailPF" />
+                                <Input type="email" aria-label="emailPF" id="emailPF" value={registerPF.emailCliente}
+                                    onChange={(event) => { setRegisterPF({ ...registerPF, emailCliente: event.target.value }) }} />
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
-                                <Label label="CPF" for="cpf" />
-                                <Input type="text" aria-label="cpf" id="cpf" />
+                                <Label label="CPF" htmlFor="cpf" />
+                                <Input type="text" aria-label="cpf" id="cpf" value={registerPF.numeroDocumento}
+                                    onChange={(event) => { setRegisterPF({ ...registerPF, numeroDocumento: event.target.value }) }} />
                             </div>
                         </div>
 
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
-                                <Label label="Data de Nascimento" for="dtNascimento" />
-                                <Input type="date" aria-label="dtNascimento" id="dtNascimento" />
+                                <Label label="Data de Nascimento" htmlFor="dtNascimento" />
+                                <Input type="text" aria-label="dtNascimento" id="dtNascimento" value={registerPF.dataNascimento}
+                                    onChange={(event) => { setRegisterPF({ ...registerPF, dataNascimento: event.target.value }) }} />
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
-                                <Label label="Telefone" for="telefonePF" />
-                                <Input type="text" aria-label="telefonePF" id="telefonePF" />
+                                <Label label="Telefone" htmlFor="telefonePF" />
+                                <Input type="text" aria-label="telefonePF" id="telefonePF" value={registerPF.telefoneCliente}
+                                    onChange={(event) => { setRegisterPF({ ...registerPF, telefoneCliente: event.target.value }) }} />
                             </div>
                         </div>
 
@@ -68,28 +114,74 @@ function Register() {
 
 
                         <Subtitle subtitulo="Senha" />
-                        {/* <div className="col-12 col-md-10 col-lg-6 mb-3">
-                            <Label label="Informe sua senha atual" for="current-password" />
-                            <Input type="password" aria-label="password-register" id="current-password" />
-                            {/* <span className="fs-6">Digite uma senha de 8-16 caracteres</span>
-                        </div> */}
-
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
-                            <Label label="Escolha um senha" for="password-register" />
-                            <Input type="password" aria-label="password-register" id="password-register" />
-                            {/* <span className="fs-6">Digite uma senha de 8-16 caracteres</span> */}
+                            <Label label="Escolha um senha" htmlFor="password-registerPF" />
+                            <Input type="password" aria-label="password-registerPF" id="password-registerPF"
+                                value={registerPF.senhaCliente}
+                                onChange={(event) => {
+                                    setRegisterPF({ ...registerPF, senhaCliente: event.target.value })
+
+                                    // console.log("primeira senha" +registerPF.senhaCliente)
+                                }}
+
+                            />
+
+
+
+                            {/* <div className="link-danger">
+                                Senhas divergentes
+                            </div> */}
                         </div>
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
-                            <Label label="Confirme sua nova senha" for="password-register-confirm" />
-                            <Input type="password" aria-label="password-register-confirm" id="password-register-confirm" />
+                            <Label label="Confirme sua nova senha" htmlFor="password-register-confirmPF" />
+                            <Input type="password" aria-label="password-register-confirmPF" id="password-register-confirmPF"
+                                value={confirmPassword}
+                                onChange={(event) => {
+
+                                    setConfirmPassword(event.target.value)
+
+                                    if(event.target.value == registerPF.senhaCliente ){
+                                    
+                                        setStatus({type:'sucess', mensagem:'ok'})
+                                    } else{
+                                    
+                                        setStatus({type:'error', mensagem:'senhas divergentes'})
+                                    }
+                                }} />
+
+                            {
+                                status.type == 'sucess'
+                                    ?
+                                    <span style={{ color: 'white', backgroundColor:'green', padding:'2px 15px'}}>
+                                        {status.mensagem}
+                                    </span>
+                                    :
+                                    ""
+
+                            }
+
+
+                            {
+                                status.type == 'error'
+                                    ?
+                                    <span style={{ color: 'white', backgroundColor:'red', padding:'2px 15px'}}>
+                                        {status.mensagem}
+                                    </span>
+                                    :
+                                    ""
+
+                            }
+
+
+
                         </div>
 
                         <div className="col-12 mt-4">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="gridCheck" required defaultChecked />
-                                <label className="form-check-label" for="gridCheck">
+                                <input className="form-check-input" type="checkbox" id="PF" required defaultChecked />
+                                <label className="form-check-label" htmlFor="gridCheckPF">
                                     Li e concordo com os <a href="TERMOS E CONDIÇÕES DE USO DEV CARS™.pdf" download="TERMOS E CONDIÇÕES DE USO DEV CARS™.pdf" target="_blank">Termos e Condições de Uso</a>.
                                 </label>
                             </div>
@@ -97,8 +189,11 @@ function Register() {
 
                         <div className="row justify-content-center justify-content-lg-start">
                             <div className="col-12 col-md-6 col-lg-3 text-center mt-4 mb-3 ">
-                                <Button link="" name="CADASTRE-SE" />
+                                <Button link="" name="CADASTRE-SE" onClick={registerPFClient} />
+
+                                {/* <Button link="" name="CADASTRE-SE" type="submit" /> */}
                             </div>
+
                         </div>
                     </form>
                 </div>
@@ -107,7 +202,7 @@ function Register() {
 
 
                 {/* colapse pessoa juridica */}
-                <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                <div id="collapseTwo" className="collapse" data-bs-parent="#accordion">
 
 
                     {/* <form className="row mb-2 gy-3"> */}
@@ -115,17 +210,17 @@ function Register() {
                         <Subtitle menu="Dados Pessoais" />
 
                         <div className="col-md-12 mb-3">
-                            <Label label="Razão Social" for="rzSocial" />
+                            <Label label="Razão Social" htmlFor="rzSocial" />
                             <Input type="text" aria-label="rzSocial" id="rzSocial" />
                         </div>
 
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
-                                <Label label="Email" for="email" />
+                                <Label label="Email" htmlFor="email" />
                                 <Input type="email" aria-label="email" id="email" />
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
-                                <Label label="CNPJ" for="cnpj" />
+                                <Label label="CNPJ" htmlFor="cnpj" />
                                 <Input type="text" aria-label="cnpj" id="cnpj" />
                             </div>
                         </div>
@@ -134,11 +229,11 @@ function Register() {
 
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
-                                <Label label="Inscrição Estadual" for="inscrEstadual" />
+                                <Label label="Inscrição Estadual" htmlFor="inscrEstadual" />
                                 <Input type="text" aria-label="inscrEstadual" id="inscrEstadual" />
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
-                                <Label label="Telefone" for="telefonePJ" />
+                                <Label label="Telefone" htmlFor="telefonePJ" />
                                 <Input type="text" aria-label="telefonePJ" id="telefonePJ" />
                             </div>
                         </div>
@@ -154,27 +249,27 @@ function Register() {
 
                         <Subtitle subtitulo="Senha" />
                         {/* <div className="col-12 col-md-10 col-lg-6 mb-3">
-                            <Label label="Informe sua senha atual" for="current-password" />
+                            <Label label="Informe sua senha atual" htmlFor="current-password" />
                             <Input type="password" aria-label="password-register" id="current-password" />
                             {/* <span className="fs-6">Digite uma senha de 8-16 caracteres</span>
                         </div> */}
 
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
-                            <Label label="Escolha um senha" for="password-register" />
+                            <Label label="Escolha um senha" htmlFor="password-register" />
                             <Input type="password" aria-label="password-register" id="password-register" />
                             {/* <span className="fs-6">Digite uma senha de 8-16 caracteres</span> */}
                         </div>
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
-                            <Label label="Confirme sua nova senha" for="password-register-confirm" />
+                            <Label label="Confirme sua nova senha" htmlFor="password-register-confirm" />
                             <Input type="password" aria-label="password-register-confirm" id="password-register-confirm" />
                         </div>
 
                         <div className="col-12 mt-4">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="gridCheck" required defaultChecked />
-                                <label className="form-check-label" for="gridCheck">
+                                <label className="form-check-label" htmlFor="gridCheck">
                                     Li e concordo com os <a href="TERMOS E CONDIÇÕES DE USO DEV CARS™.pdf" download="TERMOS E CONDIÇÕES DE USO DEV CARS™.pdf" target="_blank">Termos e Condições de Uso</a>.
                                 </label>
                             </div>
