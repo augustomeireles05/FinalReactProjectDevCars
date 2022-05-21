@@ -19,31 +19,35 @@ import { PFClient } from '../../models'
 function Register() {
     const history = useHistory()
     const URLPF = `${baseUrl}/cliente/f`
+
     const [registerPF, setRegisterPF] = useState(PFClient)
-
     const [confirmPassword, setConfirmPassword] = useState('')
-    
 
+    const [status, setStatus] = useState({
+        type: '',
+        mensagem: ''
+    })
+
+
+    // const validate = () => {
+    //     registerPF.senhaCliente==confirmPassword ?
+    //     "j"
+    //     :
+    //     "x"
+    // }
 
     const registerPFClient = () => {
         axios.post(`${URLPF}`, registerPF)
             .then((response) => {
-                
+
             })
-            
+
         history.push("/login")
         console.log("registrado")
-    
-        
+
+
     }
 
-    // const comparePasswords = () => {
-    //     if (registerPF.senhaCliente !== confirmPassword) {
-    //         <div className="invalid-feedback">
-    //             Senhas divergentes
-    //         </div>
-    //     }
-    // }
 
 
     return (
@@ -115,22 +119,63 @@ function Register() {
                             <Label label="Escolha um senha" htmlFor="password-registerPF" />
                             <Input type="password" aria-label="password-registerPF" id="password-registerPF"
                                 value={registerPF.senhaCliente}
-                                onChange={(event) => { setRegisterPF({ ...registerPF, senhaCliente: event.target.value }) }} />
+                                onChange={(event) => {
+                                    setRegisterPF({ ...registerPF, senhaCliente: event.target.value })
+
+                                    // console.log("primeira senha" +registerPF.senhaCliente)
+                                }}
+
+                            />
+
+
+
+                            {/* <div className="link-danger">
+                                Senhas divergentes
+                            </div> */}
                         </div>
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
                             <Label label="Confirme sua nova senha" htmlFor="password-register-confirmPF" />
                             <Input type="password" aria-label="password-register-confirmPF" id="password-register-confirmPF"
                                 value={confirmPassword}
-                                onChange={event => setConfirmPassword(event.target.value)} />
-                            {/* {
-                                confirmPassword != registerPF.senhaCliente ?
-                                    <div className="invalid-feedback">
-                                        Senhas divergentes
-                                    </div> :
-                                    ''
+                                onChange={(event) => {
 
-                            } */}
+                                    setConfirmPassword(event.target.value)
+
+                                    if(event.target.value == registerPF.senhaCliente ){
+                                    
+                                        setStatus({type:'sucess', mensagem:'ok'})
+                                    } else{
+                                    
+                                        setStatus({type:'error', mensagem:'senhas divergentes'})
+                                    }
+                                }} />
+
+                            {
+                                status.type == 'sucess'
+                                    ?
+                                    <span style={{ color: 'white', backgroundColor:'green', padding:'2px 15px'}}>
+                                        {status.mensagem}
+                                    </span>
+                                    :
+                                    ""
+
+                            }
+
+
+                            {
+                                status.type == 'error'
+                                    ?
+                                    <span style={{ color: 'white', backgroundColor:'red', padding:'2px 15px'}}>
+                                        {status.mensagem}
+                                    </span>
+                                    :
+                                    ""
+
+                            }
+
+
+
                         </div>
 
                         <div className="col-12 mt-4">
@@ -144,7 +189,7 @@ function Register() {
 
                         <div className="row justify-content-center justify-content-lg-start">
                             <div className="col-12 col-md-6 col-lg-3 text-center mt-4 mb-3 ">
-                                <Button link="" name="CADASTRE-SE" onClick={registerPFClient}/>
+                                <Button link="" name="CADASTRE-SE" onClick={registerPFClient} />
 
                                 {/* <Button link="" name="CADASTRE-SE" type="submit" /> */}
                             </div>
