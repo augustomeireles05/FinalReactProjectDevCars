@@ -29,12 +29,10 @@ function Register() {
     })
 
 
-    // const validate = () => {
-    //     registerPF.senhaCliente==confirmPassword ?
-    //     "j"
-    //     :
-    //     "x"
-    // }
+    const changeColor = () => {
+        
+    }
+
 
     const registerPFClient = () => {
         axios.post(`${URLPF}`, registerPF)
@@ -61,11 +59,11 @@ function Register() {
             <div id="accordion" className="container container-register w-75 d-flex flex-column px-md-5 mt-4">
 
 
-                <div className="" id="myGroup">
-                    <button className="btn btn-outline-secondary border-bottom-0 trigger-colapse-register" data-bs-toggle="collapse" href="#collapseOne">
+                <div className="d-flex w-50" id="myGroup">
+                    <button className="accordion-button border-bottom-0 trigger-colapse-register rounded-top" data-bs-toggle="collapse" href="#collapseOne">
                         PESSOA FISICA
                     </button>
-                    <button className="collapsed btn btn-outline-secondary border-bottom-0 trigger-colapse-register" data-bs-toggle="collapse" href="#collapseTwo">
+                    <button className="accordion-button collapsed border-bottom-0 trigger-colapse-register rounded-top" data-bs-toggle="collapse" href="#collapseTwo">
                         PESSOA JURIDICA
                     </button>
                 </div>
