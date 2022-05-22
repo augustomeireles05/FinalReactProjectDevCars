@@ -132,6 +132,11 @@ body {
 }
 
 .trigger-colapse-register{
+    /* background-color: #F0F0F0; */
+    background-color: #9ea3aca4;
+}
+
+.accordion-button:not(.collapsed){
     background-color: #F0F0F0;
 }
 
