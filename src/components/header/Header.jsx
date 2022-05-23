@@ -154,7 +154,7 @@ function Header() {
                     {/*INÍCIO DO ÍCONE DE FAVORITOS*/}
                     <div className="icons-position-header favorite-icon">
                         <Link to="/wishList">
-                            <img src={Favoriteicon} width="30" title="Favotitos" />
+                            <img src={Favoriteicon} width="30" title="Favotitos"  />
                         </Link>
                     </div>
                     {/*FIM DO ÍCONE DE FAVORITOS*/}

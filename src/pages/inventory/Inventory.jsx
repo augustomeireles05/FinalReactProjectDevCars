@@ -28,6 +28,8 @@ function Inventory() {
         })
     }
 
+    
+
     return (
         <>
             <Header />   
