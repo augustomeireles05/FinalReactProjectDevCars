@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+
+import { LoginContext } from '../../contexts/login.provider'
+
 import { Link } from 'react-router-dom'
 import './Login.css'
-import Bugatti from '../../assets/images/Login/login.jpg';
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -11,6 +13,20 @@ import Label from '../../components/Input/Label'
 import Button from '../../components/Button/Button';
 
 function Login() {
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const { authenticaded, login } = useContext(LoginContext)
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log("submit", {email,password})
+        login(email, password)
+    }
+
+
+
     return (
         <>
             <Header />
@@ -21,6 +37,7 @@ function Login() {
                             <h2 className="heading-section font-login-title pt-4">LOGIN</h2>
                         </div>
                     </div>
+                
                     <div className="row justify-content-center px-0 mx-0 pb-3">
                         <div className="col-md-12 col-lg-12">
                             <div className="container-md wrap d-md-flex d-flex justify-content-between">
@@ -45,18 +62,30 @@ function Login() {
                                             </p>
                                         </div>
                                     </div>
-                                    <form action="#" className="signin-form ms-1">
+                                    <form className="signin-form ms-1" onSubmit={handleSubmit}>
                                         <div className="form-group mb-3">
-                                            <Label label="Login" for="login"/>
-                                            <Input type="text" aria-label="login" id="login"/>
+                                            <Label label="Email" for="login"/>
+                                            <Input 
+                                            type="text" 
+                                            aria-label="login" 
+                                            id="login"
+                                            value={email}
+                                            onChange={(event) => { setEmail(event.target.value)}}
+                                            />
                                         </div>
 
                                         <div className="form-group mb-3">
                                             <Label label="Senha" for="senha"/>
-                                            <Input type="password" aria-label="senha" id="senha"/>
+                                            <Input 
+                                            type="password" 
+                                            aria-label="senha" 
+                                            id="senha"
+                                            value={password}
+                                            onChange={(event) => { setPassword(event.target.value)}}
+                                            />
                                         </div>
                                         <div className="form-group button-entrar-login mt-4">
-                                            <Button link="/ShedulingDetails" name="Entrar" className="form-group button-entrar-login"/>
+                                            <Button name="Entrar" className="form-group button-entrar-login"/>
                                         </div>
                                         <div className="col-12 row form-group d-md-flex pt-3 mx-0 text-center">
                                             <div className="col-6 d-flex justify-content-center align-items-center">

@@ -1,4 +1,6 @@
-import { Switch, Route } from "react-router-dom";
+import { useContext } from 'react'
+
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import Home from './pages/home/Home'
 import Product from './pages/product/Product'
 import Cart from './pages/cart/Cart'
@@ -16,27 +18,50 @@ import Register from './pages/register/Register'
 import SchedulingDetails from './pages/schedulingDetails/SchedulingDetails'
 import WishList from './pages/wishList/WishList'
 
+import {LoginProvider, LoginContext} from './contexts/login.provider'
+
 
 export const Routes = () => {
+    const history = useHistory()
+
+
+    const PrivateRoute = (props) => {
+        const { authenticaded, loading } = useContext(LoginContext) 
+
+
+        if(loading){
+            return <div>Carregando ... </div>
+        }
+
+        if(!authenticaded){
+            return <Redirect to="login"/>
+        }
+
+        return <Route {... props} />
+    }
+
+
+
     return (
         <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/product" component={Product} />
-            <Route path="/aboutUs" component={AboutUs} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/checkoutOrder" component={CheckoutOrder} />
-            <Route path="/checkoutScheduling" component={CheckoutScheduling} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/inventory" component={Invetory} />
-            <Route path="/login" component={Login} />
-            <Route path="/myData" component={MyData} />
-            <Route path="/myOrder" component={MyOrder} />
-            <Route path="/orderResume" component={OrderResume} />
-            <Route path="/recoveryPassword" component={RecoveryPassword} />
-            <Route path="/register" component={Register} />
-            <Route path="/schedulingDetails" component={SchedulingDetails} />
-            <Route path="/wishList" component={WishList} />
-
+            <LoginProvider>
+                <Route path="/" component={Home} exact />
+                <Route path="/product" component={Product} />
+                <Route path="/aboutUs" component={AboutUs} />
+                <PrivateRoute path="/cart" component={Cart} />
+                <PrivateRoute path="/checkoutOrder" component={CheckoutOrder }/>
+                <PrivateRoute path="/checkoutScheduling" component={CheckoutScheduling} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/inventory" component={Invetory} />
+                <Route path="/login" component={Login} />
+                <PrivateRoute path="/myData" component={MyData} />
+                <PrivateRoute path="/myOrder" component={MyOrder} />
+                <PrivateRoute path="/orderResume" component={OrderResume} />
+                <Route path="/recoveryPassword" component={RecoveryPassword} />
+                <Route path="/register" component={Register} />
+                <PrivateRoute path="/schedulingDetails" component={SchedulingDetails} />
+                <PrivateRoute path="/wishList" component={WishList} />
+            </LoginProvider>
         </Switch>
     )
 }
