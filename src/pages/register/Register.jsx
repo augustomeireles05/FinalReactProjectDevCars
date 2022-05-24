@@ -190,13 +190,13 @@ function Register() {
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="Email" htmlFor="emailPJ" />
-                                <Input type="email" aria-label="emailPJ" id="emailPJ" value={registerPJ.emailClientePJ} 
-                                onChange={(event) => { setRegisterPJ({ ...registerPJ, emailClientePJ: event.target.value }) }} />
+                                <Input type="email" aria-label="emailPJ" id="emailPJ" value={registerPJ.emailCliente} 
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, emailCliente: event.target.value }) }} />
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="CNPJ" htmlFor="cnpj" />
-                                <Input type="text" aria-label="cnpj" id="cnpj" value={registerPJ.cnpj} 
-                                onChange={(event) => { setRegisterPJ({ ...registerPJ, cnpj: event.target.value }) }} />
+                                <Input type="text" aria-label="cnpj" id="cnpj" value={registerPJ.numeroDocumento} 
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, numeroDocumento: event.target.value }) }} />
                             </div>
                         </div>
 
@@ -211,8 +211,8 @@ function Register() {
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Telefone" htmlFor="telefonePJ" />
-                                <Input type="text" aria-label="telefonePJ" id="telefonePJ" value={registerPJ.telefonePJ}
-                                onChange={(event) => { setRegisterPJ({ ...registerPJ, telefonePJ: event.target.value }) }}  />
+                                <Input type="text" aria-label="telefonePJ" id="telefonePJ" value={registerPJ.telefoneCliente}
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, telefoneCliente: event.target.value }) }}  />
                             </div>
                         </div>
 
