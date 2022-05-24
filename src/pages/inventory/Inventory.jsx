@@ -8,10 +8,11 @@ import { useEffect, useState } from 'react'
 
 import MiniCart from '../../components/Cart/MiniCart'
 import axios from 'axios'
+import { baseUrl } from '../../environments'
 
 
 function Inventory() {
-
+    const URL = `${baseUrl}/veiculos`
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -20,19 +21,20 @@ function Inventory() {
 
 
     const getProducts = () => {
-        axios.get('http://localhost:3001/cardData')
+        axios.get(`${URL}`)
         .then((response) => {
-            console.log(response.data);
             setProducts(response.data)
         })
     }
 
+    
+
     return (
         <>
-            <Header />   
-            <MiniCart /> 
+            <Header />
+            <MiniCart />
             <SearchFilter />
-            <ProductCard products={products}/>
+            <ProductCard products={products} />
             <Footer />
         </>
     )

@@ -6,7 +6,6 @@ import { LoginContext } from '../../contexts/login.provider'
 
 
 import Input from '../../components/Input/Input'
-import Label from '../../components/Input/Label'
 
 import Menu from '../../assets/images/Header/menu.png'
 import Mainlogo from '../../assets/images/Header/logo-rev01.jpeg'
@@ -35,7 +34,7 @@ function Header() {
                     <div className="icon-menu">
                         {/*INSERÇÃO DA IMAGEM DO MENU HAMBURGUER*/}
                         <a className="btn btn-black btn-style" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                            <img src={Menu} width="30" />
+                            <img src={Menu} width="30" alt="Menu"/>
                         </a>
 
                         <div className="offcanvas offcanvas-start background-menu d-flex flex-column flex-shrink-0 p-3 text-black bg-dark" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style={{ width: 280 + 'px' }}>
@@ -80,7 +79,7 @@ function Header() {
                                 </li>
 
                                 <li>
-                                    <Link to="/contact" className="text-black" >
+                                    <Link to="/contact" className="text-black">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             className="bi bi-chevron-compact-right" viewBox="0 0 16 16">
                                             <path fillRule="evenodd"
@@ -160,7 +159,7 @@ function Header() {
                 <div className="icons-header">
                     <div className="icon-logo">
                         <Link to="/">
-                            <img src={Mainlogo} width="120" />
+                            <img src={Mainlogo} width="120" alt="Logo"/>
                         </Link>
                     </div>
                 </div>
@@ -171,7 +170,9 @@ function Header() {
 
                     {/*INÍCIO DO ÍCONE DE PESQUISA*/}
                     <div className="icons-position-header search-icon">
-                        <img src={Searchicon} className="icons-header" data-bs-toggle="modal" width="30" data-bs-target="#modalPesquisa" role="button" />
+
+                        <img src={Searchicon} className="icons-header" data-bs-toggle="modal" width="30" data-bs-target="#modalPesquisa" role="button" title="Buscar"/>
+
                     </div>
                     {/*FIM DO ÍCONE DE PESQUISA*/}
 
