@@ -95,22 +95,23 @@ function Header() {
                             <hr />
 
                             {/*Início da div USUÁRIO*/}
-                            {
-                                authenticaded ?
-                                    <div className="background-user">
 
-                                        <div className="dropdown">
+                            <div className="background-user">
 
-                                            <Link to="#" className="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
-                                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="dropdown">
 
-                                                {/*<img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>*/}
-                                                <strong>
-                                                    <span className="font-menu">USUÁRIO</span>
-                                                </strong>
-                                            </Link>
+                                    <Link to="#" className="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
+                                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                            <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                        {/*<img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>*/}
+                                        <strong>
+                                            <span className="font-menu">USUÁRIO</span>
+                                        </strong>
+                                    </Link>
+
+                                    <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                        {authenticaded ?
+                                            <>
                                                 <li>
                                                     <Link to="/cart" className="dropdown-item">
                                                         <span className="font-menu" data-bs-dismiss="offcanvas">Carrinho</span>
@@ -135,15 +136,19 @@ function Header() {
                                                         Sair
                                                     </button>
                                                 </li>
-                                            </ul>
-                                        </div>
+                                            </>
+                                            :
 
-                                    </div>
-                                    :
-                                    <Link to="/login" className="dropdown-item">
-                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Logar</span>
-                                                    </Link>
-                            }
+                                            <Link to="/login" className="dropdown-item">
+                                                <span className="font-menu" data-bs-dismiss="offcanvas">Logar</span>
+                                            </Link>
+                                        }
+                                    </ul>
+                                </div>
+
+                            </div>
+
+
                             {/*Fim da div USUÁRIO*/}
                         </div>
                     </div>
