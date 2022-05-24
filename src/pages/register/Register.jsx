@@ -29,11 +29,6 @@ function Register() {
     })
 
 
-    const changeColor = () => {
-        
-    }
-
-
     const registerPFClient = () => {
         axios.post(`${URLPF}`, registerPF)
             .then((response) => {
@@ -140,7 +135,7 @@ function Register() {
 
                                     setConfirmPassword(event.target.value)
 
-                                    if(event.target.value == registerPF.senhaCliente ){
+                                    if(event.target.value === registerPF.senhaCliente ){
                                     
                                         setStatus({type:'sucess', mensagem:'ok'})
                                     } else{
@@ -150,7 +145,7 @@ function Register() {
                                 }} />
 
                             {
-                                status.type == 'sucess'
+                                status.type === 'sucess'
                                     ?
                                     <span style={{ color: 'white', backgroundColor:'green', padding:'2px 15px'}}>
                                         {status.mensagem}
@@ -162,7 +157,7 @@ function Register() {
 
 
                             {
-                                status.type == 'error'
+                                status.type === 'error'
                                     ?
                                     <span style={{ color: 'white', backgroundColor:'red', padding:'2px 15px'}}>
                                         {status.mensagem}
