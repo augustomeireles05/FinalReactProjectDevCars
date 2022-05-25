@@ -8,6 +8,10 @@ const api = axios.create({
 
 export const createSession = async (email, password) => {
     return await api.post("http://localhost:8080/auth", {email, password})
+    // .catch((error) => 
+    //     console.log( error)
+    // );
+
 }
 
 export { baseUrl, api }

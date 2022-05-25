@@ -25,6 +25,7 @@ export function LoginProvider(props) {
     const login = async (email, password) => {
 
         const response = await createSession(email, password)
+        console.log("token:", response.data.token)
         console.log("login auth: ", response)
 
 
