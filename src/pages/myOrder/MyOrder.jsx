@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { baseUrl } from '../../environments'
 import axios from 'axios'
+import { LoginContext } from '../../contexts/login.provider'
 
 import './MyOrder.css'
 import Header from '../../components/header/Header'
@@ -27,10 +28,15 @@ function MyOrder() {
 
     const [orders, setOrders] = useState([])
 
+    // const {id} = useContext(LoginContext)
+   
+    const id = localStorage.getItem('user')
+    console.log(id)
+ 
 
 
     const getOrders = () => {
-        axios.get(`${baseUrl}/placeorder/2`)
+        axios.get(`${baseUrl}/placeorder/${id}`)
             .then((response) => {
                 setOrders(response.data)
                 console.log(response)
