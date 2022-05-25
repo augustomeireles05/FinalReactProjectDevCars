@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 import './Header.css'
+
+import { LoginContext } from '../../contexts/login.provider'
+
 
 import Input from '../../components/Input/Input'
 
@@ -12,6 +16,14 @@ import Garageicon from '../../assets/images/Header/garage-car.png'
 import Closeicon from '../../assets/images/Header/close.png'
 
 function Header() {
+    const { logout, authenticaded } = useContext(LoginContext)
+
+    const handleLogout = () => {
+        logout()
+    }
+
+
+
     return (
         <>
             {/* BEGIN HEADER */}
@@ -82,47 +94,55 @@ function Header() {
                             <hr />
 
                             {/*Início da div USUÁRIO*/}
-                            <div className="background-user">
+                            {
+                                authenticaded ?
+                                    <div className="background-user">
 
-                                <div className="dropdown">
+                                        <div className="dropdown">
 
-                                    <Link to="#" className="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
-                                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <Link to="#" className="d-flex align-items-center text-black text-decoration-none dropdown-toggle"
+                                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                        {/*<img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>*/}
-                                        <strong>
-                                            <span className="font-menu">USUÁRIO</span>
-                                        </strong>
-                                    </Link>
-
-                                    <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                                        <li>
-                                            <Link to="/cart" className="dropdown-item">
-                                                <span className="font-menu" data-bs-dismiss="offcanvas">Carrinho</span>
+                                                {/*<img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>*/}
+                                                <strong>
+                                                    <span className="font-menu">USUÁRIO</span>
+                                                </strong>
                                             </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/wishList" className="dropdown-item">
-                                                <span className="font-menu" data-bs-dismiss="offcanvas">Favoritos</span>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/myData" className="dropdown-item">
-                                                <span className="font-menu" data-bs-dismiss="offcanvas">Meus dados</span>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <hr className="dropdown-divider" />
-                                        </li>
-                                        <li>
-                                            <Link to="/" className="dropdown-item">
-                                                <span className="font-menu" data-bs-dismiss="offcanvas">Sair</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
 
-                            </div>
+                                            <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                                <li>
+                                                    <Link to="/cart" className="dropdown-item">
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Carrinho</span>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/wishList" className="dropdown-item">
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Favoritos</span>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/myData" className="dropdown-item">
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Meus dados</span>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <hr className="dropdown-divider" />
+                                                </li>
+                                                <li>
+                                                    <button onClick={handleLogout} className="dropdown-item">
+                                                        {/* <span className="font-menu" data-bs-dismiss="offcanvas">Sair</span> */}
+                                                        Sair
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                    :
+                                    <Link to="/login" className="dropdown-item">
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Logar</span>
+                                                    </Link>
+                            }
                             {/*Fim da div USUÁRIO*/}
                         </div>
                     </div>
@@ -151,28 +171,44 @@ function Header() {
                     </div>
                     {/*FIM DO ÍCONE DE PESQUISA*/}
 
+
+
+
+
                     {/*INÍCIO DO ÍCONE DE FAVORITOS*/}
-                    <div className="icons-position-header favorite-icon">
-                        <Link to="/wishList">
-                            <img src={Favoriteicon} width="30" title="Favotitos" />
-                        </Link>
-                    </div>
+
+                    {authenticaded ?
+                        <div className="icons-position-header favorite-icon">
+                            <Link to="/wishList">
+                                <img src={Favoriteicon} width="30" />
+                            </Link>
+                        </div>
+                        :
+                        ''
+                    }
                     {/*FIM DO ÍCONE DE FAVORITOS*/}
 
                     {/*INÍCIO DO ÍCONE DE LOGIN*/}
-                    <div className="icons-position-header user-icon">
-                        <Link to="/Login">
-                            <img src={Loginnicon} width="30" title="Login"/>
-                        </Link>
-                    </div>
+                    {!authenticaded ?
+                        <div className="icons-position-header user-icon">
+                            <Link to="/Login">
+                                <img src={Loginnicon} width="30" />
+                            </Link>
+                        </div> :
+                        ''
+                    }
                     {/*FIM DO ÍCONE DE LOGIN*/}
 
+
                     {/*INÍCIO DO ÍCONE DE CARRINHO*/}
-                    <div className="icons-position-header garage-icon">
-                        <Link to="/cart">
-                            <img src={Garageicon} width="30" title="Carrinho"/>
-                        </Link>
-                    </div>
+                    {authenticaded ?
+                        <div className="icons-position-header garage-icon">
+                            <Link to="/cart">
+                                <img src={Garageicon} width="30" />
+                            </Link>
+                        </div> :
+                        ''
+                    }
                     {/*FIM DO ÍCONE DE CARRINHO*/}
 
                 </div>
