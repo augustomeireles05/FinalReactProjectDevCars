@@ -28,9 +28,15 @@ function MyOrder() {
     const [orders, setOrders] = useState([])
 
 
+    // const {id} = useContext(LoginContext)
+   
+    const id = localStorage.getItem('user')
+    console.log(id)
+ 
+
 
     const getOrders = () => {
-        axios.get(`${baseUrl}/placeorder/2`)
+        axios.get(`${baseUrl}/placeorder/${id}`)
             .then((response) => {
                 setOrders(response.data)
                 console.log(response)

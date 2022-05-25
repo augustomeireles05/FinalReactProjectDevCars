@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import { LoginContext } from '../../contexts/login.provider'
 
+
 import { Link } from 'react-router-dom'
 import './Login.css'
 
@@ -16,15 +17,15 @@ import Button from '../../components/Button/Button';
 
 function Login() {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [emailCliente, setEmailCliente] = useState("")
+    const [senhaCliente, setSenhaCliente] = useState("")
 
     const { authenticaded, login } = useContext(LoginContext)
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log("submit", {email,password})
-        login(email, password)
+        // console.log("submit", {email,password})
+        login(emailCliente, senhaCliente)
     }
 
 
@@ -71,8 +72,8 @@ function Login() {
                                             type="text" 
                                             aria-label="login" 
                                             id="login"
-                                            value={email}
-                                            onChange={(event) => { setEmail(event.target.value)}}
+                                            value={emailCliente}
+                                            onChange={(event) => { setEmailCliente(event.target.value)}}
                                             />
                                         </div>
 
@@ -82,8 +83,8 @@ function Login() {
                                             type="password" 
                                             aria-label="senha" 
                                             id="senha"
-                                            value={password}
-                                            onChange={(event) => { setPassword(event.target.value)}}
+                                            value={senhaCliente}
+                                            onChange={(event) => { setSenhaCliente(event.target.value)}}
                                             />
                                         </div>
                                         <div className="form-group button-entrar-login mt-4">

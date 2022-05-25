@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { Switch, Route, useHistory, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Home from './pages/home/Home'
 import Product from './pages/product/Product'
 import Cart from './pages/cart/Cart'
@@ -22,7 +22,7 @@ import {LoginProvider, LoginContext} from './contexts/login.provider'
 
 
 export const Routes = () => {
-    const history = useHistory()
+    // const history = useHistory()
 
 
     const PrivateRoute = (props) => {
