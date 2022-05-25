@@ -55,12 +55,12 @@ function Register() {
     const registerPJCliente = () => {
         axios.post(`${URLPJ}`, registerPJ )
             .then((response) => {
-               // comparePasswordsPJ()
-               // useHistory não precisa de redirect <Redirect to="/home"/>
-               console.log(response)
-                
+                                      
                 
             })
+
+            history.push("/login")
+            
 
     } 
 
@@ -298,8 +298,41 @@ function Register() {
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
                             <Label label="Confirme sua nova senha" htmlFor="password-register-ConfirmPasswordPJ" />
                             <Input type="password" aria-label="password-register-confirmPasswordPJ" id="password-register-confirmPJ" 
-                                value={confirmPasswordPJ}
-                                onChange={event => setConfirmPasswordPJ(event.target.value)} />
+                                value={confirmPasswordPJ}                                
+                                onChange={(event) => {
+
+                                    setConfirmPasswordPJ(event.target.value)
+                                    if(event.target.value === registerPJ.senhaCliente){
+
+                                         setStatus({type:'sucess', mensagem:'ok'})
+                                    } else{
+
+                                        setStatus({type:'error', mensagem:'senhas divergentes'})
+                                    }                           
+                                }} />
+                            {
+                                status.type === 'sucess'
+                                ?
+                                <span style={{ color: 'white', backgroundColor:'green', padding: '2px 15px'}}>
+                                    {status.mensagem}
+                                </span>
+                                :
+                                ""
+                            }   
+
+                            {
+                                status.type === 'error'
+                                ?
+                                <span style={{color: 'white', backgroundColor: 'red', padding: '2px 15px'}}>
+                                     {status.mensagem}   
+                                </span>
+                                :
+                                ""
+                            } 
+
+
+
+                                
                         </div>
 
                         <div className="col-12 mt-4">
