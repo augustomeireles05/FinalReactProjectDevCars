@@ -33,7 +33,9 @@ function Register() {
         axios.post(`${URLPF}`, registerPF)
             .then((response) => {
 
-            })
+            }).catch((err) => {
+                console.error("ops! ocorreu um erro" + err);
+              });
 
         history.push("/login")
         console.log("registrado")

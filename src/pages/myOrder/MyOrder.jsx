@@ -36,7 +36,7 @@ function MyOrder() {
 
 
     const getOrders = () => {
-        axios.get(`${baseUrl}/placeorder/${id}`)
+        axios.get(`${baseUrl}/placeorder/'${id}'`)
             .then((response) => {
                 setOrders(response.data)
                 console.log(response)
