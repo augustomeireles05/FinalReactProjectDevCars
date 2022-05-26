@@ -20,6 +20,7 @@ function Login() {
     const [emailCliente, setEmailCliente] = useState("")
     const [senhaCliente, setSenhaCliente] = useState("")
 
+    
     const { authenticaded, login } = useContext(LoginContext)
 
     const handleSubmit = (event) => {
@@ -40,7 +41,7 @@ function Login() {
                             <h2 className="heading-section font-login-title pt-4">LOGIN</h2>
                         </div>
                     </div>
-                
+
                     <div className="row justify-content-center px-0 mx-0 pb-3">
                         <div className="col-md-12 col-lg-12">
                             <div className="container-md wrap d-md-flex d-flex justify-content-between">
@@ -67,28 +68,34 @@ function Login() {
                                     </div>
                                     <form className="signin-form ms-1" onSubmit={handleSubmit}>
                                         <div className="form-group mb-3">
-                                            <Label label="Email" for="login"/>
-                                            <Input 
-                                            type="text" 
-                                            aria-label="login" 
-                                            id="login"
-                                            value={emailCliente}
-                                            onChange={(event) => { setEmailCliente(event.target.value)}}
+                                            <Label label="Email" for="login" />
+                                            <Input
+                                                type="text"
+                                                aria-label="login"
+                                                id="login"
+                                                value={emailCliente}
+                                                onChange={(event) => { setEmailCliente(event.target.value) }}
                                             />
                                         </div>
 
                                         <div className="form-group mb-3">
-                                            <Label label="Senha" for="senha"/>
-                                            <Input 
-                                            type="password" 
-                                            aria-label="senha" 
-                                            id="senha"
-                                            value={senhaCliente}
-                                            onChange={(event) => { setSenhaCliente(event.target.value)}}
+                                            <Label label="Senha" for="senha" />
+                                            <Input
+                                                type="password"
+                                                aria-label="senha"
+                                                id="senha"
+                                                value={senhaCliente}
+                                                onChange={(event) => { setSenhaCliente(event.target.value) }}
                                             />
+                                            
                                         </div>
+                                        
                                         <div className="form-group button-entrar-login mt-4">
-                                            <Button name="Entrar" className="form-group button-entrar-login"/>
+
+                                           
+
+
+                                            <Button name="Entrar" className="form-group button-entrar-login" />
                                         </div>
                                         <div className="col-12 row form-group d-md-flex pt-3 mx-0 text-center">
                                             <div className="col-12 flex-center input-layout">

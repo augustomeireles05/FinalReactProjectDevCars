@@ -1,6 +1,8 @@
 import './CheckoutOrder.css';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { baseUrl } from '../../environments'
+import axios from 'axios'
 
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/Footer.jsx';
@@ -19,6 +21,26 @@ import Boleto from '../../assets/images/CheckoutOrder/barcode.png';
 import Pix from '../../assets/images/CheckoutOrder/pix.png';
 
 function CheckoutOrder() {
+  const [frete, setFrete] = useState('')
+  
+
+  const getFrete = () => {
+    axios.get(`${baseUrl}/frete/RJ`)
+      .then((response) => {
+        setFrete(response.data)
+        console.log(response.data)
+      })
+  }
+
+
+  useEffect(() => {
+    getFrete()
+    // console.log(response.data)
+  }, [])
+
+
+
+
 
   return (
     <>
@@ -60,16 +82,16 @@ function CheckoutOrder() {
           <div className="card text-black bg-white mb-3 px-0">
 
             {/* <div className=" col-md-12 card-header"> */}
-              {/* <div className="form-check font-text d-flex justify-content-between"> */}
-                {/* <div className="d-grid d-flex justify-content-start">
+            {/* <div className="form-check font-text d-flex justify-content-between"> */}
+            {/* <div className="d-grid d-flex justify-content-start">
                   <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" />
                   <span className="space-input">Meus Dados</span>
                 </div> */}
-                {/* <div className="d-grid d-md-flex justify-content-end">
+            {/* <div className="d-grid d-md-flex justify-content-end">
                   <img className="btn " src={Editar} width="45" alt="Editar" />
                   <img className="btn " src={Lixeira} width="45" alt="Lixeira" />
                 </div> */}
-              {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
 
             <div className="card-body">
@@ -145,7 +167,7 @@ function CheckoutOrder() {
 
             <div className="card-body">
               <p className="card-text font-text">
-              Praça Roberto Pedro Gomes, 101
+                Praça Roberto Pedro Gomes, 101
                 <br />
                 Morumbi (São Paulo/SP)
                 <br />
@@ -459,10 +481,10 @@ function CheckoutOrder() {
 
             <div className="card-body font-text">
               <p className="card-text">
-                Bandeira: MASTERCARD <br/>
-                Número do cartão: ****.****.****.0564 <br/>
+                Bandeira: MASTERCARD <br />
+                Número do cartão: ****.****.****.0564 <br />
                 Nome do titular: MARIA AUXILIADORA DE JESUS <br />
-                Data de validade: 03/30 <br/>
+                Data de validade: 03/30 <br />
                 CPF: 099.***.***-09
               </p>
             </div>
@@ -485,17 +507,17 @@ function CheckoutOrder() {
             <div className="card-body font-text margin-card">
               {/* <h5 className="card-title">Secondary card title</h5> */}
               <p className="card-text">
-                Bandeira: MASTERCARD <br/>
-                Número do cartão: ****.****.****.0392 <br/>
+                Bandeira: MASTERCARD <br />
+                Número do cartão: ****.****.****.0392 <br />
                 Nome do titular: CRISTIANO RONALDO <br />
-                Data de validade: 11/28 <br/>
+                Data de validade: 11/28 <br />
                 CPF: 099.***.***-11
               </p>
             </div>
             {/* Fim Cartão 02 */}
 
-         
-          </div> 
+
+          </div>
 
 
 
@@ -588,9 +610,9 @@ function CheckoutOrder() {
                     <div>
                       <h5 className="text-dark text-center">Tem certeza que deseja excluir o endereço? </h5>
                       <div>
-                        <h5 className="text-justify text-dark">PRAÇA ROBERTO PEDRO GOMES Nº 101 Morumbi (São Paulo/SP) <br/> CEP: 12332-032
+                        <h5 className="text-justify text-dark">PRAÇA ROBERTO PEDRO GOMES Nº 101 Morumbi (São Paulo/SP) <br /> CEP: 12332-032
                         </h5>
-                        
+
                       </div>
 
                     </div>
@@ -642,7 +664,7 @@ function CheckoutOrder() {
                 <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
                 <span className="icon-payment">
                   Boleto
-                  <img src={Boleto} width="30" alt="Boleto" className="ms-2"/>
+                  <img src={Boleto} width="30" alt="Boleto" className="ms-2" />
                 </span>
               </div>
             </div>
@@ -683,7 +705,7 @@ function CheckoutOrder() {
               <div className="col-7 col-md-8 col-lg-8 format-resume">
                 <h6 className="my-0 mb-3 fw-bold">BMW X5 XDrive 45E M Sport</h6>
                 <small className="col-12 col-md-6 col-lg-12">
-                Modelo 45E M Sport na cor preta, com motor de 6 Cilindros em Linha, 3.0L Bi-Turbo + Elétrico e potência de 294 CV. Possui câmbio automático de 8 marchas e um sistema de combustível híbrido.
+                  Modelo 45E M Sport na cor preta, com motor de 6 Cilindros em Linha, 3.0L Bi-Turbo + Elétrico e potência de 294 CV. Possui câmbio automático de 8 marchas e um sistema de combustível híbrido.
                 </small>
               </div>
               <span className="text-muted font-text">R$ 790.000,00</span>
@@ -693,7 +715,8 @@ function CheckoutOrder() {
                 <h6 className="my-0 font-text">Preço do Frete</h6>
                 <small className="font-text">Cep: 03145-050</small>
               </div>
-              <span className="text-success font-text">R$ 23.000,00</span>
+              {/* <span className="text-success font-text">R$ 23.000,00</span> */}
+              <span className="text-success font-text">R$ {frete.valorFrete}</span>
             </li>
             <li className="list-group-item d-flex justify-content-between">
               <span className="font-text-bold">Total (R$)</span>

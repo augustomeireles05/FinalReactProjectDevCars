@@ -2,7 +2,9 @@ import React, { useState, createContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { api, createSession } from '../envinromentsLogin'
 
+
 export const LoginContext = createContext({})
+
 
 export function LoginProvider(props) {
     const [user, setUser] = useState(null)
@@ -10,6 +12,9 @@ export function LoginProvider(props) {
     const [loading, setLoading] = useState(true)
     const [userName, setUserName] = useState('')
     const [id, setId] = useState('')
+
+
+    
 
 
     useEffect(() => {
@@ -25,32 +30,47 @@ export function LoginProvider(props) {
 
     const login = async (email, password) => {
 
-        const response = await createSession(email, password)
-        console.log("token:", response.data.token)
-        console.log("login auth: ", response)
-    
-
-        const loggedUser = response.data.id
-        const token = response.data.token
-        const nome = response.data.nome
-
-        localStorage.setItem("user", JSON.stringify(loggedUser))
-        localStorage.setItem("token", token)
-        localStorage.setItem("nome", nome)
-
-        
-        setUserName(nome)
-        setId(localStorage.getItem('user'))
-
-        console.log("id global: ", id)
-        console.log("nome: ", nome)
-        console.log("id: ", loggedUser)
-
-        api.defaults.headers.Authorization = `Bearer ${token}`
 
 
-        setUser(loggedUser)
-        history.push("/myData")
+        try {
+
+
+            const response = await createSession(email, password)
+
+            const loggedUser = response.data.id
+            const token = response.data.token
+            const nome = response.data.nome
+
+            localStorage.setItem("user", JSON.stringify(loggedUser))
+            localStorage.setItem("token", token)
+            localStorage.setItem("nome", nome)
+
+            setUserName(nome)
+            setId(localStorage.getItem('user'))
+
+            api.defaults.headers.Authorization = `Bearer ${token}`
+
+            setUser(loggedUser)
+            history.push("/")
+
+            console.log("token:", response.data.token)
+            console.log("login auth: ", response)
+            console.log("id global: ", id)
+            console.log("nome: ", nome)
+            console.log("id: ", loggedUser)
+
+
+        } catch (erro) {
+
+           console.log("erro: ", erro)
+
+        //    alert("erro ao logoar")
+            
+        }
+
+
+
+
 
 
     }
@@ -68,7 +88,7 @@ export function LoginProvider(props) {
 
 
     return (
-        <LoginContext.Provider value={{ authenticaded: !!user, user, login, logout, loading, userName, id}}>
+        <LoginContext.Provider value={{ authenticaded: !!user, user, login, logout, loading, userName, id }}>
             {props.children}
         </LoginContext.Provider>
     )
