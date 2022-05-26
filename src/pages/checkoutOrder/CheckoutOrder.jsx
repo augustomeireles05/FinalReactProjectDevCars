@@ -1,24 +1,114 @@
 import './CheckoutOrder.css';
-
-import React from 'react';
-
+import axios from 'axios'
 import Header from '../../components/header/Header.jsx';
 import Footer from '../../components/footer/Footer.jsx';
-
 import Button from '../../components/Button/Button.jsx';
 import SupportButton from '../../components/Button/SupportButton';
-
-import Input from '../../components/Input/Input'
-import Label from '../../components/Input/Label'
-
-
+import Input from '../../components/Input/Input';
+import Label from '../../components/Input/Label';
 import Editar from '../../assets/images/CheckoutOrder/edit.png';
 import Lixeira from '../../assets/images/CheckoutOrder/trash.png';
 import Adicionar from '../../assets/images/CheckoutOrder/plus.png';
 import Boleto from '../../assets/images/CheckoutOrder/barcode.png';
 import Pix from '../../assets/images/CheckoutOrder/pix.png';
+import { baseUrl } from '../../environments';
+import React, { useEffect, useState } from 'react'
+
 
 function CheckoutOrder() {
+
+  const URLEND = `${baseUrl}/enderecos/2` // setando cliente manualmente
+  const URLCART = `${baseUrl}/cartao/cliente/2` // setando cliente manualmente
+
+  const [endereco, setEndereco] = useState([]);
+  const [cartao, setCartao] = useState([]);
+
+  useEffect(() => {
+    getCheckoutOrder()
+    getCheckoutOrderCartao()
+  }, [])
+
+  // METODO PARA TRAZER ENDEREÇO
+  const getCheckoutOrder = () => {
+    axios.get(`${URLEND}`)
+      .then((response) => {
+        setEndereco(response.data)
+        console.log(response.data)
+      })
+  }
+
+  // METODO PARA TRAZER CARTAO
+  const getCheckoutOrderCartao = () => {
+    axios.get(`${URLCART}`)
+      .then((response) => {
+        setCartao(response.data)
+        console.log(response.data)
+      })
+  }
+
+  const renderOEnderecos = () => {
+    return endereco.map((item) => {
+      return (
+        <>
+          <div className=" col-md-12 card-header " key={item.id}>
+            <div className="form-check font-text d-flex justify-content-between align-items-center">
+              <div className="d-grid d-flex justify-content-start">
+                <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" />
+                <span className="space-input">CEP: {item.cep}
+                  <br />
+                  {item.rua},{item.numero}
+                  <br />
+                  Bairro : {item.bairro}
+                  <br />
+                  Estado: {item.cidade}
+                </span>
+              </div>
+              <div className="d-flex d-md-flex justify-content-end">
+                <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit" title="Editar">
+                  <img className="btn " src={Editar} width="45" alt="Editar" title="Editar" />
+                </button>
+                <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDeleteAdress" title="Excluir">
+                  <img className="btn " src={Lixeira} width="45" alt="Lixeira" title="Excluir" />
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* Fim Endereço 01 */}
+        </>
+      )
+    })
+  }
+
+  const renderCartao = () => {
+    return cartao.map((item) => {
+      return (
+        <>
+          <div className=" col-md-12 card-header" key={item.id}>
+            <div className="form-check font-text d-flex justify-content-between align-items-center">
+              <div className="d-grid d-flex justify-content-start">
+                <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" />
+                <span className="space-input">Crédito  <br />
+                  Bandeira:  <br />
+                  Número do cartão: {item.numeroCartao} <br/>
+                  Nome do titular: {item.nomeTitular} <br />
+                  Data de validade: {item.validadeCartao} <br />                  
+                </span>
+              </div>
+              <div className="d-flex d-md-flex justify-content-end">
+                <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropEditCard">
+                  <img className="btn " src={Editar} width="45" alt="Editar" />
+                </button>
+
+                <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDeleteCard">
+                  <img className="btn " src={Lixeira} width="45" alt="Lixeira" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )
+    })
+  }
 
   return (
     <>
@@ -60,16 +150,16 @@ function CheckoutOrder() {
           <div className="card text-black bg-white mb-3 px-0">
 
             {/* <div className=" col-md-12 card-header"> */}
-              {/* <div className="form-check font-text d-flex justify-content-between"> */}
-                {/* <div className="d-grid d-flex justify-content-start">
+            {/* <div className="form-check font-text d-flex justify-content-between"> */}
+            {/* <div className="d-grid d-flex justify-content-start">
                   <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" />
                   <span className="space-input">Meus Dados</span>
                 </div> */}
-                {/* <div className="d-grid d-md-flex justify-content-end">
+            {/* <div className="d-grid d-md-flex justify-content-end">
                   <img className="btn " src={Editar} width="45" alt="Editar" />
                   <img className="btn " src={Lixeira} width="45" alt="Lixeira" />
                 </div> */}
-              {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
 
             <div className="card-body">
@@ -91,18 +181,7 @@ function CheckoutOrder() {
 
 
           </div>
-
-
           {/* FIM DOS MEUS DADOS */}
-
-
-
-
-
-
-
-
-
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 row justify-content-between px-md-0 align-items-center">
             <div className="col-10 col-sm-10 col-md-10 col-lg-10 ps-0">
               <h4 className="font-text">Endereços de Entrega</h4>
@@ -111,8 +190,8 @@ function CheckoutOrder() {
             {/* INÍCIO DO BOTÃO DE ADICIONAR ENDEREÇO */}
             <div className="col-2 col-sm-2 col-md-2 col-lg-2 text-end pe-0 pe-md-0">
               {/* Início botão padrão que abre o modal Endereco */}
-              <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#modal-endereco" >
-                <img src={Adicionar} width="30" alt="Adicionar" />
+              <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#modal-endereco" title="Adicionar" >
+                <img src={Adicionar} width="30" alt="Adicionar" title="Adicionar" />
               </button>
               {/* Início botão padrão que abre o modal Endereco */}
             </div>
@@ -126,58 +205,7 @@ function CheckoutOrder() {
 
           <div className="card text-black bg-white mb-3 px-0">
             {/* Início Endereço 01 */}
-            <div className=" col-md-12 card-header">
-              <div className="form-check font-text d-flex justify-content-between align-items-center">
-                <div className="d-grid d-flex justify-content-start">
-                  <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" />
-                  <span className="space-input">Endereço 01</span>
-                </div>
-                <div className="d-flex d-md-flex justify-content-end">
-                  <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit">
-                    <img className="btn " src={Editar} width="45" alt="Editar" />
-                  </button>
-                  <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDeleteAdress">
-                    <img className="btn " src={Lixeira} width="45" alt="Lixeira" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="card-body">
-              <p className="card-text font-text">
-              Praça Roberto Pedro Gomes, 101
-                <br />
-                Morumbi (São Paulo/SP)
-                <br />
-                CEP: 12332-032
-              </p>
-            </div>
-            {/* Fim Endereço 01 */}
-
-            {/* Início Endereço 02 */}
-            <div className=" col-md-12 card-header">
-              <div className="form-check font-text d-flex justify-content-between">
-                <div className="d-grid d-flex justify-content-start">
-                  <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" />
-                  <span className="space-input">Endereço 02</span>
-                </div>
-                <div className="d-flex d-md-flex justify-content-end">
-                  <img className="btn " src={Editar} width="45" alt="Editar" />
-                  <img className="btn " src={Lixeira} width="45" alt="Lixeira" />
-                </div>
-              </div>
-            </div>
-
-            <div className="card-body font-text">
-              <p className="card-text">
-                Av. 7 de Setembro, 111
-                <br />
-                Vitória (Salvador/BA)
-                <br />
-                CEP: 00000-000
-              </p>
-            </div>
-            {/* Fim Endereço 02 */}
+            {renderOEnderecos()}
           </div>
 
 
@@ -438,33 +466,11 @@ function CheckoutOrder() {
 
 
           <div className="card text-black bg-white mb-3 px-0">
+
             {/* Início Cartão 01 */}
-            <div className=" col-md-12 card-header">
-              <div className="form-check font-text d-flex justify-content-between align-items-center">
-                <div className="d-grid d-flex justify-content-start">
-                  <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
-                  <span className="space-input">(Crédito) Visa</span>
-                </div>
-                <div className="d-flex d-md-flex justify-content-end">
-                  <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropEditCard">
-                    <img className="btn " src={Editar} width="45" alt="Editar" />
-                  </button>
 
-                  <button type="button" className="btn px-0 mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdropDeleteCard">
-                    <img className="btn " src={Lixeira} width="45" alt="Lixeira" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="card-body font-text">
-              <p className="card-text">
-                Bandeira: MASTERCARD <br/>
-                Número do cartão: ****.****.****.0564 <br/>
-                Nome do titular: MARIA AUXILIADORA DE JESUS <br />
-                Data de validade: 03/30 <br/>
-                CPF: 099.***.***-09
-              </p>
+            <div className="">
+              {renderCartao()}
             </div>
             {/* Fim Cartão 01 */}
 
@@ -485,17 +491,17 @@ function CheckoutOrder() {
             <div className="card-body font-text margin-card">
               {/* <h5 className="card-title">Secondary card title</h5> */}
               <p className="card-text">
-                Bandeira: MASTERCARD <br/>
-                Número do cartão: ****.****.****.0392 <br/>
+                Bandeira: MASTERCARD <br />
+                Número do cartão: ****.****.****.0392 <br />
                 Nome do titular: CRISTIANO RONALDO <br />
-                Data de validade: 11/28 <br/>
+                Data de validade: 11/28 <br />
                 CPF: 099.***.***-11
               </p>
             </div>
             {/* Fim Cartão 02 */}
 
-         
-          </div> 
+
+          </div>
 
 
 
@@ -588,9 +594,9 @@ function CheckoutOrder() {
                     <div>
                       <h5 className="text-dark text-center">Tem certeza que deseja excluir o endereço? </h5>
                       <div>
-                        <h5 className="text-justify text-dark">PRAÇA ROBERTO PEDRO GOMES Nº 101 Morumbi (São Paulo/SP) <br/> CEP: 12332-032
+                        <h5 className="text-justify text-dark">PRAÇA ROBERTO PEDRO GOMES Nº 101 Morumbi (São Paulo/SP) <br /> CEP: 12332-032
                         </h5>
-                        
+
                       </div>
 
                     </div>
@@ -642,7 +648,7 @@ function CheckoutOrder() {
                 <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
                 <span className="icon-payment">
                   Boleto
-                  <img src={Boleto} width="30" alt="Boleto" className="ms-2"/>
+                  <img src={Boleto} width="30" alt="Boleto" className="ms-2" />
                 </span>
               </div>
             </div>
@@ -683,7 +689,7 @@ function CheckoutOrder() {
               <div className="col-7 col-md-8 col-lg-8 format-resume">
                 <h6 className="my-0 mb-3 fw-bold">BMW X5 XDrive 45E M Sport</h6>
                 <small className="col-12 col-md-6 col-lg-12">
-                Modelo 45E M Sport na cor preta, com motor de 6 Cilindros em Linha, 3.0L Bi-Turbo + Elétrico e potência de 294 CV. Possui câmbio automático de 8 marchas e um sistema de combustível híbrido.
+                  Modelo 45E M Sport na cor preta, com motor de 6 Cilindros em Linha, 3.0L Bi-Turbo + Elétrico e potência de 294 CV. Possui câmbio automático de 8 marchas e um sistema de combustível híbrido.
                 </small>
               </div>
               <span className="text-muted font-text">R$ 790.000,00</span>
