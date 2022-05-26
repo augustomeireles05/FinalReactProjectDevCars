@@ -17,8 +17,10 @@ import Label from '../../components/Input/Label'
 import Editar from '../../assets/images/CheckoutOrder/edit.png';
 import Lixeira from '../../assets/images/CheckoutOrder/trash.png';
 import Adicionar from '../../assets/images/CheckoutOrder/plus.png';
-import Boleto from '../../assets/images/CheckoutOrder/barcode.png';
+
 import Pix from '../../assets/images/CheckoutOrder/pix.png';
+
+import PaymentSlip from '../../components/PaymentSlip/PaymentSlip'
 
 function CheckoutOrder() {
   const [frete, setFrete] = useState('')
@@ -39,7 +41,13 @@ function CheckoutOrder() {
   }, [])
 
 
+  const [texto, setTexto] = useState('')
+  const [num, setNum] = useState('')
 
+  function exibirValor(numero, texto) {
+    setNum(numero, texto)
+    setTexto(texto)
+  }
 
 
   return (
@@ -659,35 +667,17 @@ function CheckoutOrder() {
             {/* Fim do Card do Pix */}
 
             {/* Início do Card do Boleto */}
-            <div className="card-header">
-              <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
-                <span className="icon-payment">
-                  Boleto
-                  <img src={Boleto} width="30" alt="Boleto" className="ms-2" />
-                </span>
-              </div>
-            </div>
-
-            <div className="d-grid gap-2 d-md-block pt-2">
-              {/* <Button type="button" name="Voltar para Carrinho"> */}
-              {/* <SupportButton link="/Cart" name="Voltar para o Carrinho"/> */}
-
-              <div className="mt-3"></div>
-
-              {/* <Link to="/cart"></Link> */}
-              {/* </Button> */}
-              {/* <Button type="button" name="Finalizar Compra"> */}
-              {/* <Link to="/orderResume"></Link> */}
-              {/* <Button link="/orderResume" name="Finalizar Compra"/> */}
-              {/* </Button> */}
-            </div>
+            <PaymentSlip funcao={exibirValor} />
             <div className="card-body">
               {/* <h5 className="card-title">Secondary card title</h5> */}
               <p className="card-text">
                 Vencimento em 1 dia útil. A data de entrega será alterada
                 devido ao tempo de processamento do Boleto.
               </p>
+              <div>
+                <p>{texto}</p>
+                <p>{num}{num}</p>
+              </div>
             </div>
             {/* Fim do Card do Boleto */}
           </div>
