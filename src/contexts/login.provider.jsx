@@ -48,8 +48,8 @@ export function LoginProvider(props) {
             setUserName(nome)
             setId(localStorage.getItem('user'))
 
-            // api.defaults.headers.Authorization = `Bearer ${token}`
-            api.defaults.headers.common['Authorization'] = token
+      
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
             setUser(loggedUser)
             history.push("/")
@@ -80,7 +80,7 @@ export function LoginProvider(props) {
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         localStorage.removeItem("nome")
-        api.defaults.headers.Authorization = null
+        delete axios.defaults.headers.common['Authorization']
         setUser(null)
         history.push("/")
     }
