@@ -15,6 +15,11 @@ import Subtitle from '../../components/Subtittle/Subtittle'
 import { baseUrl } from '../../environments'
 
 import { PFClient } from '../../models'
+import { PJClient } from '../../models'
+
+
+
+
 
 function Register() {
     const history = useHistory()
@@ -29,22 +34,47 @@ function Register() {
     })
 
 
-    const changeColor = () => {
-        
-    }
-
-
     const registerPFClient = () => {
         axios.post(`${URLPF}`, registerPF)
             .then((response) => {
 
-            })
+            }).catch((err) => {
+                console.error("ops! ocorreu um erro" + err);
+              });
 
         history.push("/login")
         console.log("registrado")
 
 
     }
+
+   //INICIO DE TRATAMENTO DE PESSOA JURÍDICA
+    const URLPJ = `${baseUrl}/cliente/j`
+    const [registerPJ, setRegisterPJ] = useState(PJClient)
+
+    const [confirmPasswordPJ, setConfirmPasswordPJ] = useState('')
+
+    const registerPJCliente = () => {
+        axios.post(`${URLPJ}`, registerPJ )
+            .then((response) => {
+                                      
+                
+            })
+
+            history.push("/login")
+            
+
+    } 
+
+    const comparePasswordsPJ = () => {
+        if (registerPJ.senhaCliente != confirmPasswordPJ) {
+            <div className="invalid-feedback">
+                Senhas divergentes
+            </div>
+            console.log("senhas divergentes")
+        }
+    }
+
 
 
 
@@ -140,7 +170,7 @@ function Register() {
 
                                     setConfirmPassword(event.target.value)
 
-                                    if(event.target.value == registerPF.senhaCliente ){
+                                    if(event.target.value === registerPF.senhaCliente ){
                                     
                                         setStatus({type:'sucess', mensagem:'ok'})
                                     } else{
@@ -150,7 +180,7 @@ function Register() {
                                 }} />
 
                             {
-                                status.type == 'sucess'
+                                status.type === 'sucess'
                                     ?
                                     <span style={{ color: 'white', backgroundColor:'green', padding:'2px 15px'}}>
                                         {status.mensagem}
@@ -162,7 +192,7 @@ function Register() {
 
 
                             {
-                                status.type == 'error'
+                                status.type === 'error'
                                     ?
                                     <span style={{ color: 'white', backgroundColor:'red', padding:'2px 15px'}}>
                                         {status.mensagem}
@@ -204,22 +234,25 @@ function Register() {
 
 
                     {/* <form className="row mb-2 gy-3"> */}
-                    <form className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100">
+                    <div className="col-12 col-md-10 mb-2 justify-content-start gy-3 dados-pessoais ps-md-5 pe-md-5 h-100 w-100">
                         <Subtitle menu="Dados Pessoais" />
 
                         <div className="col-md-12 mb-3">
                             <Label label="Razão Social" htmlFor="rzSocial" />
-                            <Input type="text" aria-label="rzSocial" id="rzSocial" />
+                            <Input type="text" aria-label="rzSocial" id="rzSocial" value={registerPJ.razaoSocial}
+                           onChange={(event) => { setRegisterPJ({ ...registerPJ, razaoSocial: event.target.value }) }} />
                         </div>
 
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
-                                <Label label="Email" htmlFor="email" />
-                                <Input type="email" aria-label="email" id="email" />
+                                <Label label="Email" htmlFor="emailPJ" />
+                                <Input type="email" aria-label="emailPJ" id="emailPJ" value={registerPJ.emailCliente} 
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, emailCliente: event.target.value }) }} />
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="CNPJ" htmlFor="cnpj" />
-                                <Input type="text" aria-label="cnpj" id="cnpj" />
+                                <Input type="text" aria-label="cnpj" id="cnpj" value={registerPJ.numeroDocumento} 
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, numeroDocumento: event.target.value }) }} />
                             </div>
                         </div>
 
@@ -228,11 +261,14 @@ function Register() {
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Inscrição Estadual" htmlFor="inscrEstadual" />
-                                <Input type="text" aria-label="inscrEstadual" id="inscrEstadual" />
+                                <Input type="text" aria-label="inscrEstadual" id="inscrEstadual" value={registerPJ.inscricaoEstadual}
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, inscricaoEstadual: event.target.value }) }} />
+                                
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Telefone" htmlFor="telefonePJ" />
-                                <Input type="text" aria-label="telefonePJ" id="telefonePJ" />
+                                <Input type="text" aria-label="telefonePJ" id="telefonePJ" value={registerPJ.telefoneCliente}
+                                onChange={(event) => { setRegisterPJ({ ...registerPJ, telefoneCliente: event.target.value }) }}  />
                             </div>
                         </div>
 
@@ -242,7 +278,7 @@ function Register() {
 
 
 
-                        { /*Começo Senha*/}
+                        { /*Começo Senha PJ*/}
 
 
                         <Subtitle subtitulo="Senha" />
@@ -254,14 +290,51 @@ function Register() {
 
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
-                            <Label label="Escolha um senha" htmlFor="password-register" />
-                            <Input type="password" aria-label="password-register" id="password-register" />
-                            {/* <span className="fs-6">Digite uma senha de 8-16 caracteres</span> */}
+                            <Label label="Escolha um senha" htmlFor="password-registerPJ" />
+                            <Input type="password" aria-label="password-registerPJ" id="password-registerPJ" 
+                                value={registerPJ.senhaCliente}
+                            onChange={(event) => { setRegisterPJ({ ...registerPJ, senhaCliente: event.target.value }) }} />
+
                         </div>
 
                         <div className="col-12 col-md-12 col-lg-6 mb-3">
-                            <Label label="Confirme sua nova senha" htmlFor="password-register-confirm" />
-                            <Input type="password" aria-label="password-register-confirm" id="password-register-confirm" />
+                            <Label label="Confirme sua nova senha" htmlFor="password-register-ConfirmPasswordPJ" />
+                            <Input type="password" aria-label="password-register-confirmPasswordPJ" id="password-register-confirmPJ" 
+                                value={confirmPasswordPJ}                                
+                                onChange={(event) => {
+
+                                    setConfirmPasswordPJ(event.target.value)
+                                    if(event.target.value === registerPJ.senhaCliente){
+
+                                         setStatus({type:'sucess', mensagem:'ok'})
+                                    } else{
+
+                                        setStatus({type:'error', mensagem:'senhas divergentes'})
+                                    }                           
+                                }} />
+                            {
+                                status.type === 'sucess'
+                                ?
+                                <span style={{ color: 'white', backgroundColor:'green', padding: '2px 15px'}}>
+                                    {status.mensagem}
+                                </span>
+                                :
+                                ""
+                            }   
+
+                            {
+                                status.type === 'error'
+                                ?
+                                <span style={{color: 'white', backgroundColor: 'red', padding: '2px 15px'}}>
+                                     {status.mensagem}   
+                                </span>
+                                :
+                                ""
+                            } 
+
+
+
+                                
                         </div>
 
                         <div className="col-12 mt-4">
@@ -274,10 +347,10 @@ function Register() {
                         </div>
                         <div className="row justify-content-center justify-content-lg-start">
                             <div className="col-12 col-md-6 col-lg-3 text-center mt-4 mb-3 ">
-                                <Button link="" name="CADASTRE-SE" />
-                            </div>
+                            <Button name="CADASTRE-SE" onClick={registerPJCliente}/>
                         </div>
-                    </form>
+                        </div>
+                    </div>
                 </div>
 
             </div>
