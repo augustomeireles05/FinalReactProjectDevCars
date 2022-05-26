@@ -127,10 +127,10 @@ function Cart() {
                                 :
                                 <>
                                     <div className="my-5 mx-5 d-flex justify-content-center">
-                                        <h1>Nao ha carros na Garagem </h1>
+                                        <h1> Garagem vazia </h1>
                                     </div>
                                     <div className="col-11 col-md-11 col-lg-12 col-xl-12 d-lg-flex justify-content-lg-end">
-                                        <Button link="/inventory" name="Estoque" />
+                                        <Button link="/inventory" name="Estoque"/>
                                     </div>
                                 </>
 
