@@ -680,25 +680,9 @@ function CheckoutOrder(props) {
             <hr />
 
             <div className="card text-black bg-white mb-3 font-text px-0">
-              {/* Início do Card do Pix */}
-              <div className="card-header">
-                <div className="form-check">
-                  <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
-                  <span className="icon-payment">
-                    Pix
-                    <img src={Pix} width="30" alt="Pix" className="ms-2" />
-                  </span>
-                </div>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  Vencimento em 30 minutos. Após o pagamento seu pedido será
-                  processado.
-                </p>
-              </div>
-              {/* Fim do Card do Pix */}
+              
 
-              {/* Início do Card do Pix */}
+            {/* Início do Card do Pix */}
             <div className="card-header">
               <div className="form-check">
                 <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />

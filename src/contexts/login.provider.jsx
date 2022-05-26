@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { api, createSession } from '../envinromentsLogin'
-
+import axios from 'axios'
 
 export const LoginContext = createContext({})
 
@@ -14,7 +14,7 @@ export function LoginProvider(props) {
     const [id, setId] = useState('')
 
 
-    
+
 
 
     useEffect(() => {
@@ -48,24 +48,24 @@ export function LoginProvider(props) {
             setUserName(nome)
             setId(localStorage.getItem('user'))
 
-            api.defaults.headers.common['Authorization'] = token
+      
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
             setUser(loggedUser)
             history.push("/")
 
-            console.log("token:", response.data.token)
+            console.log("token:", token)
             console.log("login auth: ", response)
-            console.log("id global: ", id)
             console.log("nome: ", nome)
             console.log("id: ", loggedUser)
 
 
         } catch (erro) {
 
-           console.log("erro: ", erro)
+            console.log("erro: ", erro)
 
-        //    alert("erro ao logoar")
-            
+            //    alert("erro ao logoar")
+
         }
 
 
