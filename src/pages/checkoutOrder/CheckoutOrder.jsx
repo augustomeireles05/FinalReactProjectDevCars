@@ -23,19 +23,22 @@ import Pix from '../../assets/images/CheckoutOrder/pix.png';
 function CheckoutOrder() {
   const [frete, setFrete] = useState('')
   
+  const cart = JSON.parse(localStorage.getItem('cart'))
+
+  // const [total, setTotal] = ('0')
 
   const getFrete = () => {
-    axios.get(`${baseUrl}/frete/RJ`)
+    axios.get(`${baseUrl}/frete/SP`)
       .then((response) => {
         setFrete(response.data)
-        console.log(response.data)
       })
   }
 
 
   useEffect(() => {
     getFrete()
-    // console.log(response.data)
+    console.log(parseFloat(cart[7]))
+    console.log(frete.valorFrete)
   }, [])
 
 
@@ -50,6 +53,9 @@ function CheckoutOrder() {
         <h3>Confira e finalize seu pedido</h3>
         <hr />
       </div>
+
+
+      
 
       {/* FIM DO TÍTULO DA PÁGINA */}
 
@@ -703,12 +709,12 @@ function CheckoutOrder() {
           <ul className="list-group mb-3">
             <li className="list-group-item d-flex justify-content-between">
               <div className="col-7 col-md-8 col-lg-8 format-resume">
-                <h6 className="my-0 mb-3 fw-bold">BMW X5 XDrive 45E M Sport</h6>
+                <h6 className="my-0 mb-3 fw-bold">{cart[1]} {cart[2]}</h6>
                 <small className="col-12 col-md-6 col-lg-12">
-                  Modelo 45E M Sport na cor preta, com motor de 6 Cilindros em Linha, 3.0L Bi-Turbo + Elétrico e potência de 294 CV. Possui câmbio automático de 8 marchas e um sistema de combustível híbrido.
+                 {cart[11]}
                 </small>
               </div>
-              <span className="text-muted font-text">R$ 790.000,00</span>
+              {/* <span className="text-muted font-text">R$ {cart[7]}</span> */}
             </li>
             <li className="list-group-item d-flex justify-content-between bg-light">
               <div className="text-success">
@@ -718,9 +724,15 @@ function CheckoutOrder() {
               {/* <span className="text-success font-text">R$ 23.000,00</span> */}
               <span className="text-success font-text">R$ {frete.valorFrete}</span>
             </li>
+
+            <li className="list-group-item d-flex justify-content-between">
+              <span className="font-text-bold">Preço </span>
+              <strong className="font-text-bold">R$ {cart[7]}</strong>
+            </li>
+
             <li className="list-group-item d-flex justify-content-between">
               <span className="font-text-bold">Total (R$)</span>
-              <strong className="font-text-bold">R$ 813.000,00</strong>
+              <strong className="font-text-bold">R$ {frete.valorFrete+cart[7]}</strong>
             </li>
           </ul>
           <div className="d-grid gap-2 d-md-block pt-2">

@@ -30,13 +30,12 @@ function MyOrder() {
 
     // const {id} = useContext(LoginContext)
    
-    const id = localStorage.getItem('user')
-    console.log(id)
+    const id = parseInt(localStorage.getItem('user'))
  
 
 
     const getOrders = () => {
-        axios.get(`${baseUrl}/placeorder/'${id}'`)
+        axios.get(`${baseUrl}/placeorder/${id}`)
             .then((response) => {
                 setOrders(response.data)
                 console.log(response)
