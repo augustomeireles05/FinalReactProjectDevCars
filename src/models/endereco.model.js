@@ -1,12 +1,13 @@
-const Endereco = {
-    cep:"",
+const EnderecoModelo = {
+    codCliente:1,
     rua:"",
-    complemento: "",
-    numero:"",
-    bairro: "",
     cidade: "",
-    uf: ""
+    bairro: "",
+    uf: "",
+    cep:"",
+    numero:"",
+    complemento: ""
 }
-export default Endereco
+export default EnderecoModelo
 
 
