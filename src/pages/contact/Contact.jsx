@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Contact.css'
 
 import Header from '../../components/header/Header';
@@ -17,10 +17,17 @@ import Localizacao from '../../assets/images/Contact/localizacao 1.svg';
 
 
 function Contact() {
+
+    const [email, setEmail] = useState(localStorage.getItem('email'))
+    const [nome, setNome] = useState(localStorage.getItem('nome'))
+
+
+
+
     return (
         <>
-        <Header />
-    
+            <Header />
+
             <section>
                 <MainTittle tittle="Contato" />
 
@@ -32,7 +39,7 @@ function Contact() {
                             <div className="column">
                                 {/* LOJA  */}
                                 {/* <div className="title"> */}
-                                    <Subtittle menu="LOJA"/>
+                                <Subtittle menu="LOJA" />
                                 {/* </div> */}
                                 {/* CARROUSEL  */}
                                 <div className="main-card">
@@ -48,15 +55,15 @@ function Contact() {
 
                                     <div className="geral">
                                         <div className="textoum">
-                                            <img src={Localizacao} className="me-1" alt="Localização"/>
+                                            <img src={Localizacao} className="me-1" alt="Localização" />
                                             <a href="https://goo.gl/maps/xkbNkwPFwL2yeffG9" className="links-externos">Avenida Corifeu de Azevedo Marques, 3097</a>
                                         </div>
                                         <div className="textodois">
-                                            <img src={Email} className="me-1" alt="Email"/>
+                                            <img src={Email} className="me-1" alt="Email" />
                                             <a href="mailto:vendas@devcars.com?subject=Compras" className="links-externos"> vendas@devcars.com</a>
                                         </div>
                                         <div className="textotres">
-                                            <img src={Telefone} className="me-1" alt="Telefone"/>
+                                            <img src={Telefone} className="me-1" alt="Telefone" />
                                             <a href="tel:+551137695678" className="links-externos"> (11) 3769-5678</a>
                                         </div>
                                     </div>
@@ -69,29 +76,36 @@ function Contact() {
 
                                         <div className="col-md-12 signin-form-contact">
 
-                                            <Label label="Nome" htmlFor="nome"/>
-                                            <Input type="text" aria-label="nome" id="nome"/>
+                                            <Label label="Nome" htmlFor="nome" />
+                                            <Input type="text" aria-label="nome" id="nome" 
+                                                value={nome}
+                                                onChange={event => {setNome(event.target.value)}}
+                                            />
+
+
+                                            <Label label="Email" htmlFor="email" />
+                                            <Input type="email" aria-label="email" id="email" 
+                                                value={email}
+                                                onChange={event => {setEmail(event.target.value)}}
                                             
-                                
-                                            <Label label="Email" htmlFor="email"/>
-                                            <Input type="email" aria-label="email" id="email"/>
+                                            />
 
-                                        
-                                            <Label label="Telefone" htmlFor="telefone"/>
-                                            <Input type="text" aria-label="telefone" id="telefone"/>
-                                                
-                                        
-                                            <Label label="Assunto" htmlFor="assunto"/>
-                                            <Input type="text" aria-label="assunto" id="assunto"/>
-                                                
 
-                                            <Label label="Mensagem" htmlFor="mensagem"/>
+                                            <Label label="Telefone" htmlFor="telefone" />
+                                            <Input type="text" aria-label="telefone" id="telefone" />
+
+
+                                            <Label label="Assunto" htmlFor="assunto" />
+                                            <Input type="text" aria-label="assunto" id="assunto" />
+
+
+                                            <Label label="Mensagem" htmlFor="mensagem" />
                                             <textarea className="form-control m-0" rows="6" type="text" id="mensagem" aria-label="mensagem"></textarea>
-                                               
+
 
                                             <div className="d-grid gap-2 col-12 mx-auto mt-4">
                                                 <Button link="/" name="ENVIAR" />
-                                            </div>          
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,9 +114,9 @@ function Contact() {
 
                         <div className="col-12 col-lg-6">
                             <div className="column">
-                                 {/* DUVIDAS  */}
-                                 <Subtittle subtitulo="DÚVIDAS FREQUENTES"/>
-                                 {/* CARD PERGUNTAS  */}
+                                {/* DUVIDAS  */}
+                                <Subtittle subtitulo="DÚVIDAS FREQUENTES" />
+                                {/* CARD PERGUNTAS  */}
                                 <div className="main-card">
                                     <div className="question-perguntas">
 
@@ -150,7 +164,7 @@ function Contact() {
                                                 <div id="collapseThree" className="accordion-collapse collapse"
                                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                     <div className="accordion-body fonte-pagina-contato">
-                                                    <p className="text-ac-body"><strong>A DevCars trabalha apenas com veículos originais.</strong>Trabalhamos com marcas selecionacionas, que saem direto da fábrica para o nosso estoque, onde passam novamente por checagens e revisões periódicas.</p>
+                                                        <p className="text-ac-body"><strong>A DevCars trabalha apenas com veículos originais.</strong>Trabalhamos com marcas selecionacionas, que saem direto da fábrica para o nosso estoque, onde passam novamente por checagens e revisões periódicas.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,7 +182,7 @@ function Contact() {
                                                 <div id="collapseFour" className="accordion-collapse collapse"
                                                     aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div className="accordion-body">
-                                                    <p className="text-ac-body"><strong>Sim. Assim que o veículo é adquirido, a DevCars o assegura durante 12 meses (doze meses)</strong> após o término da garantia de fábrica, que pode variar de acordo com a marca. Para mais detalhes entre em contato com um de nossos representantes.</p>
+                                                        <p className="text-ac-body"><strong>Sim. Assim que o veículo é adquirido, a DevCars o assegura durante 12 meses (doze meses)</strong> após o término da garantia de fábrica, que pode variar de acordo com a marca. Para mais detalhes entre em contato com um de nossos representantes.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,7 +198,7 @@ function Contact() {
                                                 <div id="collapseFive" className="accordion-collapse collapse"
                                                     aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                                     <div className="accordion-body">
-                                                    <p className="text-ac-body"><strong>No momento ainda não trabalhamos com a personalização e/ou alterações que não sejam os padrões originais dos veículos.</strong> Assim, mantemos a autenticidade do produto e entregamos a qualidade da marca. </p>
+                                                        <p className="text-ac-body"><strong>No momento ainda não trabalhamos com a personalização e/ou alterações que não sejam os padrões originais dos veículos.</strong> Assim, mantemos a autenticidade do produto e entregamos a qualidade da marca. </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,7 +215,7 @@ function Contact() {
                                                 <div id="collapseSix" className="accordion-collapse collapse"
                                                     aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                                     <div className="accordion-body">
-                                                    <p className="text-ac-body"><strong>A DevCars possui diversos parceiros na hora de fretar o seu veículo.</strong> Eles são retirados de nosso armazém por caminhões cegonha, mantendo os cuidados para que cheguem até seu destino em perfeitas condições.</p>
+                                                        <p className="text-ac-body"><strong>A DevCars possui diversos parceiros na hora de fretar o seu veículo.</strong> Eles são retirados de nosso armazém por caminhões cegonha, mantendo os cuidados para que cheguem até seu destino em perfeitas condições.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,4 +236,4 @@ function Contact() {
     )
 }
 
-export default Contact 
+export default Contact

@@ -1,6 +1,7 @@
 import './Cart.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+import trash from '../../assets/images/CheckoutOrder/trash.png'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -43,7 +44,7 @@ function Cart() {
                         </p>
                     </div>
                 </div>
-                <div className="row col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center p-0 mb-3 mb-md-0 mb-lg-0 mb-3 mb-md-4 mb-lg-0">
+                <div className="row col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center p-0 mb-3 mb-md-0 mb-lg-0 mb-3 mb-md-4 mb-lg-0 d-flex align-items-center">
 
                     <div className="col-8 col-sm-8 col-md-8 col-lg-9 col-xl-9">
                         <p className="text-center m-0 price-style">
@@ -52,13 +53,19 @@ function Cart() {
                     </div>
                     {/* Inicio Lixeira */}
                     <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 d-flex justify-content-start ">
-                        <Button className="" name='x'
-                            onClick={() => {
-                                deleteCart('cart')
-                                getCart()
-                            }
-                            }>
-                        </Button>
+
+
+
+
+                        <button type="button" className="btn px-0 mb-2" title="Excluir" onClick={() => {
+                            deleteCart('cart')
+                            getCart()
+                        }}>
+                            <img className="btn" src={trash} width="50" alt="Lixeira" title="Excluir" />
+                        </button>
+
+
+
                     </div>
 
                 </div>
@@ -130,7 +137,7 @@ function Cart() {
                                         <h1> Garagem vazia </h1>
                                     </div>
                                     <div className="col-11 col-md-11 col-lg-12 col-xl-12 d-lg-flex justify-content-lg-end">
-                                        <Button link="/inventory" name="Estoque"/>
+                                        <Button link="/inventory" name="Estoque" />
                                     </div>
                                 </>
 

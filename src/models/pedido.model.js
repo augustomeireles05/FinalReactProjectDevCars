@@ -1,12 +1,12 @@
 const Pedido = {
 
-    codCliente: 1,
+    codCliente: '',
 	codVeiculo: 20,
 	codEndereco: 1,
 	codPagamento: 1,
 	codFrete: 25,
 	valor: 790000,
-	codStatus: 4,
+	codStatus: 3,
 	codCartao: 10
 
 

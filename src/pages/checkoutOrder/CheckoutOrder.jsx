@@ -12,12 +12,24 @@ import Adicionar from '../../assets/images/CheckoutOrder/plus.png';
 import Boleto from '../../assets/images/CheckoutOrder/barcode.png';
 import Pix from '../../assets/images/CheckoutOrder/pix.png';
 import { baseUrl } from '../../environments';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import CartContext from '../../contexts/cart.provider'
+import { useHistory } from 'react-router-dom'
 import { Endereco, CartaoModelo, Pedido } from '../../models';
 import PaymentSlip from '../../components/PaymentSlip/PaymentSlip'
 
 
+
+
 function CheckoutOrder(props) {
+  const history = useHistory()
+
+
+  const priceConverted = (number) => {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number)
+  }
+
+  const { deleteCart } = useContext(CartContext)
   const id = parseInt(localStorage.getItem('user'))
   const email = localStorage.getItem('email')
   const nome = localStorage.getItem('nome')
@@ -39,7 +51,9 @@ function CheckoutOrder(props) {
   const [idAdress, setIdAdress] = useState('')
   const [idCart, setIdCart] = useState('')
   const idVeic = cart[1]
- 
+
+
+
 
 
   {/*
@@ -63,13 +77,29 @@ function CheckoutOrder(props) {
 
 
     //INICIO PEDIDO
-    const postPedido = (pedido) => {
-      axios.post(URLcadastrarPedido, pedido)
+    const postPedido = () => {
+
+      axios.post(URLcadastrarPedido, {
+        codCliente: id,
+        codVeiculo: idVeic,
+        codEndereco: idAdress,
+        codPagamento: 1,
+        codFrete: 25,
+        valor: frete.valorFrete + cart[8],
+        codStatus: 3,
+        codCartao: idCart
+      })
+
         .then((response) => {
           console.log(response)
-         
+
         })
-        
+
+        deleteCart('cart')
+      
+
+      history.push("/")
+
     }
     //FIM PEDIDO
 
@@ -137,7 +167,7 @@ function CheckoutOrder(props) {
       setIdCart(event.target.value)
       console.log("id do veiculo:", cart[1])
       console.log("id do cartão: ", idCart)
-  
+
     }
 
 
@@ -776,27 +806,27 @@ function CheckoutOrder(props) {
               </li>
               <li className="list-group-item d-flex justify-content-between bg-light">
                 <div className="text-success">
-                  <h6 className="my-0 font-text">Preço do Frete</h6>
-                  <small className="font-text">Cep: 03145-050</small>
+                  <h6 className="my-0 font-text">Valor do Frete</h6>
+                  {/* <small className="font-text">Cep: 03145-050</small> */}
                 </div>
                 {/* <span className="text-success font-text">R$ 23.000,00</span> */}
-                <span className="text-success font-text">R$ {frete.valorFrete}</span>
+                <span className="text-success font-text">{priceConverted(frete.valorFrete)}</span>
               </li>
 
               <li className="list-group-item d-flex justify-content-between">
-                <span className="font-text-bold">Preço </span>
-                <strong className="font-text-bold">R$ {cart[8]}</strong>
+                <span className="font-text-bold">Valor do veículo </span>
+                <strong className="font-text-bold"> {priceConverted(cart[8])}</strong>
               </li>
 
               <li className="list-group-item d-flex justify-content-between">
                 <span className="font-text-bold">Total (R$)</span>
-                <strong className="font-text-bold">R$ {frete.valorFrete + cart[8]}</strong>
+                <strong className="font-text-bold"> {priceConverted(frete.valorFrete + cart[8])}</strong>
               </li>
             </ul>
             <div className="d-grid gap-2 d-md-block pt-2">
               <div className="col-sm-12">
                 <SupportButton link="/Cart" name="Voltar para o Carrinho" />
-                <Button link="/Cart" name="Finalizar Compra"  />
+                <Button onClick={postPedido} name="Finalizar Compra" />
               </div>
             </div>
 

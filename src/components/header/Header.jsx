@@ -111,19 +111,25 @@ function Header() {
                                     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                                         
                                             <>
-                                                <li>
+                                                {/* <li>
                                                     <Link to="/cart" className="dropdown-item">
                                                         <span className="font-menu" data-bs-dismiss="offcanvas">Carrinho</span>
+                                                    </Link>
+                                                </li> */}
+                                                
+                                                <li>
+                                                    <Link to="/myData" className="dropdown-item">
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Meus dados</span>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/myOrder" className="dropdown-item">
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Meus pedidos</span>
                                                     </Link>
                                                 </li>
                                                 <li>
                                                     <Link to="/wishList" className="dropdown-item">
                                                         <span className="font-menu" data-bs-dismiss="offcanvas">Favoritos</span>
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/myData" className="dropdown-item">
-                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Meus dados</span>
                                                     </Link>
                                                 </li>
                                                 <li>

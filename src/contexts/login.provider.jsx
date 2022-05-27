@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { api, createSession } from '../envinromentsLogin'
 import axios from 'axios'
 
+
+
 export const LoginContext = createContext({})
 
 
@@ -81,6 +83,7 @@ export function LoginProvider(props) {
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         localStorage.removeItem("nome")
+        localStorage.removeItem("email")
         delete axios.defaults.headers.common['Authorization']
         setUser(null)
         history.push("/")
