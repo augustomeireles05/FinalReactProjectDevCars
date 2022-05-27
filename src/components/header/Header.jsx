@@ -109,7 +109,7 @@ function Header() {
                                     </Link>
 
                                     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                                        {authenticaded ?
+                                        
                                             <>
                                                 <li>
                                                     <Link to="/cart" className="dropdown-item">
@@ -131,17 +131,17 @@ function Header() {
                                                 </li>
                                                 <li>
                                                     <button onClick={handleLogout} className="dropdown-item">
-                                                        {/* <span className="font-menu" data-bs-dismiss="offcanvas">Sair</span> */}
-                                                        Sair
+                                                        <span className="font-menu" data-bs-dismiss="offcanvas">Sair</span>
+                                                        
                                                     </button>
                                                 </li>
                                             </>
-                                            :
+                                            
 
-                                            <Link to="/login" className="dropdown-item">
+                                            {/* <Link to="/login" className="dropdown-item">
                                                 <span className="font-menu" data-bs-dismiss="offcanvas">Logar</span>
                                             </Link>
-                                        }
+                                         */}
                                     </ul>
                                 </div>
 

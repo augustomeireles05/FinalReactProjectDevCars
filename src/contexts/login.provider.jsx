@@ -44,6 +44,7 @@ export function LoginProvider(props) {
             localStorage.setItem("user", JSON.stringify(loggedUser))
             localStorage.setItem("token", token)
             localStorage.setItem("nome", nome)
+            localStorage.setItem("email", email)
 
             setUserName(nome)
             setId(localStorage.getItem('user'))

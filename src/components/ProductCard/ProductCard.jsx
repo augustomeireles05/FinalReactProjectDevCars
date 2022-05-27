@@ -34,13 +34,13 @@ const ProductCard = (props) => {
     //     return setModel(true);
     // }
 
-    const getData = (marcaVeiculo, modeloVeiculo, cor, anoVeiculo, motor, potencia, precoVeiculo, cambio, combustivel, estoque, imagem, descricao) => {
+    const getData = (codVeiculo, marcaVeiculo, modeloVeiculo, cor, anoVeiculo, motor, potencia, precoVeiculo, cambio, combustivel, estoque, imagem, descricao) => {
         let tempData = [
-            marcaVeiculo, modeloVeiculo, cor, anoVeiculo, motor, potencia, precoVeiculo, cambio, combustivel, estoque, imagem, descricao
+            codVeiculo, marcaVeiculo, modeloVeiculo, cor, anoVeiculo, motor, potencia, precoVeiculo, cambio, combustivel, estoque, imagem, descricao
         ];
 
         // console.warn(tempData)
-        setTempData(item => [1, ...tempData])
+        setTempData(item => [0, ...tempData])
 
         return setModal(true);
     }
@@ -86,7 +86,7 @@ const ProductCard = (props) => {
                                                 {showPrice(item.precoVeiculo)}
 
                                                 <button className="btn mt-3 color-button"
-                                                    onClick={() => getData(item.marcaVeiculo, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
+                                                    onClick={() => getData(item.codVeiculo, item.marcaVeiculo, item.modeloVeiculo, item.cor, item.anoVeiculo, item.motor, item.potencia, item.precoVeiculo, item.cambio, item.combustivel, item.imagem, item.descricao)}>
                                                     Ver detalhes
                                                 </button>
                                             </div>
@@ -101,19 +101,20 @@ const ProductCard = (props) => {
             {
                 modal === true ?
                     <ProductCardModal
-                        marcaVeiculo={tempdata[1]} 
-                        modeloVeiculo={tempdata[2]} 
-                        cor={tempdata[3]} 
-                        anoVeiculo={tempdata[4]} 
-                        motor={tempdata[5]} 
-                        potencia={tempdata[6]} 
-                        precoVeiculo={tempdata[7]} 
-                        cambio={tempdata[8]} 
-                        combustivel={tempdata[9]} 
-                        imagem={tempdata[10]} 
-                        descricao={tempdata[11]} 
+                        codVeiculo={tempdata[1]}
+                        marcaVeiculo={tempdata[2]}
+                        modeloVeiculo={tempdata[3]}
+                        cor={tempdata[4]}
+                        anoVeiculo={tempdata[5]}
+                        motor={tempdata[6]}
+                        potencia={tempdata[7]}
+                        precoVeiculo={tempdata[8]}
+                        cambio={tempdata[9]}
+                        combustivel={tempdata[10]}
+                        imagem={tempdata[11]}
+                        descricao={tempdata[12]}
 
-                        produto={tempdata} 
+                        produto={tempdata}
                         hide={() => setModal(false)}
                     /> : ''
             }

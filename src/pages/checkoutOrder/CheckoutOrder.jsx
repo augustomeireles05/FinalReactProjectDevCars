@@ -13,23 +13,33 @@ import Boleto from '../../assets/images/CheckoutOrder/barcode.png';
 import Pix from '../../assets/images/CheckoutOrder/pix.png';
 import { baseUrl } from '../../environments';
 import React, { useEffect, useState } from 'react'
-import { Endereco, CartaoModelo } from '../../models';
+import { Endereco, CartaoModelo, Pedido } from '../../models';
 import PaymentSlip from '../../components/PaymentSlip/PaymentSlip'
 
 
 function CheckoutOrder(props) {
+  const id = parseInt(localStorage.getItem('user'))
+  const email = localStorage.getItem('email')
+  const nome = localStorage.getItem('nome')
+  const cart = JSON.parse(localStorage.getItem('cart'))
 
-  const URLEND = `${baseUrl}/enderecos/2` // setando cliente manualmente
-  const URLCART = `${baseUrl}/cartao/cliente/2` // setando cliente manualmente
+  const URLEND = `${baseUrl}/enderecos/${id}` // setando cliente manualmente
+  const URLCART = `${baseUrl}/cartao/cliente/${id}` // setando cliente manualmente
 
   const URLendCad = `${baseUrl}/enderecos`
   const URLcadastrarCartao = `${baseUrl}/cartao`
+  const URLcadastrarPedido = `${baseUrl}/placeorder`
 
   const [endereco, setEndereco] = useState([]);
   const [registerEndereco, setRegisterEndereco] = useState(Endereco);
   const [registerCartao, setRegisterCartao] = useState(CartaoModelo);
   const [cartao, setCartao] = useState([]);
   const [successRegister, SetSuccessRegister] = useState(false);
+  const [pedido, setPedido] = useState(Pedido)
+  const [idAdress, setIdAdress] = useState('')
+  const [idCart, setIdCart] = useState('')
+  const idVeic = cart[1]
+ 
 
 
   {/*
@@ -46,14 +56,28 @@ function CheckoutOrder(props) {
       console.log()
       axios.post(URLcadastrarCartao, CartaoModelo)
         .then((response) => {
-          SetSuccessRegister(true)
-          props.get()
+
         })
     }
 
+
+
+    //INICIO PEDIDO
+    const postPedido = (pedido) => {
+      axios.post(URLcadastrarPedido, pedido)
+        .then((response) => {
+          console.log(response)
+         
+        })
+        
+    }
+    //FIM PEDIDO
+
+
+
     //Início FRETE
     const [frete, setFrete] = useState('')
-    const cart = JSON.parse(localStorage.getItem('cart'))
+
 
     const getFrete = () => {
       axios.get(`${baseUrl}/frete/SP`)
@@ -62,7 +86,7 @@ function CheckoutOrder(props) {
         })
     }
     //fim FRETE
- 
+
 
     useEffect(() => {
       getFrete()
@@ -76,6 +100,7 @@ function CheckoutOrder(props) {
         .then((response) => {
           setEndereco(response.data)
           console.log(response.data)
+          console.log()
         })
     }
 
@@ -92,28 +117,49 @@ function CheckoutOrder(props) {
     //INÍCIO: GERAR NUMERO RANDOMICO
     const [texto, setTexto] = useState('')
     const [num, setNum] = useState('')
- 
+
     function exibirValor(numero, texto) {
       setNum(numero, texto)
       setTexto(texto)
     }
     //FIM: GERAR NUMERO RANDOMICO
 
+
+    const addAdress = (event) => {
+      setIdAdress(event.target.value)
+
+      console.log(idAdress)
+    }
+
+
+
+    const addCart = (event) => {
+      setIdCart(event.target.value)
+      console.log("id do veiculo:", cart[1])
+      console.log("id do cartão: ", idCart)
+  
+    }
+
+
+
+
     const renderOEnderecos = () => {
       return endereco.map((item) => {
         return (
           <>
-            <div className=" col-md-12 card-header " key={item.id}>
+            <div className=" col-md-12 card-header " key={item.codEndereco}>
               <div className="form-check font-text d-flex justify-content-between align-items-center">
-                <div className="d-grid d-flex justify-content-start">
-                  <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" />
+                <div className="d-grid d-flex justify-content-start"  >
+                  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onClick={addAdress} value={item.codEndereco} />
                   <span className="space-input">CEP: {item.cep}
                     <br />
                     {item.rua},{item.numero}
                     <br />
                     Bairro : {item.bairro}
                     <br />
-                    Estado: {item.cidade}
+                    Cidade: {item.cidade}
+                    <br />
+                    UF: {item.uf}
                   </span>
                 </div>
                 <div className="d-flex d-md-flex justify-content-end">
@@ -136,10 +182,10 @@ function CheckoutOrder(props) {
       return cartao.map((item) => {
         return (
           <>
-            <div className=" col-md-12 card-header" key={item.id}>
+            <div className=" col-md-12 card-header" key={item.codCartao}>
               <div className="form-check font-text d-flex justify-content-between align-items-center">
-                <div className="d-grid d-flex justify-content-start">
-                  <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" />
+                <div className="d-grid d-flex justify-content-start"  >
+                  <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" onClick={addCart} value={item.codCartao} />
                   <span className="space-input">Crédito  <br />
                     Bandeira:  <br />
                     Número do cartão: {item.numeroCartao} <br />
@@ -218,17 +264,11 @@ function CheckoutOrder(props) {
               <div className="card-body">
                 <h5 className="card-title font-text">Dados Pessoais</h5>
                 <p className="card-text font-text">
-                  Nome: Cristiano Ronaldo
+                  Nome: {nome}
                   <br />
-                  Sobrenome: Alves
+                  E-mail Cadastrado: {email}
                   <br />
-                  E-mail Cadastrado: cr7@gmail.com
-                  <br />
-                  Telefone Cadastrado: 9 9999-8888
-                  <br />
-                  CPF: 234.000.000-00
-                  <br />
-                  RG: 12.000.000-0
+
                 </p>
               </div>
 
@@ -572,16 +612,16 @@ function CheckoutOrder(props) {
                   <div className="modal-body">
                     <div className="container">
                       <div className="col-12 col-sm-12 col-md-12 px-0">
-                        <Label label="Número do cartão" for="cardnumber"/>
-                        <Input type="text" aria-label="cardnumber" id="numeroCartao"                          
-                          onChange={(event) =>{ setRegisterCartao({...registerCartao, numeroCartao: event.target.value }) }} />
+                        <Label label="Número do cartão" for="cardnumber" />
+                        <Input type="text" aria-label="cardnumber" id="numeroCartao"
+                          onChange={(event) => { setRegisterCartao({ ...registerCartao, numeroCartao: event.target.value }) }} />
                       </div>
 
                       <div className="col-12 col-sm-12 col-md-12 row justify-content-between px-0 mx-0">
                         <div className="col-12 col-sm-12 col-md-6 pe-md-2 ps-0 ps-md-0 pe-0">
                           <Label label="Nome do titular" for="ownnername" />
                           <Input type="text" aria-label="ownnername" id="ownnername"
-                            onChange={(event) => { setRegisterCartao({...registerCartao, nomeTitular: event.target.value }) }} />
+                            onChange={(event) => { setRegisterCartao({ ...registerCartao, nomeTitular: event.target.value }) }} />
                         </div>
 
                         <div className="col-12 col-sm-12 col-md-4 pe-md-2 ps-0 ps-md-0 pe-0">
@@ -592,8 +632,8 @@ function CheckoutOrder(props) {
 
                         <div className="col-12 col-sm-12 col-md-2 px-0">
                           <Label label="CVV" for="cvv" />
-                          <Input type="text" aria-label="uf" id="cvv"  
-                           onChange={(event) => { setRegisterCartao({ ...registerCartao, cvv: event.target.value }) }} />
+                          <Input type="text" aria-label="uf" id="cvv"
+                            onChange={(event) => { setRegisterCartao({ ...registerCartao, cvv: event.target.value }) }} />
                         </div>
                       </div>
 
@@ -614,7 +654,7 @@ function CheckoutOrder(props) {
                       }
                       <div className="col-12 col-sm-12 col-md-12 text-center mx-0 m-4">
                         <button type="submit" className="col-12 col-md-4 btn-modal-checkoutorder pt-2 pb-2 pe-3 ps-3"
-                        onClick={registerCartao}>
+                          onClick={registerCartao}>
                           Salvar
                         </button>
                       </div>
@@ -680,89 +720,89 @@ function CheckoutOrder(props) {
             <hr />
 
             <div className="card text-black bg-white mb-3 font-text px-0">
-             
 
-            {/* Início do Card do Pix */}
-            <div className="card-header">
-              <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
-                <span className="icon-payment">
-                  Pix
-                  <img src={Pix} width="30" alt="Pix" className="ms-2" />
-                </span>
-              </div>
-            </div>
-            <div className="card-body">
-              <p className="card-text">
-                Vencimento em 30 minutos. Após o pagamento seu pedido será
-                processado.
-              </p>
-            </div>
-            {/* Fim do Card do Pix */}
 
-            {/* Início do Card do Boleto */}
-            <PaymentSlip funcao={exibirValor} />
-            <div className="card-body">
-              {/* <h5 className="card-title">Secondary card title</h5> */}
-              <p className="card-text">
-                Vencimento em 1 dia útil. A data de entrega será alterada
-                devido ao tempo de processamento do Boleto.
-              </p>
-              <div>
-                <p>{texto}</p>
-                <p>{num}{num}</p>
+              {/* Início do Card do Pix */}
+              <div className="card-header">
+                <div className="form-check">
+                  <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
+                  <span className="icon-payment">
+                    Pix
+                    <img src={Pix} width="30" alt="Pix" className="ms-2" />
+                  </span>
+                </div>
               </div>
-            </div>
-            {/* Fim do Card do Boleto */}
+              <div className="card-body">
+                <p className="card-text">
+                  Vencimento em 30 minutos. Após o pagamento seu pedido será
+                  processado.
+                </p>
+              </div>
+              {/* Fim do Card do Pix */}
+
+              {/* Início do Card do Boleto */}
+              <PaymentSlip funcao={exibirValor} />
+              <div className="card-body">
+                {/* <h5 className="card-title">Secondary card title</h5> */}
+                <p className="card-text">
+                  Vencimento em 1 dia útil. A data de entrega será alterada
+                  devido ao tempo de processamento do Boleto.
+                </p>
+                <div>
+                  <p>{texto}</p>
+                  <p>{num}{num}</p>
+                </div>
+              </div>
+              {/* Fim do Card do Boleto */}
             </div>
           </div>
 
 
 
           {/* INICIO DO CARD DO RESUMO  */}
-        <div className="col-md-6 col-lg-5 order-md-last mt-2">
-          <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-black">Resumo do Pedido</span>
-          </h4>
-          <ul className="list-group mb-3">
-            <li className="list-group-item d-flex justify-content-between">
-              <div className="col-7 col-md-8 col-lg-8 format-resume">
-                <h6 className="my-0 mb-3 fw-bold">{cart[1]} {cart[2]}</h6>
-                <small className="col-12 col-md-6 col-lg-12">
-                 {cart[11]}
-                </small>
-              </div>
-              {/* <span className="text-muted font-text">R$ {cart[7]}</span> */}
-            </li>
-            <li className="list-group-item d-flex justify-content-between bg-light">
-              <div className="text-success">
-                <h6 className="my-0 font-text">Preço do Frete</h6>
-                <small className="font-text">Cep: 03145-050</small>
-              </div>
-              {/* <span className="text-success font-text">R$ 23.000,00</span> */}
-              <span className="text-success font-text">R$ {frete.valorFrete}</span>
-            </li>
+          <div className="col-md-6 col-lg-5 order-md-last mt-2">
+            <h4 className="d-flex justify-content-between align-items-center mb-3">
+              <span className="text-black">Resumo do Pedido</span>
+            </h4>
+            <ul className="list-group mb-3">
+              <li className="list-group-item d-flex justify-content-between">
+                <div className="col-7 col-md-8 col-lg-8 format-resume">
+                  <h6 className="my-0 mb-3 fw-bold">{cart[2]} {cart[3]}</h6>
+                  <small className="col-12 col-md-6 col-lg-12">
+                    {cart[12]}
+                  </small>
+                </div>
+                {/* <span className="text-muted font-text">R$ {cart[7]}</span> */}
+              </li>
+              <li className="list-group-item d-flex justify-content-between bg-light">
+                <div className="text-success">
+                  <h6 className="my-0 font-text">Preço do Frete</h6>
+                  <small className="font-text">Cep: 03145-050</small>
+                </div>
+                {/* <span className="text-success font-text">R$ 23.000,00</span> */}
+                <span className="text-success font-text">R$ {frete.valorFrete}</span>
+              </li>
 
-            <li className="list-group-item d-flex justify-content-between">
-              <span className="font-text-bold">Preço </span>
-              <strong className="font-text-bold">R$ {cart[7]}</strong>
-            </li>
+              <li className="list-group-item d-flex justify-content-between">
+                <span className="font-text-bold">Preço </span>
+                <strong className="font-text-bold">R$ {cart[8]}</strong>
+              </li>
 
-            <li className="list-group-item d-flex justify-content-between">
-              <span className="font-text-bold">Total (R$)</span>
-              <strong className="font-text-bold">R$ {frete.valorFrete+cart[7]}</strong>
-            </li>
-          </ul>
-          <div className="d-grid gap-2 d-md-block pt-2">
-            <div className="col-sm-12">
-              <SupportButton link="/Cart" name="Voltar para o Carrinho" />
-              <Button link="/orderResume" name="Finalizar Compra" />
+              <li className="list-group-item d-flex justify-content-between">
+                <span className="font-text-bold">Total (R$)</span>
+                <strong className="font-text-bold">R$ {frete.valorFrete + cart[8]}</strong>
+              </li>
+            </ul>
+            <div className="d-grid gap-2 d-md-block pt-2">
+              <div className="col-sm-12">
+                <SupportButton link="/Cart" name="Voltar para o Carrinho" />
+                <Button link="/Cart" name="Finalizar Compra"  />
+              </div>
             </div>
-          </div>
 
-          {/* </Button> */}
-        </div>
-        {/* FIM DO CARD DO RESUMO  */}
+            {/* </Button> */}
+          </div>
+          {/* FIM DO CARD DO RESUMO  */}
         </div>
         <Footer />
       </>
