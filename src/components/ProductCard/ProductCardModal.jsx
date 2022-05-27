@@ -16,6 +16,7 @@ export default function ProductCardModal(props) {
 
     let limitValue = 999999.99
     
+    
     const { addToCart } = useContext(CartContext)
 
     const history = useHistory()
@@ -26,10 +27,10 @@ export default function ProductCardModal(props) {
     }
 
 
-
     //INÍCIO: TRANSFORMAÇÃO PARA SEPARAÇÃO DE DEZENAS E MILHARES COM PADRÃO BRASILEIRO
     const priceConverted = (number) => {
         return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number)
+        console.log()
     }
     //FIM: TRANSFORMAÇÃO PARA SEPARAÇÃO DE DEZENAS E MILHARES COM PADRÃO BRASILEIRO
 
@@ -49,6 +50,7 @@ export default function ProductCardModal(props) {
                             <h5 className="modal-title px-1 font-title-modal ms-2 text-light">{props.marcaVeiculo} {props.modeloVeiculo}</h5>
                             <button type="button" className="btn-close bg-light me-2" onClick={props.hide}></button>
                         </div>
+                        
 
                         <div className="d-flex justify-content-center">
                             <div className="row modal-body row-cols-12 col-sm-12 col-md-12 col-lg-12">
@@ -108,6 +110,7 @@ export default function ProductCardModal(props) {
 
                                             <p className="col-6 css-font-family-modal text-end fs-6 my-0 css-font-family-modal">
                                                 {priceConverted(props.precoVeiculo)}
+                                               <p className="d-none">{props.precoVeiculo}</p> 
                                             </p>
 
                                         </div>
@@ -127,10 +130,10 @@ export default function ProductCardModal(props) {
 
                             </div>
                         </div>
-
+                                    
                         {
 
-                            props.price >= limitValue
+                            props.precoVeiculo >= limitValue
                                 ? <>
                                     <div className="modal-footer justify-content-center col-md-12 px-4 px-md-0">
                                         <div className="col-12 col-sm-12 col-md-3 col-lg-2 justify-content-center">
