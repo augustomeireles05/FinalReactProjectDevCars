@@ -48,9 +48,12 @@ export default function Home() {
     const getProducts = () => {
         axios.get(`${baseUrl}`)
             .then((response) => {
+                console.log(response.data)
                 setProducts(response.data)
             })
     }
+
+    
 
 
     return (

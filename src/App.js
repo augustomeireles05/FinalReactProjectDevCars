@@ -6,11 +6,11 @@ import { CartProvider } from './contexts/cart.provider'
 
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <Routes />
-      </Router>
-    </CartProvider>
+      <CartProvider>
+        <Router>
+          <Routes />
+        </Router>
+      </CartProvider>
   );
 }
 
