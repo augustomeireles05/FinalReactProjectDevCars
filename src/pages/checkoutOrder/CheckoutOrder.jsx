@@ -19,10 +19,10 @@ import { EnderecoModelo, CartaoModelo } from '../../models';
 function CheckoutOrder(props) {
 
   const URLEND = `${baseUrl}/enderecos/1` // setando cliente manualmente
-  const URLCART = `${baseUrl}/cartao/cliente/2` // setando cliente manualmente
+  const URLCART = `${baseUrl}/cartao/cliente/3` // setando cliente manualmente
 
   const URLendCad = `${baseUrl}/enderecos`
-  const URLcadastrarCartao = `${baseUrl}/cartao`
+  const URLcadastrarCartao = `${baseUrl}/cartao/`
 
   const [endereco, setEndereco] = useState([]);
   const [registerEndereco, setRegisterEndereco] = useState(EnderecoModelo);
@@ -39,6 +39,7 @@ function CheckoutOrder(props) {
         SetSuccessRegister(true)
         props.get()
       })
+      .catch(error => console.log(error))
   }
 
   const deleteEndereco = (id) => {
@@ -47,6 +48,7 @@ function CheckoutOrder(props) {
         alert('item removido com sucesso')
         props.get()
       })
+      .catch(error => console.log(error))
   }
 
   const CartaoCadastro = () => {
@@ -279,7 +281,7 @@ function CheckoutOrder(props) {
                       <Input type="text" aria-label="logradouro" id="logradouro"
                         onChange={(event) => {
                           //console.log(event.target.value)                         
-                          return setRegisterEndereco({ ...registerEndereco, rua: event.target.value })
+                          return setRegisterEndereco({ ...registerEndereco, ruaEndereco: event.target.value })
                         }} />
                     </div>
 
@@ -319,7 +321,7 @@ function CheckoutOrder(props) {
                         <Input type="text" aria-label="cep" id="cep"
                           onChange={(event) => {
                             //console.log(event.target.value)                         
-                            return setRegisterEndereco({ ...registerEndereco, cep: event.target.value })
+                            return setRegisterEndereco({ ...registerEndereco, cepEndereco: event.target.value })
                           }} />
                       </div>
                       <div className="col-12 col-sm-12 col-md-2 px-0">
@@ -327,7 +329,7 @@ function CheckoutOrder(props) {
                         <Input type="text" aria-label="uf" id="numero"
                           onChange={(event) => {
                             //console.log(event.target.value)                         
-                            return setRegisterEndereco({ ...registerEndereco, numero: event.target.value })
+                            return setRegisterEndereco({ ...registerEndereco, numeroEndereco: event.target.value })
                           }} />
                       </div>
                       <div className="col-12 col-sm-12 col-md-2 px-0">

@@ -1,5 +1,5 @@
 const CartaoModelo = {    
-    codCliente:2,
+    codCliente:3,
     codModalidadeCartao: 1,
     nomeTitular: "",        
     numeroCartao: "",

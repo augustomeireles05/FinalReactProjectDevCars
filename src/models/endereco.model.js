@@ -1,13 +1,12 @@
 const EnderecoModelo = {
     codCliente:1,
-    rua:"",
+    ruaEndereco:"",
     cidade: "",
     bairro: "",
     uf: "",
-    cep:"",
-    numero:"",
+    cepEndereco:"",
+    numeroEndereco:"",
     complemento: ""
 }
 export default EnderecoModelo
-
 
