@@ -1,5 +1,7 @@
+const id = parseInt(localStorage.getItem('user'))
+
 const CartaoModelo = {    
-    codCliente:2,
+    codCliente: id,
     codModalidadeCartao: 1,
     nomeTitular: "",        
     numeroCartao: "",

@@ -70,7 +70,7 @@ function CheckoutOrder(props) {
       console.log()
       axios.post(URLcadastrarCartao, CartaoModelo)
         .then((response) => {
-
+          getCheckoutOrderCartao()
         })
     }
 
@@ -644,26 +644,30 @@ function CheckoutOrder(props) {
                       <div className="col-12 col-sm-12 col-md-12 px-0">
                         <Label label="Número do cartão" for="cardnumber" />
                         <Input type="text" aria-label="cardnumber" id="numeroCartao"
-                          onChange={(event) => { setRegisterCartao({ ...registerCartao, numeroCartao: event.target.value }) }} />
+                         value={registerCartao.numeroCartao}
+                         onChange={(event) => { setRegisterCartao({...registerCartao, numeroCartao: event.target.value}) }} />
                       </div>
 
                       <div className="col-12 col-sm-12 col-md-12 row justify-content-between px-0 mx-0">
                         <div className="col-12 col-sm-12 col-md-6 pe-md-2 ps-0 ps-md-0 pe-0">
                           <Label label="Nome do titular" for="ownnername" />
                           <Input type="text" aria-label="ownnername" id="ownnername"
-                            onChange={(event) => { setRegisterCartao({ ...registerCartao, nomeTitular: event.target.value }) }} />
+                            value={registerCartao.nomeTitular}
+                            onChange={(event) => { setRegisterCartao({...registerCartao, nomeTitular: event.target.value}) }} />
                         </div>
 
                         <div className="col-12 col-sm-12 col-md-4 pe-md-2 ps-0 ps-md-0 pe-0">
                           <Label label="Data de validade" for="validdate" />
                           <Input type="text" aria-label="validdate" id="validdate"
-                            onChange={(event) => { setRegisterCartao({ ...registerCartao, validadeCartao: event.target.value }) }} />
+                            value={registerCartao.validadeCartao}
+                            onChange={(event) => { setRegisterCartao({...registerCartao, validadeCartao: event.target.value}) }} />
                         </div>
 
                         <div className="col-12 col-sm-12 col-md-2 px-0">
                           <Label label="CVV" for="cvv" />
                           <Input type="text" aria-label="uf" id="cvv"
-                            onChange={(event) => { setRegisterCartao({ ...registerCartao, cvv: event.target.value }) }} />
+                            value={registerCartao.cvv}
+                            onChange={(event) => { setRegisterCartao({...registerCartao, cvv: event.target.value}) }} />
                         </div>
                       </div>
 
