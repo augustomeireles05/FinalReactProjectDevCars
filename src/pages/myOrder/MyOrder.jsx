@@ -12,7 +12,7 @@ import Subtittle from '../../components/Subtittle/Subtittle'
 // import SupportButton from '../../components/Button/SupportButton'
 import MainTittle from '../../components/Tittle/MainTittle'
 
-// import SchedulingIcon from '../../assets/images/MyOrder/andamento.png'
+import SchedulingIcon from '../../assets/images/MyOrder/andamento.png'
 import Cancelstatusicon from '../../assets/images/MyOrder/cancelado.png'
 import Deliveredicon from '../../assets/images/MyOrder/entregue.png'
 
@@ -30,13 +30,12 @@ function MyOrder() {
 
     // const {id} = useContext(LoginContext)
    
-    const id = localStorage.getItem('user')
-    console.log(id)
+    const id = parseInt(localStorage.getItem('user'))
  
 
 
     const getOrders = () => {
-        axios.get(`${baseUrl}/placeorder/'${id}'`)
+        axios.get(`${baseUrl}/placeorder/${id}`)
             .then((response) => {
                 setOrders(response.data)
                 console.log(response)
@@ -81,7 +80,9 @@ function MyOrder() {
                             <div className="col status-pedido d-flex align-items-center justify-content-center">
 
 
-                                {item.status == "CANCELADO" ? <img src={Cancelstatusicon} alt="cancelado" className="figura-status" /> : <img src={Deliveredicon} alt="cancelado" className="figura-status" />}
+                                {item.status == "EM ROTA" ? <img src={SchedulingIcon} alt="em rota" className="figura-status" /> : <img src={Deliveredicon} alt="entregue" className="figura-status" />}
+
+                                
 
 
                                 <span className="ms-1">{item.status}</span>
@@ -155,12 +156,12 @@ function MyOrder() {
                                 </div>
 
 
-                                <div className="col-sm">
+                                {/* <div className="col-sm">
                                     <div className="d-flex flex-column text-sm-center">
                                         <span className="titulo-descricao-data mt-5 mt-md-4 text-md-start mt-sm-0">DATA DE ENTREGA</span>
                                         <span className="descricao-data text-md-start">25/12/2021</span>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             {/* fim dos detalhes de entrega */}
 

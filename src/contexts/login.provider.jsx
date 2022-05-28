@@ -1,6 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { api, createSession } from '../envinromentsLogin'
+import axios from 'axios'
+
 
 
 export const LoginContext = createContext({})
@@ -14,7 +16,7 @@ export function LoginProvider(props) {
     const [id, setId] = useState('')
 
 
-    
+
 
 
     useEffect(() => {
@@ -44,28 +46,29 @@ export function LoginProvider(props) {
             localStorage.setItem("user", JSON.stringify(loggedUser))
             localStorage.setItem("token", token)
             localStorage.setItem("nome", nome)
+            localStorage.setItem("email", email)
 
             setUserName(nome)
             setId(localStorage.getItem('user'))
 
-            api.defaults.headers.Authorization = `Bearer ${token}`
+      
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
             setUser(loggedUser)
             history.push("/")
 
-            console.log("token:", response.data.token)
+            console.log("token:", token)
             console.log("login auth: ", response)
-            console.log("id global: ", id)
             console.log("nome: ", nome)
             console.log("id: ", loggedUser)
 
 
         } catch (erro) {
 
-           console.log("erro: ", erro)
+            console.log("erro: ", erro)
 
-        //    alert("erro ao logoar")
-            
+            //    alert("erro ao logoar")
+
         }
 
 
@@ -80,7 +83,8 @@ export function LoginProvider(props) {
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         localStorage.removeItem("nome")
-        api.defaults.headers.Authorization = null
+        localStorage.removeItem("email")
+        delete axios.defaults.headers.common['Authorization']
         setUser(null)
         history.push("/")
     }
