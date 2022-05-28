@@ -14,24 +14,37 @@ import Subtitle from '../../components/Subtittle/Subtittle'
 
 import { baseUrl } from '../../environments'
 
-import { PFClient } from '../../models'
-import { PJClient } from '../../models'
+// import { PFClient } from '../../models'
+// import { PJClient } from '../../models'
 
 import MaskedInput from '../../util/maskedInput'
 
-const initialValues = {
-    cpf: '',
-    cnpj: ''
-};
+const initialValuesPF = {
+    numeroDocumento: "",
+    nomeCliente: "",
+    dataNascimento: "",
+    emailCliente: "",
+    telefoneCliente: "",
+    senhaCliente: ""
+}
+
+const initialValuesPJ = {
+    razaoSocial: "",
+    emailCliente: "",
+    numeroDocumento: "",
+    inscricaoEstadual: "",
+    telefoneCliente: "",
+    senhaCliente: ""
+}
 
 
 function Register() {
 
-    const [values, setValues] = useState(initialValues);
+    // const [values, setValues] = useState(initialValues);
     const history = useHistory()
     const URLPF = `${baseUrl}/cliente/f`
 
-    const [registerPF, setRegisterPF] = useState(PFClient)
+    const [registerPF, setRegisterPF] = useState(initialValuesPF)
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const [status, setStatus] = useState({
@@ -40,10 +53,7 @@ function Register() {
     })
 
     function handleChange(event) {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value
-        });
+        setRegisterPF({ ...registerPF, numeroDocumento: event.target.value });
     }
 
 
@@ -57,13 +67,11 @@ function Register() {
 
         history.push("/login")
         console.log("registrado")
-
-
     }
 
     //INICIO DE TRATAMENTO DE PESSOA JURÍDICA
     const URLPJ = `${baseUrl}/cliente/j`
-    const [registerPJ, setRegisterPJ] = useState(PJClient)
+    const [registerPJ, setRegisterPJ] = useState(initialValuesPJ)
 
     const [confirmPasswordPJ, setConfirmPasswordPJ] = useState('')
 
@@ -132,27 +140,39 @@ function Register() {
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="CPF" htmlFor="cpf" />
-                                <Input type="text" aria-label="cpf" id="cpf" maxlength="17" value={registerPF.numeroDocumento}
-                                    onChange={(event) => { setRegisterPF({ ...registerPF, numeroDocumento: event.target.value }) }} />
-                                {/* <MaskedInput
+                                {/* <Input type="text" aria-label="cpf" id="cpf" maxLength="17" value={registerPF.numeroDocumento}
+                                    onChange={(event) => { setRegisterPF({ ...registerPF, numeroDocumento: event.target.value }) }}/> */}
+                                <MaskedInput
+                                    type="text" aria-label="cpf"
+                                    id="cpf"
                                     name="cpf"
                                     mask="999.999.999-99"
-                                    value={values.cpf}
+                                    value={registerPF.numeroDocumento}
                                     onChange={handleChange}
-                                /> */}
+                                    maxLength={17}
+                                />
                             </div>
                         </div>
 
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Data de Nascimento" htmlFor="dtNascimento" />
-                                <Input type="text" aria-label="dtNascimento" maxlength="8" id="dtNascimento" value={registerPF.dataNascimento}
+                                <Input type="text" aria-label="dtNascimento" maxlength="10" id="dtNascimento" value={registerPF.dataNascimento}
                                     onChange={(event) => { setRegisterPF({ ...registerPF, dataNascimento: event.target.value }) }} />
+                                {/* <MaskedInput
+                                    type="text" aria-label="dataNascimento"
+                                    id="dataNascimento"
+                                    name="dataNascimento"
+                                    mask="9999-99-99"
+                                    value={registerPF.dataNascimento}
+                                    onChange={handleChange}
+                                    maxLength={8}
+                                /> */}
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="Telefone" htmlFor="telefonePF" />
-                                <Input type="text" aria-label="telefonePF" maxlength="11" id="telefonePF" value={registerPF.telefoneCliente}
-                                    onChange={(event) => { setRegisterPF({ ...registerPF, telefoneCliente: event.target.value }) }} />
+                                <MaskedInput type="text" aria-label="telefonePF" maxlength="18" id="telefonePF" value={registerPF.telefoneCliente}
+                                    onChange={(event) => { setRegisterPF({ ...registerPF, telefoneCliente: event.target.value }) }} mask="(99)99999-9999"/>
                             </div>
                         </div>
 
@@ -270,8 +290,10 @@ function Register() {
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="CNPJ" htmlFor="cnpj" />
-                                <Input type="text" aria-label="cnpj" maxlength="14" id="cnpj" value={registerPJ.numeroDocumento}
-                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, numeroDocumento: event.target.value }) }} />
+                                {/* <Input type="text" aria-label="cnpj" maxlength="14" id="cnpj" value={registerPJ.numeroDocumento}
+                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, numeroDocumento: event.target.value }) }} /> */}
+                                <MaskedInput type="text" aria-label="cnpj" maxLength={15} id="cnpj" value={registerPJ.numeroDocumento}
+                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, numeroDocumento: event.target.value }) }} name="cnpj" mask="99.999.999/9999-99"/>
                             </div>
                         </div>
 
@@ -280,14 +302,16 @@ function Register() {
                         <div className="row">
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Inscrição Estadual" htmlFor="inscrEstadual" />
-                                <Input type="text" aria-label="inscrEstadual" maxlength="11" id="inscrEstadual" value={registerPJ.inscricaoEstadual}
-                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, inscricaoEstadual: event.target.value }) }} />
+                                <MaskedInput type="text" aria-label="inscrEstadual" maxLength={15} id="inscrEstadual" value={registerPJ.inscricaoEstadual}
+                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, inscricaoEstadual: event.target.value }) }} name="inscrEstadual" mask="9999999999999-9"/>
 
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Telefone" htmlFor="telefonePJ" />
-                                <Input type="text" aria-label="telefonePJ" maxlength="11" id="telefonePJ" value={registerPJ.telefoneCliente}
-                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, telefoneCliente: event.target.value }) }} />
+                                {/* <Input type="text" aria-label="telefonePJ" maxlength="11" id="telefonePJ" value={registerPJ.telefoneCliente}
+                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, telefoneCliente: event.target.value }) }} /> */}
+                                <MaskedInput type="text" aria-label="telefonePJ" maxlength="18" id="telefonePJ" value={registerPJ.telefoneCliente}
+                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, telefoneCliente: event.target.value }) }} mask="(99)99999-9999" />
                             </div>
                         </div>
 

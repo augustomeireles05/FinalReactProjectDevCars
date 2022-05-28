@@ -4,7 +4,7 @@ import '../components/Input/Input.css'
 
 const onlyNumbers = (str) => str.replace(/[^0-9]/g, '');
 
-const MaskedInput = ({ value, onChange, name, mask }) => {
+const MaskedInput = ({ value, onChange, name, mask, maxlength, id}) => {
     function handleChange(event) {
         onChange({
             ...event,
@@ -18,6 +18,8 @@ const MaskedInput = ({ value, onChange, name, mask }) => {
 
     return (
         <InputMask className="input-style col-12 p-3 fs-6"
+            id={id}
+            maxlength={maxlength}
             name={name}
             mask={mask}
             value={value}
