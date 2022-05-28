@@ -17,11 +17,17 @@ import { baseUrl } from '../../environments'
 import { PFClient } from '../../models'
 import { PJClient } from '../../models'
 
+import MaskedInput from '../../util/maskedInput'
 
-
+const initialValues = {
+    cpf: '',
+    cnpj: ''
+};
 
 
 function Register() {
+
+    const [values, setValues] = useState(initialValues);
     const history = useHistory()
     const URLPF = `${baseUrl}/cliente/f`
 
@@ -32,6 +38,13 @@ function Register() {
         type: '',
         mensagem: ''
     })
+
+    function handleChange(event) {
+        setValues({
+            ...values,
+            [event.target.name]: event.target.value
+        });
+    }
 
 
     const registerPFClient = () => {
@@ -67,7 +80,7 @@ function Register() {
     }
 
     const comparePasswordsPJ = () => {
-        if (registerPJ.senhaCliente != confirmPasswordPJ) {
+        if (registerPJ.senhaCliente !== confirmPasswordPJ) {
             <div className="invalid-feedback">
                 Senhas divergentes
             </div>
@@ -119,8 +132,14 @@ function Register() {
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-3">
                                 <Label label="CPF" htmlFor="cpf" />
-                                <Input type="text" aria-label="cpf" id="cpf" maxlength="14" value={registerPF.numeroDocumento}
+                                <Input type="text" aria-label="cpf" id="cpf" maxlength="17" value={registerPF.numeroDocumento}
                                     onChange={(event) => { setRegisterPF({ ...registerPF, numeroDocumento: event.target.value }) }} />
+                                {/* <MaskedInput
+                                    name="cpf"
+                                    mask="999.999.999-99"
+                                    value={values.cpf}
+                                    onChange={handleChange}
+                                /> */}
                             </div>
                         </div>
 

@@ -1,8 +1,29 @@
-export const cpfMask = value => {
-    return value
-        .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
-        .replace(/(\d{3})(\d)/, '$1.$2') // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
-        .replace(/(\d{3})(\d)/, '$1.$2')
-        .replace(/(\d{3})(\d{1,2})/, '$1-$2')
-        .replace(/(-\d{2})\d+?$/, '$1') // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
-}
+import React from 'react';
+import InputMask from 'react-input-mask';
+import '../components/Input/Input.css'
+
+const onlyNumbers = (str) => str.replace(/[^0-9]/g, '');
+
+const MaskedInput = ({ value, onChange, name, mask }) => {
+    function handleChange(event) {
+        onChange({
+            ...event,
+            target: {
+                ...event.target,
+                name,
+                value: onlyNumbers(event.target.value)
+            }
+        });
+    }
+
+    return (
+        <InputMask className="input-style col-12 p-3 fs-6"
+            name={name}
+            mask={mask}
+            value={value}
+            onChange={handleChange}
+        />
+    );
+};
+
+export default MaskedInput;
