@@ -95,8 +95,8 @@ function CheckoutOrder(props) {
 
         })
 
-      deleteCart('cart')
-
+        deleteCart('cart')
+      
 
       history.push("/")
 
@@ -217,7 +217,7 @@ function CheckoutOrder(props) {
                 <div className="d-grid d-flex justify-content-start"  >
                   <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" onClick={addCart} value={item.codCartao} />
                   <span className="space-input">Crédito  <br />
-                    Bandeira:  <br />
+                    {/* Bandeira:  <br /> */}
                     Número do cartão: {item.numeroCartao} <br />
                     Nome do titular: {item.nomeTitular} <br />
                     Data de validade: {item.validadeCartao} <br />
@@ -753,7 +753,7 @@ function CheckoutOrder(props) {
 
 
               {/* Início do Card do Pix */}
-              <div className="card-header">
+              {/* <div className="card-header">
                 <div className="form-check">
                   <input className="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" />
                   <span className="icon-payment">
@@ -767,7 +767,7 @@ function CheckoutOrder(props) {
                   Vencimento em 30 minutos. Após o pagamento seu pedido será
                   processado.
                 </p>
-              </div>
+              </div> */}
               {/* Fim do Card do Pix */}
 
               {/* Início do Card do Boleto */}
