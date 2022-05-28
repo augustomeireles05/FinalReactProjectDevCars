@@ -1,6 +1,7 @@
 import './Cart.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+import trash from '../../assets/images/CheckoutOrder/trash.png'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -30,35 +31,41 @@ function Cart() {
 
             <div className="row col-11 col-md-11 col-lg-12 col-xl-12 align-items-center bg-body rounded-3 shadow justify-content-center py-lg-3 m-auto">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pt-md-0 pt-lg-0 pt-2 pt-md-2 pt-lg-0 pt-xl-0">
-                    <img src={cart[10]} className="img-fluid" />
+                    <img src={cart[11]} className="img-fluid" />
                 </div>
                 <div className="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
 
                     <div className="font-cart">
-                        <p className="text-center pt-3 fw-bold m-0">{cart[1]} {cart[2]}</p>
+                        <p className="text-center pt-3 fw-bold m-0">{cart[2]} {cart[3]}</p>
                     </div>
                     <div className="">
                         <p className="texto-alinhado p-2">
-                            {cart[11]}
+                            {cart[12]}
                         </p>
                     </div>
                 </div>
-                <div className="row col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center p-0 mb-3 mb-md-0 mb-lg-0 mb-3 mb-md-4 mb-lg-0">
+                <div className="row col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center p-0 mb-3 mb-md-0 mb-lg-0 mb-3 mb-md-4 mb-lg-0 d-flex align-items-center">
 
                     <div className="col-8 col-sm-8 col-md-8 col-lg-9 col-xl-9">
                         <p className="text-center m-0 price-style">
-                            {priceConverted(cart[7])}
+                            {priceConverted(cart[8])}
                         </p>
                     </div>
                     {/* Inicio Lixeira */}
                     <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 d-flex justify-content-start ">
-                        <Button className="" name='x'
-                            onClick={() => {
-                                deleteCart('cart')
-                                getCart()
-                            }
-                            }>
-                        </Button>
+
+
+
+
+                        <button type="button" className="btn px-0 mb-2" title="Excluir" onClick={() => {
+                            deleteCart('cart')
+                            getCart()
+                        }}>
+                            <img className="btn" src={trash} width="50" alt="Lixeira" title="Excluir" />
+                        </button>
+
+
+
                     </div>
 
                 </div>
@@ -130,7 +137,7 @@ function Cart() {
                                         <h1> Garagem vazia </h1>
                                     </div>
                                     <div className="col-11 col-md-11 col-lg-12 col-xl-12 d-lg-flex justify-content-lg-end">
-                                        <Button link="/inventory" name="Estoque"/>
+                                        <Button link="/inventory" name="Estoque" />
                                     </div>
                                 </>
 

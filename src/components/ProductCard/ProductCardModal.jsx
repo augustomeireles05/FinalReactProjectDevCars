@@ -10,13 +10,11 @@ import CartContext from '../../contexts/cart.provider'
 
 
 
-// const CartContext = React.createContext()
-
 export default function ProductCardModal(props) {
 
     let limitValue = 999999.99
-    
-    
+   
+   
     const { addToCart } = useContext(CartContext)
 
     const history = useHistory()
@@ -35,7 +33,7 @@ export default function ProductCardModal(props) {
     //FIM: TRANSFORMAÇÃO PARA SEPARAÇÃO DE DEZENAS E MILHARES COM PADRÃO BRASILEIRO
 
 
-        
+       
         let modelStyle = {
             display: 'block',
             backgroundColor: 'rgba(0,0,0,0.8)',
@@ -50,7 +48,7 @@ export default function ProductCardModal(props) {
                             <h5 className="modal-title px-1 font-title-modal ms-2 text-light">{props.marcaVeiculo} {props.modeloVeiculo}</h5>
                             <button type="button" className="btn-close bg-light me-2" onClick={props.hide}></button>
                         </div>
-                        
+                       
 
                         <div className="d-flex justify-content-center">
                             <div className="row modal-body row-cols-12 col-sm-12 col-md-12 col-lg-12">
@@ -95,22 +93,11 @@ export default function ProductCardModal(props) {
                                         <div className="row justify-content-center col-12 border border-2  border-dark mx-0 d-flex align-items-center mt-2 background-datasheet-lighter">
                                             <p className="col-6 text-start fs-6 my-0">Preço:</p>
 
-                                            {/* INICIO: APLICAÇÃO SEM O FORMATO DE MOEDA BRASILEIRA */}
-                                            {/* <CurrencyFormat
-                                            value={this.props.price.toFixed(2)}
-                                            displayType={'text'}
-                                            thousandSeparator={true}
-                                            prefix={'R$ '}
-                                            renderText={value =>
-                                                <p className="col-6 css-font-family-modal text-end fs-6 my-0 css-font-family-modal">
-                                                    {value}
-                                                </p>}
-                                        /> */}
-                                            {/* FIM: APLICAÇÃO SEM O FORMATO DE MOEDA BRASILEIRA */}
+                                           
 
                                             <p className="col-6 css-font-family-modal text-end fs-6 my-0 css-font-family-modal">
                                                 {priceConverted(props.precoVeiculo)}
-                                               <p className="d-none">{props.precoVeiculo}</p> 
+                                               <p className="d-none">{props.precoVeiculo}</p>
                                             </p>
 
                                         </div>
@@ -130,7 +117,7 @@ export default function ProductCardModal(props) {
 
                             </div>
                         </div>
-                                    
+                                   
                         {
 
                             props.precoVeiculo >= limitValue
@@ -147,7 +134,7 @@ export default function ProductCardModal(props) {
                                             <Button link="/checkoutScheduling" name="Agendar" />
                                         </div>
                                         <div className="col-12 col-sm-12 col-md-3 col-lg-2">
-                                            <Button name="Comprar" 
+                                            <Button name="Comprar"
                                                 onClick={handleAddToCart}
                                             />
                                         </div>
