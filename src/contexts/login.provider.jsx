@@ -51,7 +51,7 @@ export function LoginProvider(props) {
             setUserName(nome)
             setId(localStorage.getItem('user'))
 
-      
+     
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
             setUser(loggedUser)

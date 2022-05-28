@@ -1,4 +1,4 @@
-const Endereco = {
+const EnderecoModelo = {
     cep:"",
     rua:"",
     complemento: "",
@@ -7,6 +7,6 @@ const Endereco = {
     cidade: "",
     uf: ""
 }
-export default Endereco
+export default EnderecoModelo
 
 

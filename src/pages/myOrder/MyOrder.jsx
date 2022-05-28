@@ -191,9 +191,9 @@ function MyOrder() {
 
 
                             {/* imprimir nf */}
-                            <div className="imprimir-nf mt-5 text-end">
+                            {/* <div className="imprimir-nf mt-5 text-end">
                                 <Link to={"#"} className="text-decoration-none text-dark p-2 rounded-1 btn-nfe">Download da N-F Eletrônica</Link>
-                            </div>
+                            </div> */}
                             {/* fim do imprimir nf */}
                         </div>
 

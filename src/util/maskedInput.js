@@ -28,4 +28,8 @@ const MaskedInput = ({ value, onChange, name, mask, maxlength, id}) => {
     );
 };
 
+<<<<<<< HEAD
 export default MaskedInput;
+=======
+export default MaskedInput;
+>>>>>>> 264fc3d32c4887bf7f01fdce98b777a212c52c8b

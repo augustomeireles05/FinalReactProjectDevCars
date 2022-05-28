@@ -303,7 +303,7 @@ function Register() {
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
                                 <Label label="Inscrição Estadual" htmlFor="inscrEstadual" />
                                 <MaskedInput type="text" aria-label="inscrEstadual" maxLength={15} id="inscrEstadual" value={registerPJ.inscricaoEstadual}
-                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, inscricaoEstadual: event.target.value }) }} name="inscrEstadual" mask="9999999999999-9"/>
+                                    onChange={(event) => { setRegisterPJ({ ...registerPJ, inscricaoEstadual: event.target.value }) }} name="inscrEstadual" mask="999.999.999.999"/>
 
                             </div>
                             <div className="col-12 col-md-12 col-lg-6 mb-5">
