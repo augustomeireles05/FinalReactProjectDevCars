@@ -114,14 +114,7 @@ function MyData() {
                                 { /*2 FORMULARIO*/}
                                 <form>
                                     <div className="row mb-5">
-                                        <div className="col-12 col-md-6">
-                                            <div className="mb-3">
-                                                <Input type="password" aria-label="password" />
-                                                <Label label="Informe sua senha atual" />
-                                            </div>
-
-                                        </div>
-
+                                       
                                         <div className="col-12 col-md-6">
                                             <div className="mb-3">
                                                 <Input type="password" aria-label="password" />

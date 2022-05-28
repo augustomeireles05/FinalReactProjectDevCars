@@ -27,6 +27,8 @@ function Inventory() {
         })
     }
 
+    
+
     return (
         <>
             <Header />
