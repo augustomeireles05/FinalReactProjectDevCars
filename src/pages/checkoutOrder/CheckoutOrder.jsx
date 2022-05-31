@@ -15,7 +15,7 @@ import { baseUrl } from '../../environments';
 import React, { useEffect, useState, useContext } from 'react'
 import CartContext from '../../contexts/cart.provider'
 import { useHistory } from 'react-router-dom'
-import { Endereco, CartaoModelo, Pedido } from '../../models';
+import { EnderecoModelo, CartaoModelo, Pedido } from '../../models';
 import PaymentSlip from '../../components/PaymentSlip/PaymentSlip'
 
 
@@ -43,7 +43,7 @@ function CheckoutOrder(props) {
   const URLcadastrarPedido = `${baseUrl}/placeorder`
 
   const [endereco, setEndereco] = useState([]);
-  const [registerEndereco, setRegisterEndereco] = useState(Endereco);
+  const [registerEndereco, setRegisterEndereco] = useState(EnderecoModelo);
   const [registerCartao, setRegisterCartao] = useState(CartaoModelo);
   const [cartao, setCartao] = useState([]);
   const [successRegister, SetSuccessRegister] = useState(false);
@@ -352,44 +352,44 @@ function CheckoutOrder(props) {
                     <div className="container">
                       <div className="col-12 col-sm-12 col-md-12 px-0">
                         <Label label="Rua" for="rua" />
-                        <Input type="text" aria-label="logradouro" id="logradouro" value={Endereco.rua}
-                          onChange={(event) => { setRegisterEndereco({ ...Endereco, rua: event.target.value }) }} />
+                        <Input type="text" aria-label="logradouro" id="logradouro" value={EnderecoModelo.rua}
+                          onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, rua: event.target.value }) }} />
                       </div>
 
                       <div className="col-12 col-sm-12 col-md-12 row justify-content-between px-0 mx-0">
                         <div className="col-12 col-sm-12 col-md-6 pe-md-2 ps-0 ps-md-0 pe-0">
                           <Label label="Cidade" for="cidade" />
-                          <Input type="text" aria-label="cidade" id="cidade" value={Endereco.cidade}
-                            onChange={(event) => { setRegisterEndereco({ ...Endereco, cidade: event.target.value }) }} />
+                          <Input type="text" aria-label="cidade" id="cidade" value={EnderecoModelo.cidade}
+                            onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, cidade: event.target.value }) }} />
                         </div>
 
                         <div className="col-12 col-sm-12 col-md-4 pe-md-2 ps-0 ps-md-0 pe-0">
                           <Label label="Bairro" for="bairro" />
-                          <Input type="text" aria-label="bairro" id="bairro" value={Endereco.bairro}
-                            onChange={(event) => { setRegisterEndereco({ ...Endereco, bairro: event.target.value }) }} />
+                          <Input type="text" aria-label="bairro" id="bairro" value={EnderecoModelo.bairro}
+                            onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, bairro: event.target.value }) }} />
                         </div>
 
                         <div className="col-12 col-sm-12 col-md-2 px-0">
                           <Label label="UF" for="uf" />
-                          <Input type="text" aria-label="uf" id="uf" value={Endereco.uf}
-                            onChange={(event) => { setRegisterEndereco({ ...Endereco, uf: event.target.value }) }} />
+                          <Input type="text" aria-label="uf" id="uf" value={EnderecoModelo.uf}
+                            onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, uf: event.target.value }) }} />
                         </div>
                       </div>
 
                       <div className="col-12 col-sm-12 col-md-12 row justify-content-between px-0 mx-0">
                         <div className="col-12 col-sm-12 col-md-10 pe-md-2 ps-0 ps-md-0 pe-0">
-                          <Label label="Cep" for="cep" value={Endereco.uf}
-                            onChange={(event) => { setRegisterEndereco({ ...Endereco, uf: event.target.value }) }} />
+                          <Label label="Cep" for="cep" value={EnderecoModelo.uf}
+                            onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, uf: event.target.value }) }} />
                           <Input type="text" aria-label="cep" id="cep" />
                         </div>
                         <div className="col-12 col-sm-12 col-md-2 px-0">
-                          <Label label="Nº" for="numero" value={Endereco.numero}
-                            onChange={(event) => { setRegisterEndereco({ ...Endereco, numero: event.target.value }) }} />
+                          <Label label="Nº" for="numero" value={EnderecoModelo.numero}
+                            onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, numero: event.target.value }) }} />
                           <Input type="text" aria-label="uf" id="numero" />
                         </div>
                         <div className="col-12 col-sm-12 col-md-2 px-0">
-                          <Label label="Complemento" for="complemento" value={Endereco.complemento}
-                            onChange={(event) => { setRegisterEndereco({ ...Endereco, complemento: event.target.value }) }} />
+                          <Label label="Complemento" for="complemento" value={EnderecoModelo.complemento}
+                            onChange={(event) => { setRegisterEndereco({ ...EnderecoModelo, complemento: event.target.value }) }} />
                           <Input type="text" aria-label="complemento" id="numero" />
                         </div>
                       </div>
