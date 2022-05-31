@@ -109,14 +109,14 @@ function Header() {
                                     </Link>
 
                                     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                                        
+                                       
                                             <>
                                                 {/* <li>
                                                     <Link to="/cart" className="dropdown-item">
                                                         <span className="font-menu" data-bs-dismiss="offcanvas">Carrinho</span>
                                                     </Link>
                                                 </li> */}
-                                                
+                                               
                                                 <li>
                                                     <Link to="/myData" className="dropdown-item">
                                                         <span className="font-menu" data-bs-dismiss="offcanvas">Meus dados</span>
@@ -138,11 +138,11 @@ function Header() {
                                                 <li>
                                                     <button onClick={handleLogout} className="dropdown-item">
                                                         <span className="font-menu" data-bs-dismiss="offcanvas">Sair</span>
-                                                        
+                                                       
                                                     </button>
                                                 </li>
                                             </>
-                                            
+                                           
 
                                             {/* <Link to="/login" className="dropdown-item">
                                                 <span className="font-menu" data-bs-dismiss="offcanvas">Logar</span>

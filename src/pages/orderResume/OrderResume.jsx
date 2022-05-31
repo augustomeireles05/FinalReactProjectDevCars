@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './OrderResume.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -9,9 +9,34 @@ import Subtittle from '../../components/Subtittle/Subtittle'
 
 import Awardicon from '../../assets/images/OrderDetails/certificado-de-garantia.png'
 import Checkedicon from '../../assets/images/OrderDetails/checked.png'
+import { baseUrl } from '../../environments'
+import axios from 'axios';
+import { useParams } from 'react-router-dom'
+
+function OrderResume(props) {
+
+    const [pedido, setPedido] = useState([]);
+    const { codPedido } = useParams()
 
 
-function OrderResume() {
+    useEffect(() => {
+        getPedido()
+    }, [])
+
+    const getPedido = () => {
+        axios.get(`${baseUrl}/placeorder/resume/${codPedido}`)
+            .then((response) => {
+                console.log(response.data)
+                setPedido(response.data)
+            })
+    }
+
+    //INÍCIO: TRANSFORMAÇÃO PARA SEPARAÇÃO DE DEZENAS E MILHARES COM PADRÃO BRASILEIRO
+    const priceConverted = (number) => {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number)
+    }
+    //FIM: TRANSFORMAÇÃO PARA SEPARAÇÃO DE DEZENAS E MILHARES COM PADRÃO BRASILEIRO
+
     return (
         <>
 
@@ -45,7 +70,7 @@ function OrderResume() {
                                         <img src={Checkedicon} alt="sucesso" className="img-sucess" />
                                     </div>
 
-                                    <p className="text-center numero-pedido">NÚMERO DO PEDIDO: 004742 </p>
+                                    <p className="text-center numero-pedido">NÚMERO DO PEDIDO: {props.codPedido} </p>
                                 </div>
 
                                 <div className="detalhes-pedido p-2">
@@ -57,7 +82,7 @@ function OrderResume() {
                                         <h4 className="col-12 mb-2 pt-2">PRODUTO:</h4>
                                         <div className="produtos d-flex justify-content-start">
                                             <div className="produto col-12">
-                                                <p className="fs-6">PORSCHE 911 CARRERA 2021</p>
+                                                <p className="fs-6">{props.marcaVeiculo} {props.modeloVeiculo}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -66,26 +91,26 @@ function OrderResume() {
                                     <div className="row resumo-pgmt mb-3">
                                         <h3 className="mb-2 pt-2">FORMA DE PAGAMENTO:</h3>
                                         <div className="d-flex flex-column flex-lg-row  justify-content-between align-items-start w-100">
-                                            <p className="text-start fs-6">CARTÃO DE CRÉDITO</p>
+                                            <p className="text-start fs-6">{props.formaPagamento}</p>
                                             <p className="text-center fs-6">9486.XXXX.XXXX.5030</p>
-                                            <p className="text-end fs-6">3X DE R$ 133.383,33</p>
+                                            <p className="text-end fs-6">3X de -----</p>
                                         </div>
                                     </div>
 
                                     <div className="row resumo-endereco mb-3">
                                         <h3 className="mb-2 pt-2">ENDEREÇO DE ENTREGA:</h3>
-                                        <p className="fs-6"> RUA PRAÇA ROBERTO PEDRO GOMES Nº 101 MORUMBI SÃO PAULO/SP</p>
-                                        <p>CEP: 12332-032</p>
+                                        <p className="fs-6">{pedido.ruaEndereco},{pedido.numeroEndereco}</p>
+                                        <p>{props.cepEndereco}</p>
                                     </div>
 
                                     <div className="row data-pedido mb-3">
                                         <h3 className="col-6 pt-2">DATA DO PEDIDO</h3>
-                                        <p className="col-6 text-end pt-2 fs-6">01/02/2022</p>
+                                        <p className="col-6 text-end pt-2 fs-6">{props.dataPedido}</p>
                                     </div>
 
                                     <div className="row valor-total mb-5">
                                         <h3 className="col-6 pt-2">VALOR TOTAL</h3>
-                                        <p className="col-6 text-end pt-2 fs-6">R$400.149,99</p>
+                                    <p className="col-6 text-end pt-2 fs-6">{priceConverted(props.valorTotal)}</p>
                                     </div>
                                 </div>
                             </div>

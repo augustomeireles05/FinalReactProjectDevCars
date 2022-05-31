@@ -77,17 +77,17 @@ function Contact() {
                                         <div className="col-md-12 signin-form-contact">
 
                                             <Label label="Nome" htmlFor="nome" />
-                                            <Input type="text" aria-label="nome" id="nome" 
+                                            <Input type="text" aria-label="nome" id="nome"
                                                 value={nome}
                                                 onChange={event => {setNome(event.target.value)}}
                                             />
 
 
                                             <Label label="Email" htmlFor="email" />
-                                            <Input type="email" aria-label="email" id="email" 
+                                            <Input type="email" aria-label="email" id="email"
                                                 value={email}
                                                 onChange={event => {setEmail(event.target.value)}}
-                                            
+                                           
                                             />
 
 
