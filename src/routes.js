@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Home from './pages/home/Home'
 import Product from './pages/product/Product'
 import Cart from './pages/cart/Cart'
+import CartSchedulle from './pages/cart/CartSchedulle.jsx'
 import MyOrder from './pages/myOrder/MyOrder'
 import AboutUs from './pages/aboutUs/AboutUs'
 import CheckoutOrder from './pages/checkoutOrder/CheckoutOrder'
@@ -49,6 +50,7 @@ export const Routes = () => {
                 <Route path="/product" component={Product} />
                 <Route path="/aboutUs" component={AboutUs} />
                 <PrivateRoute path="/cart" component={Cart} />
+                <PrivateRoute path="/cartSchedulle" component={CartSchedulle} />
                 <PrivateRoute path="/checkoutOrder" component={CheckoutOrder }/>
                 <PrivateRoute path="/checkoutScheduling" component={CheckoutScheduling} />
                 <Route path="/contact" component={Contact} />

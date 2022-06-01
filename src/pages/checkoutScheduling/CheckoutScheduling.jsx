@@ -10,7 +10,7 @@ import SupportButton from "../../components/Button/SupportButton";
 
 
 
-
+import Calendar from '../../components/Calendar/Calendar.jsx'
 import Input from '../../components/Input/Input'
 import Label from '../../components/Input/Label'
 import Subtittle from '../../components/Subtittle/Subtittle'
@@ -148,10 +148,10 @@ function CheckoutScheduling() {
             <div className="card-body font-text">
               {/* <h5 className="card-title">Secondary card title</h5> */}
               <p className="card-text">
-                Bandeira: MASTERCARD <br/>
-                Número do cartão: ****.****.****.0564 <br/>
+                Bandeira: MASTERCARD <br />
+                Número do cartão: ****.****.****.0564 <br />
                 Nome do titular: MARIA AUXILIADORA DE JESUS <br />
-                Data de validade: 03/30 <br/>
+                Data de validade: 03/30 <br />
                 CPF: 099.***.***-09
               </p>
             </div>
@@ -178,10 +178,10 @@ function CheckoutScheduling() {
             <div className="card-body font-text margin-card">
               <h5 className="card-title">Secondary card title</h5>
               <p className="card-text">
-                Bandeira: MASTERCARD <br/>
-                Número do cartão: ****.****.****.0392 <br/>
+                Bandeira: MASTERCARD <br />
+                Número do cartão: ****.****.****.0392 <br />
                 Nome do titular: CRISTIANO RONALDO <br />
-                Data de validade: 11/28 <br/>
+                Data de validade: 11/28 <br />
                 CPF: 099.***.***-11
               </p>
             </div>
@@ -413,9 +413,16 @@ function CheckoutScheduling() {
 
           <div className="row col-12 col-md-12 col-lg-12 col-xl-12 p-2 bg-body m-0 rounded-3">
 
-            <div className="col-12 d-flex justify-content-center p-4">
+            {/* <div className="col-12 d-flex justify-content-center p-4">
               <input type="date" className="" id="data" name="Agenda" className="calendar" />
+            </div> */}
+
+
+
+            <div className="col-12 d-flex justify-content-center p-4">
+              <Calendar />
             </div>
+
           </div>
 
 
@@ -432,7 +439,7 @@ function CheckoutScheduling() {
               <div className="format-resume-scheduling col-6 col-md-6">
                 <h6 className="my-2 fw-bold">Bugatti Chiron</h6>
                 <small className="col-6 col-md-7 col-lg-7">
-                O Chiron tem agora 1500 cavalos de potência e 163,1 kgf. m (1.600 N.m) de torque iniciando a 2.000 rpm. Como o Veyron, a carroceria é de fibra de carbono, a suspensão é independente e a tração é integral. Acelera de 0-100 km/h em 2,5 segundos, 0-200 km/h em menos de 6,5 segundos e 0-300 km/h em menos de 13,6 segundos.
+                  O Chiron tem agora 1500 cavalos de potência e 163,1 kgf. m (1.600 N.m) de torque iniciando a 2.000 rpm. Como o Veyron, a carroceria é de fibra de carbono, a suspensão é independente e a tração é integral. Acelera de 0-100 km/h em 2,5 segundos, 0-200 km/h em menos de 6,5 segundos e 0-300 km/h em menos de 13,6 segundos.
                 </small>
               </div>
               <div className="col-6 col-md-6 col-lg-5 text-end">

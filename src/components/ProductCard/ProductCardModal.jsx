@@ -5,7 +5,7 @@ import CurrencyFormat from 'react-currency-format';
 import Button from '../../components/Button/Button'
 
 import CartContext from '../../contexts/cart.provider'
-
+import SchedulingContext from '../../contexts/scheduling.provider'
 
 
 
@@ -16,6 +16,7 @@ export default function ProductCardModal(props) {
    
    
     const { addToCart } = useContext(CartContext)
+    const { addToScheduling } = useContext(SchedulingContext)
 
     const history = useHistory()
 
@@ -23,6 +24,12 @@ export default function ProductCardModal(props) {
       addToCart(props.produto)
       history.push("/cart")
     }
+
+
+    const handleAddToSchedulle = () => {
+        addToScheduling(props.produto)
+        history.push("/cartSchedulle")
+      }
 
 
     //INÍCIO: TRANSFORMAÇÃO PARA SEPARAÇÃO DE DEZENAS E MILHARES COM PADRÃO BRASILEIRO
@@ -124,14 +131,17 @@ export default function ProductCardModal(props) {
                                 ? <>
                                     <div className="modal-footer justify-content-center col-md-12 px-4 px-md-0">
                                         <div className="col-12 col-sm-12 col-md-3 col-lg-2 justify-content-center">
-                                                <Button link="/checkoutScheduling" name="Agendar" />
+                                                <Button  name="Agendar" 
+                                                onClick={handleAddToSchedulle}/>
+                                                
                                         </div>
                                     </div>
                                 </>
                                 : <>
                                     <div className="modal-footer d-grid gap-2 d-flex justify-content-center col-md-12 px-4 px-md-0">
                                         <div className="col-12 col-sm-12 col-md-3 col-lg-2 justify-content-center">
-                                            <Button link="/checkoutScheduling" name="Agendar" />
+                                        <Button name="Agendar" 
+                                                onClick={handleAddToSchedulle}/>
                                         </div>
                                         <div className="col-12 col-sm-12 col-md-3 col-lg-2">
                                             <Button name="Comprar"
