@@ -5,8 +5,11 @@ const EnderecoModelo = {
     numero:"",
     bairro: "",
     cidade: "",
-    uf: ""
+    bairro: "",
+    uf: "",
+    cepEndereco:"",
+    numeroEndereco:"",
+    complemento: ""
 }
 export default EnderecoModelo
-
 
