@@ -19,19 +19,20 @@ import { EnderecoModelo, CartaoModelo } from '../../models';
 function CheckoutOrder(props) {
 
   const URLEND = `${baseUrl}/enderecos/1` // setando cliente manualmente
-  const URLCART = `${baseUrl}/cartao/cliente/3` // setando cliente manualmente
-
   const URLendCad = `${baseUrl}/enderecos`
-  const URLcadastrarCartao = `${baseUrl}/cartao/`
-
   const [endereco, setEndereco] = useState([]);
   const [registerEndereco, setRegisterEndereco] = useState(EnderecoModelo);
+
+
+  const URLCART = `${baseUrl}/cartao/cliente/3` // setando cliente manualmente
+  const URLcadastrarCartao = `${baseUrl}/cartao/`
   const [registerCartao, setRegisterCartao] = useState(CartaoModelo);
   const [cartao, setCartao] = useState([]);
+  
   const [successRegister, SetSuccessRegister] = useState(false);
 
 
-
+  // começando la na Linha  278
   const enderecoCadastro = () => {
     console.log(registerEndereco)
     axios.post(URLendCad, registerEndereco)
@@ -43,7 +44,7 @@ function CheckoutOrder(props) {
   }
 
   const deleteEndereco = (id) => {
-    axios.delete(URLendCad/2 ) //`${baseUrl}/customer/${id}`)
+    axios.delete(URLendCad/1 ) //`${baseUrl}/customer/${id}`)
       .then((response) => {
         alert('item removido com sucesso')
         props.get()
@@ -586,7 +587,7 @@ function CheckoutOrder(props) {
 
 
 
-                {/*  */}
+                {/* ADICIONANDO NOVO CARTAO */}
                 <div className="modal-body">
                   <div className="container">
                     <div className="col-12 col-sm-12 col-md-12 px-0">
@@ -647,7 +648,7 @@ function CheckoutOrder(props) {
 
 
           </div>
-          {/* fim do modal adicionar endereço */}
+         
 
 
 
@@ -662,8 +663,6 @@ function CheckoutOrder(props) {
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <h5 className="modal-title text-center text-black" id="staticBackdropLabel">Excluir Endereço </h5>
-
-
                 {/* corpo do modal excluir endereço */}
                 <div className="modal-body">
                   <div className="container">
@@ -671,7 +670,12 @@ function CheckoutOrder(props) {
                     <div>
                       <h5 className="text-dark text-center">Tem certeza que deseja excluir o endereço? </h5>
                       <div>
-                        <h5 className="text-justify text-dark">PRAÇA ROBERTO PEDRO GOMES Nº 101 Morumbi (São Paulo/SP) <br /> CEP: 12332-032
+                        
+                        
+                        <h5 className="text-justify text-dark">
+                          
+                          PRAÇA ROBERTO PEDRO GOMES Nº 101 Morumbi (São Paulo/SP) <br /> CEP: 12332-032
+                          {renderOEnderecos()}
                         </h5>
 
                       </div>
@@ -679,7 +683,7 @@ function CheckoutOrder(props) {
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 text-center mx-0 m-4">
                       <button type="submit" className="col-12 col-md-4 btn-modal-checkoutorder pt-2 pb-2 pe-3 ps-3"
-                      onClick={() => deleteEndereco(EnderecoModelo.id)}
+                      onClick={() => deleteEndereco(EnderecoModelo.codCliente)}
                       
                       >
                         Excluir
